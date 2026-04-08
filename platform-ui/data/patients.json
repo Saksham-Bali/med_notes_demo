@@ -1,0 +1,7 @@
+[
+  {"id": "10000935", "display_name": "Patient A", "cancer_type": "Gastric", "cancer_emoji": "stomach", "reports_count": 4, "description": "Gastric cancer patient with extensive imaging history including CT and MRI studies."},
+  {"id": "19540374", "display_name": "Patient B", "cancer_type": "Lung", "cancer_emoji": "lungs", "reports_count": 8, "description": "Lung cancer patient tracked through multiple CT chest studies."},
+  {"id": "10016197", "display_name": "Patient C", "cancer_type": "Colon", "cancer_emoji": "intestine", "reports_count": 5, "description": "Colon cancer patient with abdominal imaging series."},
+  {"id": "11392257", "display_name": "Patient D", "cancer_type": "Breast", "cancer_emoji": "ribbon", "reports_count": 6, "description": "Breast cancer patient with multimodal imaging including MRI and mammography."},
+  {"id": "10511269", "display_name": "Patient E", "cancer_type": "Brain", "cancer_emoji": "brain", "reports_count": 7, "description": "Brain tumor patient with complex neuro-oncology imaging including MR spectroscopy."}
+]

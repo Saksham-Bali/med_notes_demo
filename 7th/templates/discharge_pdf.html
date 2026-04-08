@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Discharge Summary</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 22mm 18mm;
+      }
+
+      :root {
+        color-scheme: light;
+        --ink: #16324f;
+        --accent: #0f766e;
+        --paper: #f7fbfc;
+        --line: #d6e4e7;
+      }
+
+      body {
+        font-family: "DejaVu Sans", sans-serif;
+        color: #17202a;
+        background: var(--paper);
+        margin: 0;
+      }
+
+      .sheet {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 28px;
+      }
+
+      .header {
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 14px;
+        margin-bottom: 20px;
+      }
+
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 10px;
+        color: var(--accent);
+        margin: 0 0 8px;
+      }
+
+      h1 {
+        margin: 0;
+        color: var(--ink);
+        font-size: 24px;
+      }
+
+      .meta {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .meta-card {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 10px 12px;
+        background: #fcfefe;
+      }
+
+      .meta-label {
+        font-size: 11px;
+        color: #5f6b76;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .meta-value {
+        margin-top: 4px;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      h2 {
+        margin: 22px 0 12px;
+        color: var(--ink);
+        font-size: 16px;
+      }
+
+      pre {
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-family: "DejaVu Sans", sans-serif;
+        line-height: 1.6;
+        font-size: 13px;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="sheet">
+      <section class="header">
+        <p class="eyebrow">Translation Layer Output</p>
+        <h1>Discharge Summary</h1>
+        <div class="meta">
+          <div class="meta-card">
+            <div class="meta-label">Patient ID</div>
+            <div class="meta-value">{{ patient_id }}</div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">Patient Name</div>
+            <div class="meta-value">{{ patient_name or "Not provided" }}</div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">Language</div>
+            <div class="meta-value">{{ language_label }}</div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">Language Code</div>
+            <div class="meta-value">{{ language_code }}</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Summary</h2>
+        <pre>{{ summary_text }}</pre>
+      </section>
+    </main>
+  </body>
+</html>
+

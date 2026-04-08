@@ -1,0 +1,180 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: factgraph
+      POSTGRES_USER: clinical
+      POSTGRES_PASSWORD: secure-password-here
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  orchestrator:
+    build: ./final/orchestrator
+    ports:
+      - "8000:5000"
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=postgresql://clinical:secure-password-here@postgres:5432/factgraph
+      - VOICE_TRANSCRIPTION_URL=http://voice-transcription:5004
+      - COUNSELLING_SUMMARIZER_URL=http://counselling-summarizer:5005
+      - DEPARTMENT_MERGER_URL=http://department-merger:5007
+      - SUMMARY_GENERATOR_URL=http://summary-generator:5008
+      - QA_AGENT_URL=http://qa-agent:5009
+      - TRANSLATION_LAYER_URL=http://translation-layer:5010
+      - ENABLE_FACT_GRAPH=true
+      - ENABLE_RADIOLOGY_EXTRACTOR=true
+      - ENABLE_OCR_AGENT=true
+      - ENABLE_SOAP_EXTRACTOR=true
+      - FACT_GRAPH_URL=http://fact-graph:5006
+      - RADIOLOGY_EXTRACTOR_URL=http://radiology-extractor:5003
+      - OCR_AGENT_URL=http://ocr-agent:5001
+      - SOAP_EXTRACTOR_URL=http://soap-extractor:5002
+      - AZURE_API_KEY=${AZURE_API_KEY}
+      - AZURE_ENDPOINT=${AZURE_ENDPOINT:-https://sherpartap1101-5077-resource.cognitiveservices.azure.com/}
+      - AZURE_DEPLOYMENT=${AZURE_DEPLOYMENT:-gpt-4o-mini}
+      - AZURE_API_VERSION=${AZURE_API_VERSION:-2025-01-01-preview}
+    depends_on:
+      - postgres
+      - redis
+      - voice-transcription
+      - counselling-summarizer
+      - department-merger
+      - summary-generator
+      - qa-agent
+      - translation-layer
+      - fact-graph
+      - radiology-extractor
+      - ocr-agent
+      - soap-extractor
+
+  voice-transcription:
+    build: ./2nd
+    ports:
+      - "5004:5004"
+    environment:
+      - SARVAM_API_KEY=${SARVAM_API_KEY}
+      - AZURE_API_KEY=${AZURE_API_KEY}
+      - AZURE_ENDPOINT=${AZURE_ENDPOINT:-https://sherpartap1101-5077-resource.cognitiveservices.azure.com/}
+      - AZURE_DEPLOYMENT=${AZURE_DEPLOYMENT:-gpt-4o-mini}
+      - AZURE_API_VERSION=${AZURE_API_VERSION:-2025-01-01-preview}
+
+  counselling-summarizer:
+    build: ./3rd/counselling-summarizer
+    ports:
+      - "5005:5005"
+    environment:
+      - AZURE_API_KEY=${AZURE_API_KEY}
+      - AZURE_ENDPOINT=${AZURE_ENDPOINT:-https://sherpartap1101-5077-resource.cognitiveservices.azure.com/}
+      - AZURE_DEPLOYMENT=${AZURE_DEPLOYMENT:-gpt-4o-mini}
+      - AZURE_API_VERSION=${AZURE_API_VERSION:-2025-01-01-preview}
+
+  department-merger:
+    build: ./4th/department-merger
+    ports:
+      - "5007:5007"
+    environment:
+      - AZURE_API_KEY=${AZURE_API_KEY}
+      - AZURE_ENDPOINT=${AZURE_ENDPOINT:-https://sherpartap1101-5077-resource.cognitiveservices.azure.com/}
+      - AZURE_DEPLOYMENT=${AZURE_DEPLOYMENT:-gpt-4o-mini}
+      - AZURE_API_VERSION=${AZURE_API_VERSION:-2025-01-01-preview}
+
+  summary-generator:
+    build: ./5th
+    ports:
+      - "5008:5008"
+    environment:
+      - AZURE_API_KEY=${AZURE_API_KEY}
+      - AZURE_ENDPOINT=${AZURE_ENDPOINT:-https://sherpartap1101-5077-resource.cognitiveservices.azure.com/}
+      - AZURE_DEPLOYMENT=${AZURE_DEPLOYMENT:-gpt-4o-mini}
+      - AZURE_API_VERSION=${AZURE_API_VERSION:-2025-01-01-preview}
+
+  qa-agent:
+    build: ./6th/qa-agent
+    ports:
+      - "5009:5009"
+    environment:
+      - AZURE_API_KEY=${AZURE_API_KEY}
+      - AZURE_ENDPOINT=${AZURE_ENDPOINT:-https://sherpartap1101-5077-resource.cognitiveservices.azure.com/}
+      - AZURE_DEPLOYMENT=${AZURE_DEPLOYMENT:-gpt-4o-mini}
+      - AZURE_API_VERSION=${AZURE_API_VERSION:-2025-01-01-preview}
+
+  translation-layer:
+    build: ./7th
+    ports:
+      - "5010:5010"
+    environment:
+      - SARVAM_API_KEY=${SARVAM_API_KEY}
+      - AZURE_API_KEY=${AZURE_API_KEY}
+      - AZURE_ENDPOINT=${AZURE_ENDPOINT:-https://sherpartap1101-5077-resource.cognitiveservices.azure.com/}
+      - AZURE_DEPLOYMENT=${AZURE_DEPLOYMENT:-gpt-4o-mini}
+      - AZURE_API_VERSION=${AZURE_API_VERSION:-2025-01-01-preview}
+
+  fact-graph:
+    build: ./fact-graph-service
+    ports:
+      - "5006:5006"
+    environment:
+      - AZURE_API_KEY=${AZURE_API_KEY}
+      - AZURE_ENDPOINT=${AZURE_ENDPOINT:-https://sherpartap1101-5077-resource.cognitiveservices.azure.com/}
+      - AZURE_DEPLOYMENT=${AZURE_DEPLOYMENT:-gpt-4o-mini}
+      - AZURE_API_VERSION=${AZURE_API_VERSION:-2025-01-01-preview}
+      - DATA_DIR=/app/data
+    volumes:
+      - fact-graph-data:/app/data
+
+  radiology-extractor:
+    build: ./radiology-extractor
+    ports:
+      - "5003:5003"
+    environment:
+      - AZURE_API_KEY=${AZURE_API_KEY}
+      - AZURE_ENDPOINT=${AZURE_ENDPOINT:-https://sherpartap1101-5077-resource.cognitiveservices.azure.com/}
+      - AZURE_DEPLOYMENT=${AZURE_DEPLOYMENT:-gpt-4o-mini}
+      - AZURE_API_VERSION=${AZURE_API_VERSION:-2025-01-01-preview}
+
+  ocr-agent:
+    build: ./ocr-agent
+    ports:
+      - "5001:5001"
+    environment:
+      - AZURE_API_KEY=${AZURE_API_KEY}
+      - AZURE_ENDPOINT=${AZURE_ENDPOINT:-https://sherpartap1101-5077-resource.cognitiveservices.azure.com/}
+      - AZURE_DEPLOYMENT=${AZURE_DEPLOYMENT:-gpt-4o-mini}
+      - AZURE_API_VERSION=${AZURE_API_VERSION:-2025-01-01-preview}
+
+  soap-extractor:
+    build: ./soap-extractor
+    ports:
+      - "5002:5002"
+    environment:
+      - AZURE_API_KEY=${AZURE_API_KEY}
+      - AZURE_ENDPOINT=${AZURE_ENDPOINT:-https://sherpartap1101-5077-resource.cognitiveservices.azure.com/}
+      - AZURE_DEPLOYMENT=${AZURE_DEPLOYMENT:-gpt-4o-mini}
+      - AZURE_API_VERSION=${AZURE_API_VERSION:-2025-01-01-preview}
+
+  frontend:
+    build:
+      context: ./platform-ui
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_ORCHESTRATOR_URL=http://localhost:8000
+      - ORCHESTRATOR_INTERNAL_URL=http://orchestrator:5000
+      - FACT_GRAPH_INTERNAL_URL=http://fact-graph:5006
+      - AZURE_API_KEY=${AZURE_API_KEY}
+    depends_on:
+      - orchestrator
+
+volumes:
+  pgdata:
+  fact-graph-data:

@@ -1,0 +1,25 @@
+You are analyzing a clinical data conflict between two hospital departments.
+
+Return exactly one JSON object with these keys:
+- "description": one concise explanation of the disagreement
+- "authoritative_department": the department most likely to be authoritative for this finding, or null
+- "suggested_resolution": a recommendation for clinician review that does NOT auto-resolve the conflict
+
+CONFLICT
+- Entity: {entity}
+- Conflict type: {conflict_type}
+- Department A: {dept_a}
+- Department A value: {fact_a_value}
+- Department A status: {fact_a_status}
+- Department A evidence: {fact_a_evidence}
+- Department B: {dept_b}
+- Department B value: {fact_b_value}
+- Department B status: {fact_b_status}
+- Department B evidence: {fact_b_evidence}
+- Existing description: {description}
+
+IMPORTANT RULES
+- You are providing analysis, not making a clinical decision.
+- Never say the conflict is resolved.
+- Never recommend automatic application of the suggestion.
+- Keep the wording clear for a clinician who will make the final decision.
