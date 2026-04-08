@@ -1,8 +1,0 @@
-{
-  "/api/proxy/[...path]/route": "app/api/proxy/[...path]/route.js",
-  "/page": "app/page.js",
-  "/demo/patient/[id]/workflow/note/page": "app/demo/patient/[id]/workflow/note/page.js",
-  "/demo/patient/[id]/workflow/counselling/page": "app/demo/patient/[id]/workflow/counselling/page.js",
-  "/demo/patient/[id]/page": "app/demo/patient/[id]/page.js",
-  "/demo/page": "app/demo/page.js"
-}
