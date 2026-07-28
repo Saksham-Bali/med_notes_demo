@@ -63,9 +63,15 @@ logs/
 # Firecrawl cache
 .firecrawl/
 
-# Directories that are separate git repos (added as submodules instead)
+# Directories that are separate git repos, kept as plain checkouts (no
+# .gitmodules, no gitlinks — just ignored here so this repo doesn't try to
+# track their contents)
 tmc/
 Med copy/
+dasyante-site/
+
+# Deploy snapshot — carries live secrets (backend/.env, web/.env.local), never commit
+findingframe_deploy_snapshot/
 
 # Oddly named dirs from settings objects
 "<member 'data_dir' of 'Settings' objects>"
