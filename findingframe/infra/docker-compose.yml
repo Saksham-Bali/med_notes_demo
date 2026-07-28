@@ -1,0 +1,61 @@
+# FindingFrame — local/dev compose stack: backend (FastAPI :8000), worker, web (Next.js :3000).
+# No local Postgres: everything points at the hosted Supabase project via backend/.env.
+#
+# Prerequisites:
+#   1. infra/scripts/vendor_engine.sh          (populates infra/engine_vendor/, COPY'd into
+#                                                backend + worker images — build fails without it)
+#   2. infra/scripts/migrate.sh                 (applies infra/supabase/migrations/*.sql)
+#   3. backend/.venv/bin/python infra/scripts/seed_demo.py   (demo org/user/patient)
+#
+# web's NEXT_PUBLIC_* vars are baked in at Next.js build time, so they must be supplied as
+# build args, sourced from web/.env.local. Build/run with:
+#   docker compose --env-file ../web/.env.local -f infra/docker-compose.yml up --build
+# (see docs/RUNBOOK.md for the full walkthrough).
+name: findingframe
+
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: infra/docker/Dockerfile.backend
+    env_file:
+      - ../backend/.env
+    environment:
+      # Overrides backend/.env's dev-relative path (../../tmc): the image ships the
+      # vendored, allowlisted engine copy instead (infra/scripts/vendor_engine.sh).
+      FF_ENGINE_PATH: /app/engine
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: ..
+      dockerfile: infra/docker/Dockerfile.worker
+    env_file:
+      - ../backend/.env
+    environment:
+      FF_ENGINE_PATH: /app/engine
+      FF_WORKER_ID: worker-1
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ..
+      dockerfile: infra/docker/Dockerfile.web
+      args:
+        NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL:-}
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY:-}
+        # Browser-side calls hit the host-published backend port, not the compose
+        # network's internal DNS name (the browser runs outside the compose network).
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000}
+        NEXT_PUBLIC_API_MODE: ${NEXT_PUBLIC_API_MODE:-live}
+    ports:
+      - "3000:3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped

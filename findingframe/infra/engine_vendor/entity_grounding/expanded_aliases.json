@@ -1,0 +1,4055 @@
+{
+  "RID43314": [
+    "acute multiple lesions 2-5",
+    "no multiple lesions 2-5",
+    "no evidence of multiple lesions 2-5",
+    "without multiple lesions 2-5",
+    "absence of multiple lesions 2-5",
+    "multiple lesions 2-5s"
+  ],
+  "RID32028": [
+    "acute gluteal lymph node group",
+    "no gluteal lymph node group",
+    "no evidence of gluteal lymph node group",
+    "without gluteal lymph node group",
+    "absence of gluteal lymph node group",
+    "gluteal lymph node groups"
+  ],
+  "RID3935": [
+    "acute rathke cleft cyst",
+    "no rathke cleft cyst",
+    "no evidence of rathke cleft cyst",
+    "without rathke cleft cyst",
+    "absence of rathke cleft cyst",
+    "rathke cleft cysts"
+  ],
+  "RID31978": [
+    "acute superior anterior pancreaticoduodenal lymph node group",
+    "no superior anterior pancreaticoduodenal lymph node group",
+    "no evidence of superior anterior pancreaticoduodenal lymph node group",
+    "without superior anterior pancreaticoduodenal lymph node group",
+    "absence of superior anterior pancreaticoduodenal lymph node group",
+    "superior anterior pancreaticoduodenal lymph node groups"
+  ],
+  "RID34642": [
+    "acute calcifications",
+    "no calcifications",
+    "no evidence of calcifications",
+    "without calcifications",
+    "absence of calcifications"
+  ],
+  "RID7702": [
+    "acute infraauricular lymph node",
+    "no infraauricular lymph node",
+    "no evidence of infraauricular lymph node",
+    "without infraauricular lymph node",
+    "absence of infraauricular lymph node",
+    "infraauricular lymph nodes"
+  ],
+  "RID50384": [
+    "acute set of pedal lymphatic vessels",
+    "no set of pedal lymphatic vessels",
+    "no evidence of set of pedal lymphatic vessels",
+    "without set of pedal lymphatic vessels",
+    "absence of set of pedal lymphatic vessels",
+    "set of pedal lymphatic vessel"
+  ],
+  "RID4372": [
+    "acute lymphangioleiomyomatosis",
+    "no lymphangioleiomyomatosis",
+    "no evidence of lymphangioleiomyomatosis",
+    "without lymphangioleiomyomatosis",
+    "absence of lymphangioleiomyomatosis",
+    "lymphangioleiomyomatosi",
+    "lymphangioleiomyomatotic"
+  ],
+  "RID3321": [
+    "acute aneurysm",
+    "no aneurysm",
+    "no evidence of aneurysm",
+    "without aneurysm",
+    "absence of aneurysm",
+    "aneurysms"
+  ],
+  "RID28894": [
+    "acute infraclavicular lymph node",
+    "no infraclavicular lymph node",
+    "no evidence of infraclavicular lymph node",
+    "without infraclavicular lymph node",
+    "absence of infraclavicular lymph node",
+    "infraclavicular lymph nodes"
+  ],
+  "RID3798": [
+    "acute lymphadenopathy",
+    "no lymphadenopathy",
+    "no evidence of lymphadenopathy",
+    "without lymphadenopathy",
+    "absence of lymphadenopathy",
+    "lymphadenopathys"
+  ],
+  "RID3913": [
+    "acute juxtaarticular cyst",
+    "no juxtaarticular cyst",
+    "no evidence of juxtaarticular cyst",
+    "without juxtaarticular cyst",
+    "absence of juxtaarticular cyst",
+    "juxtaarticular cysts"
+  ],
+  "RID30803": [
+    "acute left lateral aortic lymphatic chain",
+    "no left lateral aortic lymphatic chain",
+    "no evidence of left lateral aortic lymphatic chain",
+    "without left lateral aortic lymphatic chain",
+    "absence of left lateral aortic lymphatic chain",
+    "left lateral aortic lymphatic chains"
+  ],
+  "RID3331": [
+    "acute pseudoaneurysm",
+    "no pseudoaneurysm",
+    "no evidence of pseudoaneurysm",
+    "without pseudoaneurysm",
+    "absence of pseudoaneurysm",
+    "pseudoaneurysms"
+  ],
+  "RID5196": [
+    "acute calcification",
+    "no calcification",
+    "no evidence of calcification",
+    "without calcification",
+    "absence of calcification",
+    "calcificated"
+  ],
+  "RID1517": [
+    "acute axillary lymph node",
+    "no axillary lymph node",
+    "no evidence of axillary lymph node",
+    "without axillary lymph node",
+    "absence of axillary lymph node",
+    "axillary lymph nodes"
+  ],
+  "RID32070": [
+    "acute left gastro-epiploic lymph node",
+    "no left gastro-epiploic lymph node",
+    "no evidence of left gastro-epiploic lymph node",
+    "without left gastro-epiploic lymph node",
+    "absence of left gastro-epiploic lymph node",
+    "left gastro-epiploic lymph nodes"
+  ],
+  "RID32620": [
+    "acute intestinal lymphatic vessel",
+    "no intestinal lymphatic vessel",
+    "no evidence of intestinal lymphatic vessel",
+    "without intestinal lymphatic vessel",
+    "absence of intestinal lymphatic vessel",
+    "intestinal lymphatic vessels"
+  ],
+  "RID34749": [
+    "acute pseudolesion",
+    "no pseudolesion",
+    "no evidence of pseudolesion",
+    "without pseudolesion",
+    "absence of pseudolesion",
+    "pseudolesions"
+  ],
+  "RID31990": [
+    "acute left colic lymph node group proper",
+    "no left colic lymph node group proper",
+    "no evidence of left colic lymph node group proper",
+    "without left colic lymph node group proper",
+    "absence of left colic lymph node group proper",
+    "left colic lymph node group propers"
+  ],
+  "RID29741": [
+    "acute anterior pancreaticoduodenal lymphatic chain",
+    "no anterior pancreaticoduodenal lymphatic chain",
+    "no evidence of anterior pancreaticoduodenal lymphatic chain",
+    "without anterior pancreaticoduodenal lymphatic chain",
+    "absence of anterior pancreaticoduodenal lymphatic chain",
+    "anterior pancreaticoduodenal lymphatic chains"
+  ],
+  "RID9908": [
+    "acute masseter muscle",
+    "no masseter muscle",
+    "no evidence of masseter muscle",
+    "without masseter muscle",
+    "absence of masseter muscle",
+    "masseter muscles"
+  ],
+  "RID29752": [
+    "acute right colic proper lymphatic chain",
+    "no right colic proper lymphatic chain",
+    "no evidence of right colic proper lymphatic chain",
+    "without right colic proper lymphatic chain",
+    "absence of right colic proper lymphatic chain",
+    "right colic proper lymphatic chains"
+  ],
+  "RID32585": [
+    "pancreaticospleen lymphatic vessel",
+    "acute pancreaticosplenic lymphatic vessel",
+    "no pancreaticosplenic lymphatic vessel",
+    "no evidence of pancreaticosplenic lymphatic vessel",
+    "without pancreaticosplenic lymphatic vessel",
+    "absence of pancreaticosplenic lymphatic vessel",
+    "pancreaticosplenic lymphatic vessels"
+  ],
+  "RID29121": [
+    "acute chisel fracture",
+    "no chisel fracture",
+    "no evidence of chisel fracture",
+    "without chisel fracture",
+    "absence of chisel fracture",
+    "chisel fractures"
+  ],
+  "RID34588": [
+    "acute urethral stenosis",
+    "no urethral stenosis",
+    "no evidence of urethral stenosis",
+    "without urethral stenosis",
+    "absence of urethral stenosis",
+    "urethral stenosi",
+    "urethral stenotic"
+  ],
+  "RID3963": [
+    "acute acinar cell cystadenocarcinoma",
+    "no acinar cell cystadenocarcinoma",
+    "no evidence of acinar cell cystadenocarcinoma",
+    "without acinar cell cystadenocarcinoma",
+    "absence of acinar cell cystadenocarcinoma",
+    "acinar cell cystadenocarcinomas"
+  ],
+  "RID1623": [
+    "acute cystogastrostomy",
+    "no cystogastrostomy",
+    "no evidence of cystogastrostomy",
+    "without cystogastrostomy",
+    "absence of cystogastrostomy",
+    "cystogastrostomys"
+  ],
+  "RID31689": [
+    "acute left intestinal lymphatic trunk",
+    "no left intestinal lymphatic trunk",
+    "no evidence of left intestinal lymphatic trunk",
+    "without left intestinal lymphatic trunk",
+    "absence of left intestinal lymphatic trunk",
+    "left intestinal lymphatic trunks"
+  ],
+  "RID30382": [
+    "acute organ component of lymphatic tree organ",
+    "no organ component of lymphatic tree organ",
+    "no evidence of organ component of lymphatic tree organ",
+    "without organ component of lymphatic tree organ",
+    "absence of organ component of lymphatic tree organ",
+    "organ component of lymphatic tree organs"
+  ],
+  "RID29683": [
+    "acute lymphatc chain at root of middle colic artery",
+    "no lymphatc chain at root of middle colic artery",
+    "no evidence of lymphatc chain at root of middle colic artery",
+    "without lymphatc chain at root of middle colic artery",
+    "absence of lymphatc chain at root of middle colic artery",
+    "lymphatc chain at root of middle colic arterys"
+  ],
+  "RID30409": [
+    "acute set of retro-aortic lymphatic vessels",
+    "no set of retro-aortic lymphatic vessels",
+    "no evidence of set of retro-aortic lymphatic vessels",
+    "without set of retro-aortic lymphatic vessels",
+    "absence of set of retro-aortic lymphatic vessels",
+    "set of retro-aortic lymphatic vessel"
+  ],
+  "RID32123": [
+    "acute paravaginal lymph node",
+    "no paravaginal lymph node",
+    "no evidence of paravaginal lymph node",
+    "without paravaginal lymph node",
+    "absence of paravaginal lymph node",
+    "paravaginal lymph nodes"
+  ],
+  "RID34605": [
+    "acute avascular necrosis",
+    "no avascular necrosis",
+    "no evidence of avascular necrosis",
+    "without avascular necrosis",
+    "absence of avascular necrosis",
+    "avascular necrosi",
+    "avascular necrotic"
+  ],
+  "RID49491": [
+    "acute non-mass internal enhancement pattern",
+    "no non-mass internal enhancement pattern",
+    "no evidence of non-mass internal enhancement pattern",
+    "without non-mass internal enhancement pattern",
+    "absence of non-mass internal enhancement pattern",
+    "non-mass internal enhancement patterns"
+  ],
+  "RID34368": [
+    "acute microcalcifications in mass",
+    "no microcalcifications in mass",
+    "no evidence of microcalcifications in mass",
+    "without microcalcifications in mass",
+    "absence of microcalcifications in mass"
+  ],
+  "RID4839": [
+    "acute fat embolism",
+    "no fat embolism",
+    "no evidence of fat embolism",
+    "without fat embolism",
+    "absence of fat embolism",
+    "fat embolisms"
+  ],
+  "RID3878": [
+    "acute rheumatoid nodule",
+    "no rheumatoid nodule",
+    "no evidence of rheumatoid nodule",
+    "without rheumatoid nodule",
+    "absence of rheumatoid nodule",
+    "rheumatoid nodules"
+  ],
+  "RID32104": [
+    "pararectal lymph node of abdominal proper",
+    "acute pararectal lymph node of abdomen proper",
+    "no pararectal lymph node of abdomen proper",
+    "no evidence of pararectal lymph node of abdomen proper",
+    "without pararectal lymph node of abdomen proper",
+    "absence of pararectal lymph node of abdomen proper",
+    "pararectal lymph node of abdomen propers"
+  ],
+  "RID29747": [
+    "acute hepatoportal lymphatic chain",
+    "no hepatoportal lymphatic chain",
+    "no evidence of hepatoportal lymphatic chain",
+    "without hepatoportal lymphatic chain",
+    "absence of hepatoportal lymphatic chain",
+    "hepatoportal lymphatic chains"
+  ],
+  "RID29736": [
+    "acute recurrent ileal lymphatic chain",
+    "no recurrent ileal lymphatic chain",
+    "no evidence of recurrent ileal lymphatic chain",
+    "without recurrent ileal lymphatic chain",
+    "absence of recurrent ileal lymphatic chain",
+    "recurrent ileal lymphatic chains"
+  ],
+  "RID4654": [
+    "acute bowing fracture",
+    "no bowing fracture",
+    "no evidence of bowing fracture",
+    "without bowing fracture",
+    "absence of bowing fracture",
+    "bowing fractures"
+  ],
+  "RID32612": [
+    "acute preterminal colic lymphatic vessel",
+    "no preterminal colic lymphatic vessel",
+    "no evidence of preterminal colic lymphatic vessel",
+    "without preterminal colic lymphatic vessel",
+    "absence of preterminal colic lymphatic vessel",
+    "preterminal colic lymphatic vessels"
+  ],
+  "RID43358": [
+    "acute lesion focality",
+    "no lesion focality",
+    "no evidence of lesion focality",
+    "without lesion focality",
+    "absence of lesion focality",
+    "lesion focalitys"
+  ],
+  "RID43347": [
+    "acute lesional fat sparing",
+    "no lesional fat sparing",
+    "no evidence of lesional fat sparing",
+    "without lesional fat sparing",
+    "absence of lesional fat sparing",
+    "lesional fat sparings"
+  ],
+  "RID31341": [
+    "acute set of lymphatic vessels at root of inferior pancreaticoduodenal artery",
+    "no set of lymphatic vessels at root of inferior pancreaticoduodenal artery",
+    "no evidence of set of lymphatic vessels at root of inferior pancreaticoduodenal artery",
+    "without set of lymphatic vessels at root of inferior pancreaticoduodenal artery",
+    "absence of set of lymphatic vessels at root of inferior pancreaticoduodenal artery",
+    "set of lymphatic vessels at root of inferior pancreaticoduodenal arterys"
+  ],
+  "RID1810": [
+    "acute lymphadenectomy",
+    "no lymphadenectomy",
+    "no evidence of lymphadenectomy",
+    "without lymphadenectomy",
+    "absence of lymphadenectomy",
+    "lymphadenectomys"
+  ],
+  "RID5001": [
+    "acute cystine stone",
+    "no cystine stone",
+    "no evidence of cystine stone",
+    "without cystine stone",
+    "absence of cystine stone",
+    "cystine stones"
+  ],
+  "RID31910": [
+    "acute left lateral aortic lymph node group",
+    "no left lateral aortic lymph node group",
+    "no evidence of left lateral aortic lymph node group",
+    "without left lateral aortic lymph node group",
+    "absence of left lateral aortic lymph node group",
+    "left lateral aortic lymph node groups"
+  ],
+  "RID28929": [
+    "acute gastro-epiploic lymph node",
+    "no gastro-epiploic lymph node",
+    "no evidence of gastro-epiploic lymph node",
+    "without gastro-epiploic lymph node",
+    "absence of gastro-epiploic lymph node",
+    "gastro-epiploic lymph nodes"
+  ],
+  "RID32541": [
+    "acute gluteal lymphatic vessel",
+    "no gluteal lymphatic vessel",
+    "no evidence of gluteal lymphatic vessel",
+    "without gluteal lymphatic vessel",
+    "absence of gluteal lymphatic vessel",
+    "gluteal lymphatic vessels"
+  ],
+  "RID28897": [
+    "acute pectoral lymph node",
+    "no pectoral lymph node",
+    "no evidence of pectoral lymph node",
+    "without pectoral lymph node",
+    "absence of pectoral lymph node",
+    "pectoral lymph nodes"
+  ],
+  "RID34775": [
+    "acute double-column acetabulum fracture",
+    "no double-column acetabulum fracture",
+    "no evidence of double-column acetabulum fracture",
+    "without double-column acetabulum fracture",
+    "absence of double-column acetabulum fracture",
+    "double-column acetabulum fractures"
+  ],
+  "RID31329": [
+    "acute set of paracolic lymphatic vessels of transverse colon",
+    "no set of paracolic lymphatic vessels of transverse colon",
+    "no evidence of set of paracolic lymphatic vessels of transverse colon",
+    "without set of paracolic lymphatic vessels of transverse colon",
+    "absence of set of paracolic lymphatic vessels of transverse colon",
+    "set of paracolic lymphatic vessels of transverse colons"
+  ],
+  "RID28886": [
+    "acute parametrial lymph node",
+    "no parametrial lymph node",
+    "no evidence of parametrial lymph node",
+    "without parametrial lymph node",
+    "absence of parametrial lymph node",
+    "parametrial lymph nodes"
+  ],
+  "RID38089": [
+    "acute subdivision of cystic artery",
+    "no subdivision of cystic artery",
+    "no evidence of subdivision of cystic artery",
+    "without subdivision of cystic artery",
+    "absence of subdivision of cystic artery",
+    "subdivision of cystic arterys"
+  ],
+  "RID4676": [
+    "acute orbital wall fracture",
+    "no orbital wall fracture",
+    "no evidence of orbital wall fracture",
+    "without orbital wall fracture",
+    "absence of orbital wall fracture",
+    "orbital wall fractures"
+  ],
+  "RID32065": [
+    "acute left gastric lymph node",
+    "no left gastric lymph node",
+    "no evidence of left gastric lymph node",
+    "without left gastric lymph node",
+    "absence of left gastric lymph node"
+  ],
+  "RID1541": [
+    "acute ascites",
+    "no ascites",
+    "no evidence of ascites",
+    "without ascites",
+    "absence of ascites",
+    "ascite"
+  ],
+  "RID31985": [
+    "acute paracolic lymph node group of transverse colon",
+    "no paracolic lymph node group of transverse colon",
+    "no evidence of paracolic lymph node group of transverse colon",
+    "without paracolic lymph node group of transverse colon",
+    "absence of paracolic lymph node group of transverse colon",
+    "paracolic lymph node group of transverse colons"
+  ],
+  "RID32623": [
+    "acute anorectal lymphatic vessel",
+    "no anorectal lymphatic vessel",
+    "no evidence of anorectal lymphatic vessel",
+    "without anorectal lymphatic vessel",
+    "absence of anorectal lymphatic vessel",
+    "anorectal lymphatic vessels"
+  ],
+  "RID32054": [
+    "acute proximal superior mesenteric lymph node",
+    "no proximal superior mesenteric lymph node",
+    "no evidence of proximal superior mesenteric lymph node",
+    "without proximal superior mesenteric lymph node",
+    "absence of proximal superior mesenteric lymph node"
+  ],
+  "RID7737": [
+    "acute lower posterior cervical triangle lymph node",
+    "no lower posterior cervical triangle lymph node",
+    "no evidence of lower posterior cervical triangle lymph node",
+    "without lower posterior cervical triangle lymph node",
+    "absence of lower posterior cervical triangle lymph node",
+    "lower posterior cervical triangle lymph nodes"
+  ],
+  "RID50297": [
+    "acute pi-rads 2  - low (lesion)",
+    "no pi-rads 2  - low (lesion)",
+    "no evidence of pi-rads 2  - low (lesion)",
+    "without pi-rads 2  - low (lesion)",
+    "absence of pi-rads 2  - low (lesion)",
+    "pi-rads 2  - low (lesion)s"
+  ],
+  "RID39296": [
+    "acute m0 distant metastasis stage",
+    "no m0 distant metastasis stage",
+    "no evidence of m0 distant metastasis stage",
+    "without m0 distant metastasis stage",
+    "absence of m0 distant metastasis stage",
+    "m0 distant metastasis stages"
+  ],
+  "RID5235": [
+    "acute lymphangitic spread",
+    "no lymphangitic spread",
+    "no evidence of lymphangitic spread",
+    "without lymphangitic spread",
+    "absence of lymphangitic spread",
+    "lymphangitic spreads"
+  ],
+  "RID29686": [
+    "acute subdivision of left gastric lymphatic chain",
+    "no subdivision of left gastric lymphatic chain",
+    "no evidence of subdivision of left gastric lymphatic chain",
+    "without subdivision of left gastric lymphatic chain",
+    "absence of subdivision of left gastric lymphatic chain",
+    "subdivision of left gastric lymphatic chains"
+  ],
+  "RID32562": [
+    "acute lateral caval lymphatic vessel",
+    "no lateral caval lymphatic vessel",
+    "no evidence of lateral caval lymphatic vessel",
+    "without lateral caval lymphatic vessel",
+    "absence of lateral caval lymphatic vessel",
+    "lateral caval lymphatic vessels"
+  ],
+  "RID3892": [
+    "acute baker cyst",
+    "no baker cyst",
+    "no evidence of baker cyst",
+    "without baker cyst",
+    "absence of baker cyst",
+    "baker cysts"
+  ],
+  "RID4164": [
+    "acute mucinous cystic neoplasm",
+    "no mucinous cystic neoplasm",
+    "no evidence of mucinous cystic neoplasm",
+    "without mucinous cystic neoplasm",
+    "absence of mucinous cystic neoplasm",
+    "mucinous cystic neoplasms"
+  ],
+  "RID7711": [
+    "acute submandibular lymph node",
+    "no submandibular lymph node",
+    "no evidence of submandibular lymph node",
+    "without submandibular lymph node",
+    "absence of submandibular lymph node",
+    "submandibular lymph nodes"
+  ],
+  "RID43297": [
+    "acute set of perilesional vessels",
+    "no set of perilesional vessels",
+    "no evidence of set of perilesional vessels",
+    "without set of perilesional vessels",
+    "absence of set of perilesional vessels",
+    "set of perilesional vessel"
+  ],
+  "RID32118": [
+    "acute prevesicular lymph node",
+    "no prevesicular lymph node",
+    "no evidence of prevesicular lymph node",
+    "without prevesicular lymph node",
+    "absence of prevesicular lymph node",
+    "prevesicular lymph nodes"
+  ],
+  "RID29675": [
+    "acute celiac lymphatic chain",
+    "no celiac lymphatic chain",
+    "no evidence of celiac lymphatic chain",
+    "without celiac lymphatic chain",
+    "absence of celiac lymphatic chain",
+    "celiac lymphatic chains"
+  ],
+  "RID3705": [
+    "acute cystitis glandularis",
+    "no cystitis glandularis",
+    "no evidence of cystitis glandularis",
+    "without cystitis glandularis",
+    "absence of cystitis glandularis",
+    "cystitis glandulari"
+  ],
+  "RID4915": [
+    "acute umbilical hernia",
+    "no umbilical hernia",
+    "no evidence of umbilical hernia",
+    "without umbilical hernia",
+    "absence of umbilical hernia",
+    "umbilical hernias"
+  ],
+  "RID38121": [
+    "acute accessory cystic artery",
+    "no accessory cystic artery",
+    "no evidence of accessory cystic artery",
+    "without accessory cystic artery",
+    "absence of accessory cystic artery",
+    "accessory cystic arterys"
+  ],
+  "RID50037": [
+    "acute cholecystokinetic agent",
+    "no cholecystokinetic agent",
+    "no evidence of cholecystokinetic agent",
+    "without cholecystokinetic agent",
+    "absence of cholecystokinetic agent",
+    "cholecystokinetic agents"
+  ],
+  "RID3954": [
+    "acute pseudocyst",
+    "no pseudocyst",
+    "no evidence of pseudocyst",
+    "without pseudocyst",
+    "absence of pseudocyst",
+    "pseudocysts"
+  ],
+  "RID28879": [
+    "acute superior rectal lymph node",
+    "no superior rectal lymph node",
+    "no evidence of superior rectal lymph node",
+    "without superior rectal lymph node",
+    "absence of superior rectal lymph node",
+    "superior rectal lymph nodes"
+  ],
+  "RID21350": [
+    "acute trunk of masseteric nerve",
+    "no trunk of masseteric nerve",
+    "no evidence of trunk of masseteric nerve",
+    "without trunk of masseteric nerve",
+    "absence of trunk of masseteric nerve",
+    "trunk of masseteric nerves"
+  ],
+  "RID5352": [
+    "acute pneumothorax",
+    "no pneumothorax",
+    "no evidence of pneumothorax",
+    "without pneumothorax",
+    "absence of pneumothorax",
+    "pneumothoraxs"
+  ],
+  "RID31384": [
+    "acute set of superior left gastric lymphatic vessels",
+    "no set of superior left gastric lymphatic vessels",
+    "no evidence of set of superior left gastric lymphatic vessels",
+    "without set of superior left gastric lymphatic vessels",
+    "absence of set of superior left gastric lymphatic vessels",
+    "set of superior left gastric lymphatic vessel"
+  ],
+  "RID4841": [
+    "acute amniotic fluid embolism",
+    "no amniotic fluid embolism",
+    "no evidence of amniotic fluid embolism",
+    "without amniotic fluid embolism",
+    "absence of amniotic fluid embolism",
+    "amniotic fluid embolisms"
+  ],
+  "RID452": [
+    "liver lymph node",
+    "acute hepatic lymph node",
+    "no hepatic lymph node",
+    "no evidence of hepatic lymph node",
+    "without hepatic lymph node",
+    "absence of hepatic lymph node",
+    "hepatic lymph nodes"
+  ],
+  "RID32036": [
+    "acute lateral vesical lymph node group",
+    "no lateral vesical lymph node group",
+    "no evidence of lateral vesical lymph node group",
+    "without lateral vesical lymph node group",
+    "absence of lateral vesical lymph node group",
+    "lateral vesical lymph node groups"
+  ],
+  "RID32130": [
+    "acute intermediate external iliac lymph node",
+    "no intermediate external iliac lymph node",
+    "no evidence of intermediate external iliac lymph node",
+    "without intermediate external iliac lymph node",
+    "absence of intermediate external iliac lymph node",
+    "intermediate external iliac lymph nodes"
+  ],
+  "RID5257": [
+    "acute intestinal pseudo-obstruction",
+    "no intestinal pseudo-obstruction",
+    "no evidence of intestinal pseudo-obstruction",
+    "without intestinal pseudo-obstruction",
+    "absence of intestinal pseudo-obstruction",
+    "intestinal pseudo-obstructions",
+    "intestinal pseudo-obstructed"
+  ],
+  "RID31373": [
+    "acute set of pancreaticoduodenal lymphatic vessels",
+    "no set of pancreaticoduodenal lymphatic vessels",
+    "no evidence of set of pancreaticoduodenal lymphatic vessels",
+    "without set of pancreaticoduodenal lymphatic vessels",
+    "absence of set of pancreaticoduodenal lymphatic vessels",
+    "set of pancreaticoduodenal lymphatic vessel"
+  ],
+  "RID31362": [
+    "acute set of intermediate mesenteric lymphatic vessels",
+    "no set of intermediate mesenteric lymphatic vessels",
+    "no evidence of set of intermediate mesenteric lymphatic vessels",
+    "without set of intermediate mesenteric lymphatic vessels",
+    "absence of set of intermediate mesenteric lymphatic vessels",
+    "set of intermediate mesenteric lymphatic vessel"
+  ],
+  "RID31967": [
+    "acute paracardial left gastric lymph node group",
+    "no paracardial left gastric lymph node group",
+    "no evidence of paracardial left gastric lymph node group",
+    "without paracardial left gastric lymph node group",
+    "absence of paracardial left gastric lymph node group",
+    "paracardial left gastric lymph node groups"
+  ],
+  "RID5330": [
+    "no acute interstitial pneumonia",
+    "no evidence of acute interstitial pneumonia",
+    "without acute interstitial pneumonia",
+    "absence of acute interstitial pneumonia",
+    "acute interstitial pneumonias"
+  ],
+  "RID29124": [
+    "acute colles fracture",
+    "no colles fracture",
+    "no evidence of colles fracture",
+    "without colles fracture",
+    "absence of colles fracture",
+    "colles fractures"
+  ],
+  "RID32025": [
+    "acute subaortic lymph node group",
+    "no subaortic lymph node group",
+    "no evidence of subaortic lymph node group",
+    "without subaortic lymph node group",
+    "absence of subaortic lymph node group",
+    "subaortic lymph node groups"
+  ],
+  "RID29718": [
+    "acute ileal lymphatic chain",
+    "no ileal lymphatic chain",
+    "no evidence of ileal lymphatic chain",
+    "without ileal lymphatic chain",
+    "absence of ileal lymphatic chain",
+    "ileal lymphatic chains"
+  ],
+  "RID29707": [
+    "acute suprapyloric lymphatic chain",
+    "no suprapyloric lymphatic chain",
+    "no evidence of suprapyloric lymphatic chain",
+    "without suprapyloric lymphatic chain",
+    "absence of suprapyloric lymphatic chain",
+    "suprapyloric lymphatic chains"
+  ],
+  "RID50313": [
+    "acute pi-rads dwi lesion assessment category",
+    "no pi-rads dwi lesion assessment category",
+    "no evidence of pi-rads dwi lesion assessment category",
+    "without pi-rads dwi lesion assessment category",
+    "absence of pi-rads dwi lesion assessment category",
+    "pi-rads dwi lesion assessment categorys"
+  ],
+  "RID5018": [
+    "acute congenital stenosis",
+    "no congenital stenosis",
+    "no evidence of congenital stenosis",
+    "without congenital stenosis",
+    "absence of congenital stenosis",
+    "congenital stenosi",
+    "congenital stenotic"
+  ],
+  "RID39441": [
+    "confluent fibrosis (hepatic)",
+    "acute confluent fibrosis (liver)",
+    "no confluent fibrosis (liver)",
+    "no evidence of confluent fibrosis (liver)",
+    "without confluent fibrosis (liver)",
+    "absence of confluent fibrosis (liver)",
+    "confluent fibrosis (liver)s"
+  ],
+  "RID34613": [
+    "acute klebsiella pneumonia",
+    "no klebsiella pneumonia",
+    "no evidence of klebsiella pneumonia",
+    "without klebsiella pneumonia",
+    "absence of klebsiella pneumonia",
+    "klebsiella pneumonias"
+  ],
+  "RID32112": [
+    "acute juxta-intestinal mesenteric lymph node",
+    "no juxta-intestinal mesenteric lymph node",
+    "no evidence of juxta-intestinal mesenteric lymph node",
+    "without juxta-intestinal mesenteric lymph node",
+    "absence of juxta-intestinal mesenteric lymph node",
+    "juxta-intestinal mesenteric lymph nodes"
+  ],
+  "RID30973": [
+    "acute wall of lymphatic duct subtree",
+    "no wall of lymphatic duct subtree",
+    "no evidence of wall of lymphatic duct subtree",
+    "without wall of lymphatic duct subtree",
+    "absence of wall of lymphatic duct subtree",
+    "wall of lymphatic duct subtrees"
+  ],
+  "RID7693": [
+    "acute subclavian lymphatic trunk",
+    "no subclavian lymphatic trunk",
+    "no evidence of subclavian lymphatic trunk",
+    "without subclavian lymphatic trunk",
+    "absence of subclavian lymphatic trunk",
+    "subclavian lymphatic trunks"
+  ],
+  "RID4371": [
+    "acute lymphangiomatosis",
+    "no lymphangiomatosis",
+    "no evidence of lymphangiomatosis",
+    "without lymphangiomatosis",
+    "absence of lymphangiomatosis",
+    "lymphangiomatosi",
+    "lymphangiomatotic"
+  ],
+  "RID31949": [
+    "acute intermediate mesenteric lymph node group",
+    "no intermediate mesenteric lymph node group",
+    "no evidence of intermediate mesenteric lymph node group",
+    "without intermediate mesenteric lymph node group",
+    "absence of intermediate mesenteric lymph node group",
+    "intermediate mesenteric lymph node groups"
+  ],
+  "RID32574": [
+    "acute inferior diaphragmatic lymphatic vessel",
+    "no inferior diaphragmatic lymphatic vessel",
+    "no evidence of inferior diaphragmatic lymphatic vessel",
+    "without inferior diaphragmatic lymphatic vessel",
+    "absence of inferior diaphragmatic lymphatic vessel",
+    "inferior diaphragmatic lymphatic vessels"
+  ],
+  "RID31938": [
+    "acute superior pancreaticoduodenal lymph node group",
+    "no superior pancreaticoduodenal lymph node group",
+    "no evidence of superior pancreaticoduodenal lymph node group",
+    "without superior pancreaticoduodenal lymph node group",
+    "absence of superior pancreaticoduodenal lymph node group",
+    "superior pancreaticoduodenal lymph node groups"
+  ],
+  "RID4905": [
+    "acute lesser sac hernia",
+    "no lesser sac hernia",
+    "no evidence of lesser sac hernia",
+    "without lesser sac hernia",
+    "absence of lesser sac hernia",
+    "lesser sac hernias"
+  ],
+  "RID28873": [
+    "acute parietal lumbar lymph node",
+    "no parietal lumbar lymph node",
+    "no evidence of parietal lumbar lymph node",
+    "without parietal lumbar lymph node",
+    "absence of parietal lumbar lymph node"
+  ],
+  "RID39459": [
+    "hepatic hypertrophic pseudomass",
+    "acute liver hypertrophic pseudomass",
+    "no liver hypertrophic pseudomass",
+    "no evidence of liver hypertrophic pseudomass",
+    "without liver hypertrophic pseudomass",
+    "absence of liver hypertrophic pseudomass"
+  ],
+  "RID5342": [
+    "acute lymphocytic interstitial pneumonia",
+    "no lymphocytic interstitial pneumonia",
+    "no evidence of lymphocytic interstitial pneumonia",
+    "without lymphocytic interstitial pneumonia",
+    "absence of lymphocytic interstitial pneumonia",
+    "lymphocytic interstitial pneumonias"
+  ],
+  "RID3320": [
+    "acute aortic dissection",
+    "no aortic dissection",
+    "no evidence of aortic dissection",
+    "without aortic dissection",
+    "absence of aortic dissection",
+    "aortic dissections",
+    "aortic dissected"
+  ],
+  "RID4831": [
+    "acute oil embolism",
+    "no oil embolism",
+    "no evidence of oil embolism",
+    "without oil embolism",
+    "absence of oil embolism",
+    "oil embolisms"
+  ],
+  "RID32569": [
+    "acute lateral aortic lymphatic vessel",
+    "no lateral aortic lymphatic vessel",
+    "no evidence of lateral aortic lymphatic vessel",
+    "without lateral aortic lymphatic vessel",
+    "absence of lateral aortic lymphatic vessel",
+    "lateral aortic lymphatic vessels"
+  ],
+  "RID32030": [
+    "acute set of inferior gluteal lymph nodes",
+    "no set of inferior gluteal lymph nodes",
+    "no evidence of set of inferior gluteal lymph nodes",
+    "without set of inferior gluteal lymph nodes",
+    "absence of set of inferior gluteal lymph nodes",
+    "set of inferior gluteal lymph node"
+  ],
+  "RID43279": [
+    "set of all visceral lymph nodes of abdominal proper",
+    "acute set of all visceral lymph nodes of abdomen proper",
+    "no set of all visceral lymph nodes of abdomen proper",
+    "no evidence of set of all visceral lymph nodes of abdomen proper",
+    "without set of all visceral lymph nodes of abdomen proper",
+    "absence of set of all visceral lymph nodes of abdomen proper",
+    "set of all visceral lymph nodes of abdomen propers"
+  ],
+  "RID1516": [
+    "acute supraclavicular lymph node",
+    "no supraclavicular lymph node",
+    "no evidence of supraclavicular lymph node",
+    "without supraclavicular lymph node",
+    "absence of supraclavicular lymph node",
+    "supraclavicular lymph nodes"
+  ],
+  "RID7723": [
+    "acute prelaryngeal lymph node",
+    "no prelaryngeal lymph node",
+    "no evidence of prelaryngeal lymph node",
+    "without prelaryngeal lymph node",
+    "absence of prelaryngeal lymph node",
+    "prelaryngeal lymph nodes"
+  ],
+  "RID11134": [
+    "acute intralesional",
+    "no intralesional",
+    "no evidence of intralesional",
+    "without intralesional",
+    "absence of intralesional",
+    "intralesionals"
+  ],
+  "RID4626": [
+    "acute subglottal stenosis",
+    "no subglottal stenosis",
+    "no evidence of subglottal stenosis",
+    "without subglottal stenosis",
+    "absence of subglottal stenosis",
+    "subglottal stenosi",
+    "subglottal stenotic"
+  ],
+  "RID29712": [
+    "acute juxta-arterial mesenteric lymphatic chain",
+    "no juxta-arterial mesenteric lymphatic chain",
+    "no evidence of juxta-arterial mesenteric lymphatic chain",
+    "without juxta-arterial mesenteric lymphatic chain",
+    "absence of juxta-arterial mesenteric lymphatic chain",
+    "juxta-arterial mesenteric lymphatic chains"
+  ],
+  "RID30522": [
+    "acute solitary lymphoid follicle of subdivision of small intestine",
+    "no solitary lymphoid follicle of subdivision of small intestine",
+    "no evidence of solitary lymphoid follicle of subdivision of small intestine",
+    "without solitary lymphoid follicle of subdivision of small intestine",
+    "absence of solitary lymphoid follicle of subdivision of small intestine",
+    "solitary lymphoid follicle of subdivision of small intestines"
+  ],
+  "RID28944": [
+    "acute superior mediastinal lymph node",
+    "no superior mediastinal lymph node",
+    "no evidence of superior mediastinal lymph node",
+    "without superior mediastinal lymph node",
+    "absence of superior mediastinal lymph node",
+    "superior mediastinal lymph nodes"
+  ],
+  "RID38147": [
+    "acute superior middle para-aortic lymph node",
+    "no superior middle para-aortic lymph node",
+    "no evidence of superior middle para-aortic lymph node",
+    "without superior middle para-aortic lymph node",
+    "absence of superior middle para-aortic lymph node",
+    "superior middle para-aortic lymph nodes"
+  ],
+  "RID29173": [
+    "acute round mass",
+    "no round mass",
+    "no evidence of round mass",
+    "without round mass",
+    "absence of round mass"
+  ],
+  "RID29723": [
+    "acute intermediate colic lymphatic chain",
+    "no intermediate colic lymphatic chain",
+    "no evidence of intermediate colic lymphatic chain",
+    "without intermediate colic lymphatic chain",
+    "absence of intermediate colic lymphatic chain",
+    "intermediate colic lymphatic chains"
+  ],
+  "RID29691": [
+    "acute right gastro-epiploic lymphatic chain",
+    "no right gastro-epiploic lymphatic chain",
+    "no evidence of right gastro-epiploic lymphatic chain",
+    "without right gastro-epiploic lymphatic chain",
+    "absence of right gastro-epiploic lymphatic chain",
+    "right gastro-epiploic lymphatic chains"
+  ],
+  "RID29680": [
+    "acute distal superior mesenteric lymphatic chain",
+    "no distal superior mesenteric lymphatic chain",
+    "no evidence of distal superior mesenteric lymphatic chain",
+    "without distal superior mesenteric lymphatic chain",
+    "absence of distal superior mesenteric lymphatic chain",
+    "distal superior mesenteric lymphatic chains"
+  ],
+  "RID3934": [
+    "acute pilonidal cyst",
+    "no pilonidal cyst",
+    "no evidence of pilonidal cyst",
+    "without pilonidal cyst",
+    "absence of pilonidal cyst",
+    "pilonidal cysts"
+  ],
+  "RID21357": [
+    "acute trunk of masseteric nerve proper",
+    "no trunk of masseteric nerve proper",
+    "no evidence of trunk of masseteric nerve proper",
+    "without trunk of masseteric nerve proper",
+    "absence of trunk of masseteric nerve proper",
+    "trunk of masseteric nerve propers"
+  ],
+  "RID31899": [
+    "abdomen proper lymph node group",
+    "acute abdominal proper lymph node group",
+    "no abdominal proper lymph node group",
+    "no evidence of abdominal proper lymph node group",
+    "without abdominal proper lymph node group",
+    "absence of abdominal proper lymph node group",
+    "abdominal proper lymph node groups"
+  ],
+  "RID31993": [
+    "acute juxta-intestinal lymph node group of jejunum",
+    "no juxta-intestinal lymph node group of jejunum",
+    "no evidence of juxta-intestinal lymph node group of jejunum",
+    "without juxta-intestinal lymph node group of jejunum",
+    "absence of juxta-intestinal lymph node group of jejunum",
+    "juxta-intestinal lymph node group of jejunums"
+  ],
+  "RID31909": [
+    "acute right lateral aortic lymph node group",
+    "no right lateral aortic lymph node group",
+    "no evidence of right lateral aortic lymph node group",
+    "without right lateral aortic lymph node group",
+    "absence of right lateral aortic lymph node group",
+    "right lateral aortic lymph node groups"
+  ],
+  "RID14319": [
+    "acute masseteric nerve proper",
+    "no masseteric nerve proper",
+    "no evidence of masseteric nerve proper",
+    "without masseteric nerve proper",
+    "absence of masseteric nerve proper",
+    "masseteric nerve propers"
+  ],
+  "RID29744": [
+    "acute superior middle pre-aortic lymphatic chain",
+    "no superior middle pre-aortic lymphatic chain",
+    "no evidence of superior middle pre-aortic lymphatic chain",
+    "without superior middle pre-aortic lymphatic chain",
+    "absence of superior middle pre-aortic lymphatic chain",
+    "superior middle pre-aortic lymphatic chains"
+  ],
+  "RID3904": [
+    "acute dermoid cyst",
+    "no dermoid cyst",
+    "no evidence of dermoid cyst",
+    "without dermoid cyst",
+    "absence of dermoid cyst",
+    "dermoid cysts"
+  ],
+  "RID34257": [
+    "acute fine pleomorphic calcification",
+    "no fine pleomorphic calcification",
+    "no evidence of fine pleomorphic calcification",
+    "without fine pleomorphic calcification",
+    "absence of fine pleomorphic calcification",
+    "fine pleomorphic calcifications",
+    "fine pleomorphic calcificated"
+  ],
+  "RID38889": [
+    "acute left posterior prostatic lymphatic tree",
+    "no left posterior prostatic lymphatic tree",
+    "no evidence of left posterior prostatic lymphatic tree",
+    "without left posterior prostatic lymphatic tree",
+    "absence of left posterior prostatic lymphatic tree",
+    "left posterior prostatic lymphatic trees"
+  ],
+  "RID31360": [
+    "acute set of intermediate ileal lymphatic vessels",
+    "no set of intermediate ileal lymphatic vessels",
+    "no evidence of set of intermediate ileal lymphatic vessels",
+    "without set of intermediate ileal lymphatic vessels",
+    "absence of set of intermediate ileal lymphatic vessels",
+    "set of intermediate ileal lymphatic vessel"
+  ],
+  "RID34370": [
+    "acute set of cysts",
+    "no set of cysts",
+    "no evidence of set of cysts",
+    "without set of cysts",
+    "absence of set of cysts",
+    "set of cyst"
+  ],
+  "RID28937": [
+    "acute right interlobar lymph node",
+    "no right interlobar lymph node",
+    "no evidence of right interlobar lymph node",
+    "without right interlobar lymph node",
+    "absence of right interlobar lymph node",
+    "right interlobar lymph nodes"
+  ],
+  "RID32530": [
+    "acute lateral common iliac lymphatic vessel",
+    "no lateral common iliac lymphatic vessel",
+    "no evidence of lateral common iliac lymphatic vessel",
+    "without lateral common iliac lymphatic vessel",
+    "absence of lateral common iliac lymphatic vessel",
+    "lateral common iliac lymphatic vessels"
+  ],
+  "RID4680": [
+    "acute type 1 occipital condyle fracture",
+    "no type 1 occipital condyle fracture",
+    "no evidence of type 1 occipital condyle fracture",
+    "without type 1 occipital condyle fracture",
+    "absence of type 1 occipital condyle fracture",
+    "type 1 occipital condyle fractures"
+  ],
+  "RID28926": [
+    "acute inferior mesenteric lymph node",
+    "no inferior mesenteric lymph node",
+    "no evidence of inferior mesenteric lymph node",
+    "without inferior mesenteric lymph node",
+    "absence of inferior mesenteric lymph node",
+    "inferior mesenteric lymph nodes"
+  ],
+  "RID35108": [
+    "acute cookie cutter lesion",
+    "no cookie cutter lesion",
+    "no evidence of cookie cutter lesion",
+    "without cookie cutter lesion",
+    "absence of cookie cutter lesion",
+    "cookie cutter lesions"
+  ],
+  "RID32001": [
+    "acute inferior middle pre-aortic lymph node group",
+    "no inferior middle pre-aortic lymph node group",
+    "no evidence of inferior middle pre-aortic lymph node group",
+    "without inferior middle pre-aortic lymph node group",
+    "absence of inferior middle pre-aortic lymph node group",
+    "inferior middle pre-aortic lymph node groups"
+  ],
+  "RID50300": [
+    "acute pi-rads 5 - very high (lesion)",
+    "no pi-rads 5 - very high (lesion)",
+    "no evidence of pi-rads 5 - very high (lesion)",
+    "without pi-rads 5 - very high (lesion)",
+    "absence of pi-rads 5 - very high (lesion)",
+    "pi-rads 5 - very high (lesion)s"
+  ],
+  "RID11529": [
+    "acute abscess complication",
+    "no abscess complication",
+    "no evidence of abscess complication",
+    "without abscess complication",
+    "absence of abscess complication",
+    "abscess complications",
+    "abscess complicated"
+  ],
+  "RID4838": [
+    "acute tissue embolism",
+    "no tissue embolism",
+    "no evidence of tissue embolism",
+    "without tissue embolism",
+    "absence of tissue embolism",
+    "tissue embolisms"
+  ],
+  "RID30386": [
+    "acute right lumbar lymphatic trunk",
+    "no right lumbar lymphatic trunk",
+    "no evidence of right lumbar lymphatic trunk",
+    "without right lumbar lymphatic trunk",
+    "absence of right lumbar lymphatic trunk",
+    "right lumbar lymphatic trunks"
+  ],
+  "RID4945": [
+    "acute spontaneous esophageal perforation",
+    "no spontaneous esophageal perforation",
+    "no evidence of spontaneous esophageal perforation",
+    "without spontaneous esophageal perforation",
+    "absence of spontaneous esophageal perforation",
+    "spontaneous esophageal perforations",
+    "spontaneous esophageal perforated"
+  ],
+  "RID29726": [
+    "acute left colic lymphatic chain",
+    "no left colic lymphatic chain",
+    "no evidence of left colic lymphatic chain",
+    "without left colic lymphatic chain",
+    "absence of left colic lymphatic chain",
+    "left colic lymphatic chains"
+  ],
+  "RID29715": [
+    "acute juxta-intestinal mesenteric lymphatic chain",
+    "no juxta-intestinal mesenteric lymphatic chain",
+    "no evidence of juxta-intestinal mesenteric lymphatic chain",
+    "without juxta-intestinal mesenteric lymphatic chain",
+    "absence of juxta-intestinal mesenteric lymphatic chain",
+    "juxta-intestinal mesenteric lymphatic chains"
+  ],
+  "RID49879": [
+    "acute predominantly cystic",
+    "no predominantly cystic",
+    "no evidence of predominantly cystic",
+    "without predominantly cystic",
+    "absence of predominantly cystic",
+    "predominantly cystics"
+  ],
+  "RID1482": [
+    "acute subcarinal lymph node",
+    "no subcarinal lymph node",
+    "no evidence of subcarinal lymph node",
+    "without subcarinal lymph node",
+    "absence of subcarinal lymph node",
+    "subcarinal lymph nodes"
+  ],
+  "RID29694": [
+    "right liver lymphatic chain",
+    "acute right hepatic lymphatic chain",
+    "no right hepatic lymphatic chain",
+    "no evidence of right hepatic lymphatic chain",
+    "without right hepatic lymphatic chain",
+    "absence of right hepatic lymphatic chain",
+    "right hepatic lymphatic chains"
+  ],
+  "RID31320": [
+    "set of anterosuperior common liver lymphatic vessels",
+    "acute set of anterosuperior common hepatic lymphatic vessels",
+    "no set of anterosuperior common hepatic lymphatic vessels",
+    "no evidence of set of anterosuperior common hepatic lymphatic vessels",
+    "without set of anterosuperior common hepatic lymphatic vessels",
+    "absence of set of anterosuperior common hepatic lymphatic vessels",
+    "set of anterosuperior common hepatic lymphatic vessel"
+  ],
+  "RID50150": [
+    "number of lung nodules",
+    "acute number of pulmonary nodules",
+    "no number of pulmonary nodules",
+    "no evidence of number of pulmonary nodules",
+    "without number of pulmonary nodules",
+    "absence of number of pulmonary nodules",
+    "number of pulmonary nodule"
+  ],
+  "RID28868": [
+    "acute middle colic lymph node",
+    "no middle colic lymph node",
+    "no evidence of middle colic lymph node",
+    "without middle colic lymph node",
+    "absence of middle colic lymph node",
+    "middle colic lymph nodes"
+  ],
+  "RID32688": [
+    "acute wall of lumbar lymphatic trunk",
+    "no wall of lumbar lymphatic trunk",
+    "no evidence of wall of lumbar lymphatic trunk",
+    "without wall of lumbar lymphatic trunk",
+    "absence of wall of lumbar lymphatic trunk",
+    "wall of lumbar lymphatic trunks"
+  ],
+  "RID4189": [
+    "acute calcifying odontogenic cyst",
+    "no calcifying odontogenic cyst",
+    "no evidence of calcifying odontogenic cyst",
+    "without calcifying odontogenic cyst",
+    "absence of calcifying odontogenic cyst",
+    "calcifying odontogenic cysts"
+  ],
+  "RID43300": [
+    "acute perilesional perfusion alteration",
+    "no perilesional perfusion alteration",
+    "no evidence of perilesional perfusion alteration",
+    "without perilesional perfusion alteration",
+    "absence of perilesional perfusion alteration",
+    "perilesional perfusion alterations",
+    "perilesional perfusion alterated"
+  ],
+  "RID34952": [
+    "acute weber type a fracture",
+    "no weber type a fracture",
+    "no evidence of weber type a fracture",
+    "without weber type a fracture",
+    "absence of weber type a fracture",
+    "weber type a fractures"
+  ],
+  "RID4888": [
+    "acute noncommunicating hydrocephalus",
+    "no noncommunicating hydrocephalus",
+    "no evidence of noncommunicating hydrocephalus",
+    "without noncommunicating hydrocephalus",
+    "absence of noncommunicating hydrocephalus",
+    "noncommunicating hydrocephalu"
+  ],
+  "RID32044": [
+    "acute precaval lymph node",
+    "no precaval lymph node",
+    "no evidence of precaval lymph node",
+    "without precaval lymph node",
+    "absence of precaval lymph node",
+    "precaval lymph nodes"
+  ],
+  "RID43311": [
+    "acute lesion load",
+    "no lesion load",
+    "no evidence of lesion load",
+    "without lesion load",
+    "absence of lesion load",
+    "lesion loads"
+  ],
+  "RID31975": [
+    "acute lateral caval lymph node group",
+    "no lateral caval lymph node group",
+    "no evidence of lateral caval lymph node group",
+    "without lateral caval lymph node group",
+    "absence of lateral caval lymph node group",
+    "lateral caval lymph node groups"
+  ],
+  "RID4650": [
+    "acute fracture",
+    "no fracture",
+    "no evidence of fracture",
+    "without fracture",
+    "absence of fracture",
+    "fractures"
+  ],
+  "RID1841": [
+    "acute fracture fixation",
+    "no fracture fixation",
+    "no evidence of fracture fixation",
+    "without fracture fixation",
+    "absence of fracture fixation",
+    "fracture fixations",
+    "fracture fixated"
+  ],
+  "RID31964": [
+    "acute sigmoid lymph node group",
+    "no sigmoid lymph node group",
+    "no evidence of sigmoid lymph node group",
+    "without sigmoid lymph node group",
+    "absence of sigmoid lymph node group",
+    "sigmoid lymph node groups"
+  ],
+  "RID32033": [
+    "acute paravesical lymph node group",
+    "no paravesical lymph node group",
+    "no evidence of paravesical lymph node group",
+    "without paravesical lymph node group",
+    "absence of paravesical lymph node group",
+    "paravesical lymph node groups"
+  ],
+  "RID30389": [
+    "acute set of right lumbar lymphatic vessels",
+    "no set of right lumbar lymphatic vessels",
+    "no evidence of set of right lumbar lymphatic vessels",
+    "without set of right lumbar lymphatic vessels",
+    "absence of set of right lumbar lymphatic vessels",
+    "set of right lumbar lymphatic vessel"
+  ],
+  "RID43268": [
+    "acute perilymphatic",
+    "no perilymphatic",
+    "no evidence of perilymphatic",
+    "without perilymphatic",
+    "absence of perilymphatic",
+    "perilymphatics"
+  ],
+  "RID4163": [
+    "acute pancreatic cystic neoplasm",
+    "no pancreatic cystic neoplasm",
+    "no evidence of pancreatic cystic neoplasm",
+    "without pancreatic cystic neoplasm",
+    "absence of pancreatic cystic neoplasm",
+    "pancreatic cystic neoplasms"
+  ],
+  "RID29770": [
+    "acute juxta-jejunal mesenteric lymphatic chain",
+    "no juxta-jejunal mesenteric lymphatic chain",
+    "no evidence of juxta-jejunal mesenteric lymphatic chain",
+    "without juxta-jejunal mesenteric lymphatic chain",
+    "absence of juxta-jejunal mesenteric lymphatic chain",
+    "juxta-jejunal mesenteric lymphatic chains"
+  ],
+  "RID4914": [
+    "abdomen wall hernia",
+    "acute abdominal wall hernia",
+    "no abdominal wall hernia",
+    "no evidence of abdominal wall hernia",
+    "without abdominal wall hernia",
+    "absence of abdominal wall hernia",
+    "abdominal wall hernias"
+  ],
+  "RID3843": [
+    "acute non-hodgkin lymphoma",
+    "no non-hodgkin lymphoma",
+    "no evidence of non-hodgkin lymphoma",
+    "without non-hodgkin lymphoma",
+    "absence of non-hodgkin lymphoma",
+    "non-hodgkin lymphomas"
+  ],
+  "RID38090": [
+    "acute superficial branch of cystic artery",
+    "no superficial branch of cystic artery",
+    "no evidence of superficial branch of cystic artery",
+    "without superficial branch of cystic artery",
+    "absence of superficial branch of cystic artery",
+    "superficial branch of cystic arterys"
+  ],
+  "RID35134": [
+    "acute cyclops lesion",
+    "no cyclops lesion",
+    "no evidence of cyclops lesion",
+    "without cyclops lesion",
+    "absence of cyclops lesion",
+    "cyclops lesions"
+  ],
+  "RID39055": [
+    "acute breast mass",
+    "no breast mass",
+    "no evidence of breast mass",
+    "without breast mass",
+    "absence of breast mass"
+  ],
+  "RID5351": [
+    "acute eosinophilic pneumonia",
+    "no eosinophilic pneumonia",
+    "no evidence of eosinophilic pneumonia",
+    "without eosinophilic pneumonia",
+    "absence of eosinophilic pneumonia",
+    "eosinophilic pneumonias"
+  ],
+  "RID1774": [
+    "acute cystotomy",
+    "no cystotomy",
+    "no evidence of cystotomy",
+    "without cystotomy",
+    "absence of cystotomy",
+    "cystotomys"
+  ],
+  "RID11555": [
+    "kidney infarct complication",
+    "acute renal infarct complication",
+    "no renal infarct complication",
+    "no evidence of renal infarct complication",
+    "without renal infarct complication",
+    "absence of renal infarct complication",
+    "renal infarct complications",
+    "renal infarct complicated"
+  ],
+  "RID32120": [
+    "acute lateral vesicular lymph node",
+    "no lateral vesicular lymph node",
+    "no evidence of lateral vesicular lymph node",
+    "without lateral vesicular lymph node",
+    "absence of lateral vesicular lymph node",
+    "lateral vesicular lymph nodes"
+  ],
+  "RID34249": [
+    "acute milk of calcium calcification",
+    "no milk of calcium calcification",
+    "no evidence of milk of calcium calcification",
+    "without milk of calcium calcification",
+    "absence of milk of calcium calcification",
+    "milk of calcium calcifications",
+    "milk of calcium calcificated"
+  ],
+  "RID31352": [
+    "acute set of paracolic lymphatic vessels",
+    "no set of paracolic lymphatic vessels",
+    "no evidence of set of paracolic lymphatic vessels",
+    "without set of paracolic lymphatic vessels",
+    "absence of set of paracolic lymphatic vessels",
+    "set of paracolic lymphatic vessel"
+  ],
+  "RID32007": [
+    "acute superior ileocolic lymph node group",
+    "no superior ileocolic lymph node group",
+    "no evidence of superior ileocolic lymph node group",
+    "without superior ileocolic lymph node group",
+    "absence of superior ileocolic lymph node group",
+    "superior ileocolic lymph node groups"
+  ],
+  "RID31902": [
+    "acute intestinal lymph node group",
+    "no intestinal lymph node group",
+    "no evidence of intestinal lymph node group",
+    "without intestinal lymph node group",
+    "absence of intestinal lymph node group",
+    "intestinal lymph node groups"
+  ],
+  "RID31946": [
+    "acute juxta-intestinal mesenteric lymph node group",
+    "no juxta-intestinal mesenteric lymph node group",
+    "no evidence of juxta-intestinal mesenteric lymph node group",
+    "without juxta-intestinal mesenteric lymph node group",
+    "absence of juxta-intestinal mesenteric lymph node group",
+    "juxta-intestinal mesenteric lymph node groups"
+  ],
+  "RID29139": [
+    "acute march fracture",
+    "no march fracture",
+    "no evidence of march fracture",
+    "without march fracture",
+    "absence of march fracture",
+    "march fractures"
+  ],
+  "RID4936": [
+    "acute hernia through esophageal hiatus",
+    "no hernia through esophageal hiatus",
+    "no evidence of hernia through esophageal hiatus",
+    "without hernia through esophageal hiatus",
+    "absence of hernia through esophageal hiatus",
+    "hernia through esophageal hiatu"
+  ],
+  "RID31957": [
+    "acute appendicular lymph node group",
+    "no appendicular lymph node group",
+    "no evidence of appendicular lymph node group",
+    "without appendicular lymph node group",
+    "absence of appendicular lymph node group",
+    "appendicular lymph node groups"
+  ],
+  "RID32522": [
+    "acute vessel of lymphatic chain",
+    "no vessel of lymphatic chain",
+    "no evidence of vessel of lymphatic chain",
+    "without vessel of lymphatic chain",
+    "absence of vessel of lymphatic chain",
+    "vessel of lymphatic chains"
+  ],
+  "RID32533": [
+    "acute external iliac lymphatic vessel",
+    "no external iliac lymphatic vessel",
+    "no evidence of external iliac lymphatic vessel",
+    "without external iliac lymphatic vessel",
+    "absence of external iliac lymphatic vessel",
+    "external iliac lymphatic vessels"
+  ],
+  "RID29128": [
+    "acute galeazzi fracture",
+    "no galeazzi fracture",
+    "no evidence of galeazzi fracture",
+    "without galeazzi fracture",
+    "absence of galeazzi fracture",
+    "galeazzi fractures"
+  ],
+  "RID32571": [
+    "acute left lateral aortic lymphatic vessel",
+    "no left lateral aortic lymphatic vessel",
+    "no evidence of left lateral aortic lymphatic vessel",
+    "without left lateral aortic lymphatic vessel",
+    "absence of left lateral aortic lymphatic vessel",
+    "left lateral aortic lymphatic vessels"
+  ],
+  "RID29226": [
+    "acute bennett fracture",
+    "no bennett fracture",
+    "no evidence of bennett fracture",
+    "without bennett fracture",
+    "absence of bennett fracture",
+    "bennett fractures"
+  ],
+  "RID4710": [
+    "acute subarachnoid hemorrhage",
+    "no subarachnoid hemorrhage",
+    "no evidence of subarachnoid hemorrhage",
+    "without subarachnoid hemorrhage",
+    "absence of subarachnoid hemorrhage",
+    "subarachnoid hemorrhages"
+  ],
+  "RID43281": [
+    "acute right parietal lumbar lymph node group",
+    "no right parietal lumbar lymph node group",
+    "no evidence of right parietal lumbar lymph node group",
+    "without right parietal lumbar lymph node group",
+    "absence of right parietal lumbar lymph node group",
+    "right parietal lumbar lymph node groups"
+  ],
+  "RID32127": [
+    "acute subaortic common iliac lymph node",
+    "no subaortic common iliac lymph node",
+    "no evidence of subaortic common iliac lymph node",
+    "without subaortic common iliac lymph node",
+    "absence of subaortic common iliac lymph node",
+    "subaortic common iliac lymph nodes"
+  ],
+  "RID14321": [
+    "acute left masseteric nerve proper",
+    "no left masseteric nerve proper",
+    "no evidence of left masseteric nerve proper",
+    "without left masseteric nerve proper",
+    "absence of left masseteric nerve proper",
+    "left masseteric nerve propers"
+  ],
+  "RID31359": [
+    "acute set of central superior mesenteric lymphatic vessels",
+    "no set of central superior mesenteric lymphatic vessels",
+    "no evidence of set of central superior mesenteric lymphatic vessels",
+    "without set of central superior mesenteric lymphatic vessels",
+    "absence of set of central superior mesenteric lymphatic vessels",
+    "set of central superior mesenteric lymphatic vessel"
+  ],
+  "RID49492": [
+    "acute non-mass enhancement distribution",
+    "no non-mass enhancement distribution",
+    "no evidence of non-mass enhancement distribution",
+    "without non-mass enhancement distribution",
+    "absence of non-mass enhancement distribution",
+    "non-mass enhancement distributions",
+    "non-mass enhancement distributed"
+  ],
+  "RID5231": [
+    "acute metastasis",
+    "no metastasis",
+    "no evidence of metastasis",
+    "without metastasis",
+    "absence of metastasis",
+    "metastasi",
+    "metastatic"
+  ],
+  "RID31928": [
+    "acute suprapyloric lymph node group",
+    "no suprapyloric lymph node group",
+    "no evidence of suprapyloric lymph node group",
+    "without suprapyloric lymph node group",
+    "absence of suprapyloric lymph node group",
+    "suprapyloric lymph node groups"
+  ],
+  "RID29215": [
+    "acute irregular mass",
+    "no irregular mass",
+    "no evidence of irregular mass",
+    "without irregular mass",
+    "absence of irregular mass"
+  ],
+  "RID32095": [
+    "acute paracolic lymph node of ascending colon",
+    "no paracolic lymph node of ascending colon",
+    "no evidence of paracolic lymph node of ascending colon",
+    "without paracolic lymph node of ascending colon",
+    "absence of paracolic lymph node of ascending colon",
+    "paracolic lymph node of ascending colons"
+  ],
+  "RID38886": [
+    "acute left anterior prostatic lymphatic tree",
+    "no left anterior prostatic lymphatic tree",
+    "no evidence of left anterior prostatic lymphatic tree",
+    "without left anterior prostatic lymphatic tree",
+    "absence of left anterior prostatic lymphatic tree",
+    "left anterior prostatic lymphatic trees"
+  ],
+  "RID3899": [
+    "acute colloid cyst",
+    "no colloid cyst",
+    "no evidence of colloid cyst",
+    "without colloid cyst",
+    "absence of colloid cyst",
+    "colloid cysts"
+  ],
+  "RID43363": [
+    "acute lesion brightness",
+    "no lesion brightness",
+    "no evidence of lesion brightness",
+    "without lesion brightness",
+    "absence of lesion brightness"
+  ],
+  "RID29777": [
+    "acute pancreaticoduodenal lymphatic chain",
+    "no pancreaticoduodenal lymphatic chain",
+    "no evidence of pancreaticoduodenal lymphatic chain",
+    "without pancreaticoduodenal lymphatic chain",
+    "absence of pancreaticoduodenal lymphatic chain",
+    "pancreaticoduodenal lymphatic chains"
+  ],
+  "RID32020": [
+    "acute left external iliac lymph node group",
+    "no left external iliac lymph node group",
+    "no evidence of left external iliac lymph node group",
+    "without left external iliac lymph node group",
+    "absence of left external iliac lymph node group",
+    "left external iliac lymph node groups"
+  ],
+  "RID29133": [
+    "acute jones fracture",
+    "no jones fracture",
+    "no evidence of jones fracture",
+    "without jones fracture",
+    "absence of jones fracture",
+    "jones fractures"
+  ],
+  "RID466": [
+    "acute pararectal lymph node",
+    "no pararectal lymph node",
+    "no evidence of pararectal lymph node",
+    "without pararectal lymph node",
+    "absence of pararectal lymph node",
+    "pararectal lymph nodes"
+  ],
+  "RID28508": [
+    "acute chronic fibrosing interstitial pneumonia",
+    "no chronic fibrosing interstitial pneumonia",
+    "no evidence of chronic fibrosing interstitial pneumonia",
+    "without chronic fibrosing interstitial pneumonia",
+    "absence of chronic fibrosing interstitial pneumonia",
+    "chronic fibrosing interstitial pneumonias"
+  ],
+  "RID31951": [
+    "acute intermediate ileal lymph node group",
+    "no intermediate ileal lymph node group",
+    "no evidence of intermediate ileal lymph node group",
+    "without intermediate ileal lymph node group",
+    "absence of intermediate ileal lymph node group",
+    "intermediate ileal lymph node groups"
+  ],
+  "RID39291": [
+    "acute n2 lymph node stage",
+    "no n2 lymph node stage",
+    "no evidence of n2 lymph node stage",
+    "without n2 lymph node stage",
+    "absence of n2 lymph node stage",
+    "n2 lymph node stages"
+  ],
+  "RID29702": [
+    "acute inferior pancreatic lymphatic chain",
+    "no inferior pancreatic lymphatic chain",
+    "no evidence of inferior pancreatic lymphatic chain",
+    "without inferior pancreatic lymphatic chain",
+    "absence of inferior pancreatic lymphatic chain",
+    "inferior pancreatic lymphatic chains"
+  ],
+  "RID30537": [
+    "acute aggregated lymphoid follicle of jejunum",
+    "no aggregated lymphoid follicle of jejunum",
+    "no evidence of aggregated lymphoid follicle of jejunum",
+    "without aggregated lymphoid follicle of jejunum",
+    "absence of aggregated lymphoid follicle of jejunum",
+    "aggregated lymphoid follicle of jejunums"
+  ],
+  "RID30526": [
+    "acute solitary lymphoid follicle of subdivision of large intestine",
+    "no solitary lymphoid follicle of subdivision of large intestine",
+    "no evidence of solitary lymphoid follicle of subdivision of large intestine",
+    "without solitary lymphoid follicle of subdivision of large intestine",
+    "absence of solitary lymphoid follicle of subdivision of large intestine",
+    "solitary lymphoid follicle of subdivision of large intestines"
+  ],
+  "RID32102": [
+    "acute inferior ileocolic lymph node",
+    "no inferior ileocolic lymph node",
+    "no evidence of inferior ileocolic lymph node",
+    "without inferior ileocolic lymph node",
+    "absence of inferior ileocolic lymph node"
+  ],
+  "RID3929": [
+    "parapelvis cyst",
+    "acute parapelvic cyst",
+    "no parapelvic cyst",
+    "no evidence of parapelvic cyst",
+    "without parapelvic cyst",
+    "absence of parapelvic cyst",
+    "parapelvic cysts"
+  ],
+  "RID30839": [
+    "acute ostium of cystic duct",
+    "no ostium of cystic duct",
+    "no evidence of ostium of cystic duct",
+    "without ostium of cystic duct",
+    "absence of ostium of cystic duct",
+    "ostium of cystic ducts"
+  ],
+  "RID5363": [
+    "acute fracture nonunion",
+    "no fracture nonunion",
+    "no evidence of fracture nonunion",
+    "without fracture nonunion",
+    "absence of fracture nonunion",
+    "fracture nonunions"
+  ],
+  "RID44995": [
+    "axillary lymph node branch of lateral chest artery",
+    "acute axillary lymph node branch of lateral thoracic artery",
+    "no axillary lymph node branch of lateral thoracic artery",
+    "no evidence of axillary lymph node branch of lateral thoracic artery",
+    "without axillary lymph node branch of lateral thoracic artery",
+    "absence of axillary lymph node branch of lateral thoracic artery",
+    "axillary lymph node branch of lateral thoracic arterys"
+  ],
+  "RID50149": [
+    "acute pulmonary nodule",
+    "no pulmonary nodule",
+    "no evidence of pulmonary nodule",
+    "without pulmonary nodule",
+    "absence of pulmonary nodule",
+    "pulmonary nodules"
+  ],
+  "RID32077": [
+    "posterior common liver lymph node",
+    "acute posterior common hepatic lymph node",
+    "no posterior common hepatic lymph node",
+    "no evidence of posterior common hepatic lymph node",
+    "without posterior common hepatic lymph node",
+    "absence of posterior common hepatic lymph node",
+    "posterior common hepatic lymph nodes"
+  ],
+  "RID31972": [
+    "acute superior mesenteric lymph node group proper",
+    "no superior mesenteric lymph node group proper",
+    "no evidence of superior mesenteric lymph node group proper",
+    "without superior mesenteric lymph node group proper",
+    "absence of superior mesenteric lymph node group proper",
+    "superior mesenteric lymph node group propers"
+  ],
+  "RID4697": [
+    "acute torus fracture",
+    "no torus fracture",
+    "no evidence of torus fracture",
+    "without torus fracture",
+    "absence of torus fracture",
+    "torus fractures"
+  ],
+  "RID29759": [
+    "acute superior posterior pancreaticoduodenal lymphatic chain",
+    "no superior posterior pancreaticoduodenal lymphatic chain",
+    "no evidence of superior posterior pancreaticoduodenal lymphatic chain",
+    "without superior posterior pancreaticoduodenal lymphatic chain",
+    "absence of superior posterior pancreaticoduodenal lymphatic chain",
+    "superior posterior pancreaticoduodenal lymphatic chains"
+  ],
+  "RID38962": [
+    "acute left external iliac lymphatic chain",
+    "no left external iliac lymphatic chain",
+    "no evidence of left external iliac lymphatic chain",
+    "without left external iliac lymphatic chain",
+    "absence of left external iliac lymphatic chain",
+    "left external iliac lymphatic chains"
+  ],
+  "RID3903": [
+    "acute dentigerous cyst",
+    "no dentigerous cyst",
+    "no evidence of dentigerous cyst",
+    "without dentigerous cyst",
+    "absence of dentigerous cyst",
+    "dentigerous cysts"
+  ],
+  "RID5186": [
+    "acute papillary necrosis",
+    "no papillary necrosis",
+    "no evidence of papillary necrosis",
+    "without papillary necrosis",
+    "absence of papillary necrosis",
+    "papillary necrosi",
+    "papillary necrotic"
+  ],
+  "RID1507": [
+    "acute left lobar lymph node",
+    "no left lobar lymph node",
+    "no evidence of left lobar lymph node",
+    "without left lobar lymph node",
+    "absence of left lobar lymph node",
+    "left lobar lymph nodes"
+  ],
+  "RID28876": [
+    "acute posterior ileocolic lymph node",
+    "no posterior ileocolic lymph node",
+    "no evidence of posterior ileocolic lymph node",
+    "without posterior ileocolic lymph node",
+    "absence of posterior ileocolic lymph node"
+  ],
+  "RID31315": [
+    "acute set of superior middle pre-aortic lymphatic vessels",
+    "no set of superior middle pre-aortic lymphatic vessels",
+    "no evidence of set of superior middle pre-aortic lymphatic vessels",
+    "without set of superior middle pre-aortic lymphatic vessels",
+    "absence of set of superior middle pre-aortic lymphatic vessels",
+    "set of superior middle pre-aortic lymphatic vessel"
+  ],
+  "RID28865": [
+    "acute ileocolic lymph node",
+    "no ileocolic lymph node",
+    "no evidence of ileocolic lymph node",
+    "without ileocolic lymph node",
+    "absence of ileocolic lymph node",
+    "ileocolic lymph nodes"
+  ],
+  "RID4834": [
+    "lung embolism",
+    "acute pulmonary embolism",
+    "no pulmonary embolism",
+    "no evidence of pulmonary embolism",
+    "without pulmonary embolism",
+    "absence of pulmonary embolism",
+    "pulmonary embolisms"
+  ],
+  "RID30915": [
+    "acute left ascending lumbar lymph trunk",
+    "no left ascending lumbar lymph trunk",
+    "no evidence of left ascending lumbar lymph trunk",
+    "without left ascending lumbar lymph trunk",
+    "absence of left ascending lumbar lymph trunk",
+    "left ascending lumbar lymph trunks"
+  ],
+  "RID3925": [
+    "acute neuroglial cyst",
+    "no neuroglial cyst",
+    "no evidence of neuroglial cyst",
+    "without neuroglial cyst",
+    "absence of neuroglial cyst",
+    "neuroglial cysts"
+  ],
+  "RID29136": [
+    "acute maisonneuve fracture",
+    "no maisonneuve fracture",
+    "no evidence of maisonneuve fracture",
+    "without maisonneuve fracture",
+    "absence of maisonneuve fracture",
+    "maisonneuve fractures"
+  ],
+  "RID1477": [
+    "aortolung lymph node",
+    "acute aortopulmonary lymph node",
+    "no aortopulmonary lymph node",
+    "no evidence of aortopulmonary lymph node",
+    "without aortopulmonary lymph node",
+    "absence of aortopulmonary lymph node",
+    "aortopulmonary lymph nodes"
+  ],
+  "RID32566": [
+    "acute pre-aortic lymphatic vessel",
+    "no pre-aortic lymphatic vessel",
+    "no evidence of pre-aortic lymphatic vessel",
+    "without pre-aortic lymphatic vessel",
+    "absence of pre-aortic lymphatic vessel",
+    "pre-aortic lymphatic vessels"
+  ],
+  "RID29698": [
+    "acute pancreatic lymphatic chain",
+    "no pancreatic lymphatic chain",
+    "no evidence of pancreatic lymphatic chain",
+    "without pancreatic lymphatic chain",
+    "absence of pancreatic lymphatic chain",
+    "pancreatic lymphatic chains"
+  ],
+  "RID35018": [
+    "acute applecore lesion",
+    "no applecore lesion",
+    "no evidence of applecore lesion",
+    "without applecore lesion",
+    "absence of applecore lesion",
+    "applecore lesions"
+  ],
+  "RID28847": [
+    "acute lymph node group",
+    "no lymph node group",
+    "no evidence of lymph node group",
+    "without lymph node group",
+    "absence of lymph node group",
+    "lymph node groups"
+  ],
+  "RID32098": [
+    "acute paracolic lymph node of sigmoid colon",
+    "no paracolic lymph node of sigmoid colon",
+    "no evidence of paracolic lymph node of sigmoid colon",
+    "without paracolic lymph node of sigmoid colon",
+    "absence of paracolic lymph node of sigmoid colon",
+    "paracolic lymph node of sigmoid colons"
+  ],
+  "RID7709": [
+    "acute lingual lymph node",
+    "no lingual lymph node",
+    "no evidence of lingual lymph node",
+    "without lingual lymph node",
+    "absence of lingual lymph node",
+    "lingual lymph nodes"
+  ],
+  "RID28836": [
+    "idiopathic lung fibrosis",
+    "acute idiopathic pulmonary fibrosis",
+    "no idiopathic pulmonary fibrosis",
+    "no evidence of idiopathic pulmonary fibrosis",
+    "without idiopathic pulmonary fibrosis",
+    "absence of idiopathic pulmonary fibrosis",
+    "idiopathic pulmonary fibrosi",
+    "idiopathic pulmonary fibrotic"
+  ],
+  "RID4671": [
+    "acute type 1 hangman fracture",
+    "no type 1 hangman fracture",
+    "no evidence of type 1 hangman fracture",
+    "without type 1 hangman fracture",
+    "absence of type 1 hangman fracture",
+    "type 1 hangman fractures"
+  ],
+  "RID38681": [
+    "acute cystografin dilute",
+    "no cystografin dilute",
+    "no evidence of cystografin dilute",
+    "without cystografin dilute",
+    "absence of cystografin dilute",
+    "cystografin dilutes"
+  ],
+  "RID34373": [
+    "acute mass in or on skin",
+    "no mass in or on skin",
+    "no evidence of mass in or on skin",
+    "without mass in or on skin",
+    "absence of mass in or on skin",
+    "mass in or on skins"
+  ],
+  "RID11563": [
+    "acute unintended perforation of hollow viscus complication",
+    "no unintended perforation of hollow viscus complication",
+    "no evidence of unintended perforation of hollow viscus complication",
+    "without unintended perforation of hollow viscus complication",
+    "absence of unintended perforation of hollow viscus complication",
+    "unintended perforation of hollow viscus complications",
+    "unintended perforation of hollow viscus complicated"
+  ],
+  "RID11552": [
+    "lung embolism complication",
+    "acute pulmonary embolism complication",
+    "no pulmonary embolism complication",
+    "no evidence of pulmonary embolism complication",
+    "without pulmonary embolism complication",
+    "absence of pulmonary embolism complication",
+    "pulmonary embolism complications",
+    "pulmonary embolism complicated"
+  ],
+  "RID6369": [
+    "acute aortic dissection descriptor",
+    "no aortic dissection descriptor",
+    "no evidence of aortic dissection descriptor",
+    "without aortic dissection descriptor",
+    "absence of aortic dissection descriptor",
+    "aortic dissection descriptors"
+  ],
+  "RID31396": [
+    "acute set of inferior part of left gastric lymphatic vessels",
+    "no set of inferior part of left gastric lymphatic vessels",
+    "no evidence of set of inferior part of left gastric lymphatic vessels",
+    "without set of inferior part of left gastric lymphatic vessels",
+    "absence of set of inferior part of left gastric lymphatic vessels",
+    "set of inferior part of left gastric lymphatic vessel"
+  ],
+  "RID32015": [
+    "acute intermediate common iliac lymph node group",
+    "no intermediate common iliac lymph node group",
+    "no evidence of intermediate common iliac lymph node group",
+    "without intermediate common iliac lymph node group",
+    "absence of intermediate common iliac lymph node group",
+    "intermediate common iliac lymph node groups"
+  ],
+  "RID36625": [
+    "acute gray matter of nodule of vermis of cerebellum",
+    "no gray matter of nodule of vermis of cerebellum",
+    "no evidence of gray matter of nodule of vermis of cerebellum",
+    "without gray matter of nodule of vermis of cerebellum",
+    "absence of gray matter of nodule of vermis of cerebellum",
+    "gray matter of nodule of vermis of cerebellums"
+  ],
+  "RID1499": [
+    "right broncholung lymph node",
+    "acute right bronchopulmonary lymph node",
+    "no right bronchopulmonary lymph node",
+    "no evidence of right bronchopulmonary lymph node",
+    "without right bronchopulmonary lymph node",
+    "absence of right bronchopulmonary lymph node",
+    "right bronchopulmonary lymph nodes"
+  ],
+  "RID32004": [
+    "acute posterior pancreaticoduodenal lymph node group",
+    "no posterior pancreaticoduodenal lymph node group",
+    "no evidence of posterior pancreaticoduodenal lymph node group",
+    "without posterior pancreaticoduodenal lymph node group",
+    "absence of posterior pancreaticoduodenal lymph node group",
+    "posterior pancreaticoduodenal lymph node groups"
+  ],
+  "RID29147": [
+    "acute smith fracture",
+    "no smith fracture",
+    "no evidence of smith fracture",
+    "without smith fracture",
+    "absence of smith fracture",
+    "smith fractures"
+  ],
+  "RID32590": [
+    "acute retropyloric lymphatic vessel",
+    "no retropyloric lymphatic vessel",
+    "no evidence of retropyloric lymphatic vessel",
+    "without retropyloric lymphatic vessel",
+    "absence of retropyloric lymphatic vessel",
+    "retropyloric lymphatic vessels"
+  ],
+  "RID31385": [
+    "acute set of right gastric lymphatic vessels",
+    "no set of right gastric lymphatic vessels",
+    "no evidence of set of right gastric lymphatic vessels",
+    "without set of right gastric lymphatic vessels",
+    "absence of set of right gastric lymphatic vessels",
+    "set of right gastric lymphatic vessel"
+  ],
+  "RID43247": [
+    "acute sentinel lymph node",
+    "no sentinel lymph node",
+    "no evidence of sentinel lymph node",
+    "without sentinel lymph node",
+    "absence of sentinel lymph node",
+    "sentinel lymph nodes"
+  ],
+  "RID1473": [
+    "acute right tracheobronchial lymph node",
+    "no right tracheobronchial lymph node",
+    "no evidence of right tracheobronchial lymph node",
+    "without right tracheobronchial lymph node",
+    "absence of right tracheobronchial lymph node",
+    "right tracheobronchial lymph nodes"
+  ],
+  "RID4909": [
+    "acute intramesosigmoid hernia",
+    "no intramesosigmoid hernia",
+    "no evidence of intramesosigmoid hernia",
+    "without intramesosigmoid hernia",
+    "absence of intramesosigmoid hernia",
+    "intramesosigmoid hernias"
+  ],
+  "RID6343": [
+    "acute open fracture",
+    "no open fracture",
+    "no evidence of open fracture",
+    "without open fracture",
+    "absence of open fracture",
+    "open fractures"
+  ],
+  "RID28923": [
+    "acute mediastinal lymphatic chain",
+    "no mediastinal lymphatic chain",
+    "no evidence of mediastinal lymphatic chain",
+    "without mediastinal lymphatic chain",
+    "absence of mediastinal lymphatic chain",
+    "mediastinal lymphatic chains"
+  ],
+  "RID7697": [
+    "acute mastoid lymph node",
+    "no mastoid lymph node",
+    "no evidence of mastoid lymph node",
+    "without mastoid lymph node",
+    "absence of mastoid lymph node",
+    "mastoid lymph nodes"
+  ],
+  "RID32619": [
+    "acute appendicular lymphatic vessel",
+    "no appendicular lymphatic vessel",
+    "no evidence of appendicular lymphatic vessel",
+    "without appendicular lymphatic vessel",
+    "absence of appendicular lymphatic vessel",
+    "appendicular lymphatic vessels"
+  ],
+  "RID31334": [
+    "acute set of superior posterior pancreaticoduodenal lymphatic vessels",
+    "no set of superior posterior pancreaticoduodenal lymphatic vessels",
+    "no evidence of set of superior posterior pancreaticoduodenal lymphatic vessels",
+    "without set of superior posterior pancreaticoduodenal lymphatic vessels",
+    "absence of set of superior posterior pancreaticoduodenal lymphatic vessels",
+    "set of superior posterior pancreaticoduodenal lymphatic vessel"
+  ],
+  "RID28891": [
+    "acute mediastinal lymph node",
+    "no mediastinal lymph node",
+    "no evidence of mediastinal lymph node",
+    "without mediastinal lymph node",
+    "absence of mediastinal lymph node",
+    "mediastinal lymph nodes"
+  ],
+  "RID31323": [
+    "acute set of jejunal lymphatic vessels",
+    "no set of jejunal lymphatic vessels",
+    "no evidence of set of jejunal lymphatic vessels",
+    "without set of jejunal lymphatic vessels",
+    "absence of set of jejunal lymphatic vessels",
+    "set of jejunal lymphatic vessel"
+  ],
+  "RID1521": [
+    "acute pericardial lymph node",
+    "no pericardial lymph node",
+    "no evidence of pericardial lymph node",
+    "without pericardial lymph node",
+    "absence of pericardial lymph node",
+    "pericardial lymph nodes"
+  ],
+  "RID1770": [
+    "acute cystoprostatectomy",
+    "no cystoprostatectomy",
+    "no evidence of cystoprostatectomy",
+    "without cystoprostatectomy",
+    "absence of cystoprostatectomy",
+    "cystoprostatectomys"
+  ],
+  "RID29212": [
+    "acute rim calcification",
+    "no rim calcification",
+    "no evidence of rim calcification",
+    "without rim calcification",
+    "absence of rim calcification",
+    "rim calcifications",
+    "rim calcificated"
+  ],
+  "RID3236": [
+    "acute myocardial infarction",
+    "no myocardial infarction",
+    "no evidence of myocardial infarction",
+    "without myocardial infarction",
+    "absence of myocardial infarction",
+    "myocardial infarctions",
+    "myocardial infarcted"
+  ],
+  "RID29223": [
+    "acute oval mass",
+    "no oval mass",
+    "no evidence of oval mass",
+    "without oval mass",
+    "absence of oval mass"
+  ],
+  "RID31318": [
+    "acute set of hepatoportal lymphatic vessels",
+    "no set of hepatoportal lymphatic vessels",
+    "no evidence of set of hepatoportal lymphatic vessels",
+    "without set of hepatoportal lymphatic vessels",
+    "absence of set of hepatoportal lymphatic vessels",
+    "set of hepatoportal lymphatic vessel"
+  ],
+  "RID14316": [
+    "acute branch of masseteric nerve to temporomandibular joint",
+    "no branch of masseteric nerve to temporomandibular joint",
+    "no evidence of branch of masseteric nerve to temporomandibular joint",
+    "without branch of masseteric nerve to temporomandibular joint",
+    "absence of branch of masseteric nerve to temporomandibular joint",
+    "branch of masseteric nerve to temporomandibular joints"
+  ],
+  "RID32117": [
+    "acute paravesicular lymph node",
+    "no paravesicular lymph node",
+    "no evidence of paravesicular lymph node",
+    "without paravesicular lymph node",
+    "absence of paravesicular lymph node",
+    "paravesicular lymph nodes"
+  ],
+  "RID31349": [
+    "acute set of middle colic lymphatic vessels",
+    "no set of middle colic lymphatic vessels",
+    "no evidence of set of middle colic lymphatic vessels",
+    "without set of middle colic lymphatic vessels",
+    "absence of set of middle colic lymphatic vessels",
+    "set of middle colic lymphatic vessel"
+  ],
+  "RID4900": [
+    "internal abdomen hernia",
+    "acute internal abdominal hernia",
+    "no internal abdominal hernia",
+    "no evidence of internal abdominal hernia",
+    "without internal abdominal hernia",
+    "absence of internal abdominal hernia",
+    "internal abdominal hernias"
+  ],
+  "RID32085": [
+    "acute proximal superior pancreatic lymph node",
+    "no proximal superior pancreatic lymph node",
+    "no evidence of proximal superior pancreatic lymph node",
+    "without proximal superior pancreatic lymph node",
+    "absence of proximal superior pancreatic lymph node"
+  ],
+  "RID32106": [
+    "acute juxta-arterial mesenteric lymph node",
+    "no juxta-arterial mesenteric lymph node",
+    "no evidence of juxta-arterial mesenteric lymph node",
+    "without juxta-arterial mesenteric lymph node",
+    "absence of juxta-arterial mesenteric lymph node"
+  ],
+  "RID32074": [
+    "liver proper lymph node",
+    "acute hepatic proper lymph node",
+    "no hepatic proper lymph node",
+    "no evidence of hepatic proper lymph node",
+    "without hepatic proper lymph node",
+    "absence of hepatic proper lymph node",
+    "hepatic proper lymph nodes"
+  ],
+  "RID29767": [
+    "acute sigmoid lymphatic chain",
+    "no sigmoid lymphatic chain",
+    "no evidence of sigmoid lymphatic chain",
+    "without sigmoid lymphatic chain",
+    "absence of sigmoid lymphatic chain",
+    "sigmoid lymphatic chains"
+  ],
+  "RID29756": [
+    "acute paracolic lymphatic chain of ascending colon",
+    "no paracolic lymphatic chain of ascending colon",
+    "no evidence of paracolic lymphatic chain of ascending colon",
+    "without paracolic lymphatic chain of ascending colon",
+    "absence of paracolic lymphatic chain of ascending colon",
+    "paracolic lymphatic chain of ascending colons"
+  ],
+  "RID1511": [
+    "acute right segmental lymph node",
+    "no right segmental lymph node",
+    "no evidence of right segmental lymph node",
+    "without right segmental lymph node",
+    "absence of right segmental lymph node",
+    "right segmental lymph nodes"
+  ],
+  "RID6345": [
+    "acute diaphyseal fracture",
+    "no diaphyseal fracture",
+    "no evidence of diaphyseal fracture",
+    "without diaphyseal fracture",
+    "absence of diaphyseal fracture",
+    "diaphyseal fractures"
+  ],
+  "RID28884": [
+    "acute sacral lymph node",
+    "no sacral lymph node",
+    "no evidence of sacral lymph node",
+    "without sacral lymph node",
+    "absence of sacral lymph node",
+    "sacral lymph nodes"
+  ],
+  "RID4869": [
+    "hypoproteinemic lung edema",
+    "acute hypoproteinemic pulmonary edema",
+    "no hypoproteinemic pulmonary edema",
+    "no evidence of hypoproteinemic pulmonary edema",
+    "without hypoproteinemic pulmonary edema",
+    "absence of hypoproteinemic pulmonary edema",
+    "hypoproteinemic pulmonary edemas"
+  ],
+  "RID29123": [
+    "acute clay shoveler's fracture",
+    "no clay shoveler's fracture",
+    "no evidence of clay shoveler's fracture",
+    "without clay shoveler's fracture",
+    "absence of clay shoveler's fracture",
+    "clay shoveler's fractures"
+  ],
+  "RID3712": [
+    "acute tubo-ovarian abscess",
+    "no tubo-ovarian abscess",
+    "no evidence of tubo-ovarian abscess",
+    "without tubo-ovarian abscess",
+    "absence of tubo-ovarian abscess"
+  ],
+  "RID30384": [
+    "acute trunk of lymphatic tree organ part",
+    "no trunk of lymphatic tree organ part",
+    "no evidence of trunk of lymphatic tree organ part",
+    "without trunk of lymphatic tree organ part",
+    "absence of trunk of lymphatic tree organ part",
+    "trunk of lymphatic tree organ parts"
+  ],
+  "RID32617": [
+    "acute prececal lymphatic vessel",
+    "no prececal lymphatic vessel",
+    "no evidence of prececal lymphatic vessel",
+    "without prececal lymphatic vessel",
+    "absence of prececal lymphatic vessel",
+    "prececal lymphatic vessels"
+  ],
+  "RID32067": [
+    "acute inferior left gastric lymph node",
+    "no inferior left gastric lymph node",
+    "no evidence of inferior left gastric lymph node",
+    "without inferior left gastric lymph node",
+    "absence of inferior left gastric lymph node"
+  ],
+  "RID29705": [
+    "acute subpyloric lymphatic chain",
+    "no subpyloric lymphatic chain",
+    "no evidence of subpyloric lymphatic chain",
+    "without subpyloric lymphatic chain",
+    "absence of subpyloric lymphatic chain",
+    "subpyloric lymphatic chains"
+  ],
+  "RID32606": [
+    "acute posterior ileocolic lymphatic vessel",
+    "no posterior ileocolic lymphatic vessel",
+    "no evidence of posterior ileocolic lymphatic vessel",
+    "without posterior ileocolic lymphatic vessel",
+    "absence of posterior ileocolic lymphatic vessel",
+    "posterior ileocolic lymphatic vessels"
+  ],
+  "RID31393": [
+    "acute set of right gastro-epiploic lymphatic vessels",
+    "no set of right gastro-epiploic lymphatic vessels",
+    "no evidence of set of right gastro-epiploic lymphatic vessels",
+    "without set of right gastro-epiploic lymphatic vessels",
+    "absence of set of right gastro-epiploic lymphatic vessels",
+    "set of right gastro-epiploic lymphatic vessel"
+  ],
+  "RID31943": [
+    "acute juxta-arterial mesenteric lymph node group",
+    "no juxta-arterial mesenteric lymph node group",
+    "no evidence of juxta-arterial mesenteric lymph node group",
+    "without juxta-arterial mesenteric lymph node group",
+    "absence of juxta-arterial mesenteric lymph node group",
+    "juxta-arterial mesenteric lymph node groups"
+  ],
+  "RID3740": [
+    "acute multicystic dysplasia",
+    "no multicystic dysplasia",
+    "no evidence of multicystic dysplasia",
+    "without multicystic dysplasia",
+    "absence of multicystic dysplasia",
+    "multicystic dysplasias"
+  ],
+  "RID4950": [
+    "acute uncal herniation",
+    "no uncal herniation",
+    "no evidence of uncal herniation",
+    "without uncal herniation",
+    "absence of uncal herniation",
+    "uncal herniations",
+    "uncal herniated"
+  ],
+  "RID31987": [
+    "acute paracolic lymph node group of sigmoid colon",
+    "no paracolic lymph node group of sigmoid colon",
+    "no evidence of paracolic lymph node group of sigmoid colon",
+    "without paracolic lymph node group of sigmoid colon",
+    "absence of paracolic lymph node group of sigmoid colon",
+    "paracolic lymph node group of sigmoid colons"
+  ],
+  "RID29144": [
+    "acute seymour fracture",
+    "no seymour fracture",
+    "no evidence of seymour fracture",
+    "without seymour fracture",
+    "absence of seymour fracture",
+    "seymour fractures"
+  ],
+  "RID4696": [
+    "acute teardrop fracture",
+    "no teardrop fracture",
+    "no evidence of teardrop fracture",
+    "without teardrop fracture",
+    "absence of teardrop fracture",
+    "teardrop fractures"
+  ],
+  "RID30518": [
+    "acute mucosa-associated lymphoid tissue",
+    "no mucosa-associated lymphoid tissue",
+    "no evidence of mucosa-associated lymphoid tissue",
+    "without mucosa-associated lymphoid tissue",
+    "absence of mucosa-associated lymphoid tissue",
+    "mucosa-associated lymphoid tissues"
+  ],
+  "RID43284": [
+    "acute sigmoid colon lymph node group",
+    "no sigmoid colon lymph node group",
+    "no evidence of sigmoid colon lymph node group",
+    "without sigmoid colon lymph node group",
+    "absence of sigmoid colon lymph node group",
+    "sigmoid colon lymph node groups"
+  ],
+  "RID4748": [
+    "acute lymphangiectasis",
+    "no lymphangiectasis",
+    "no evidence of lymphangiectasis",
+    "without lymphangiectasis",
+    "absence of lymphangiectasis",
+    "lymphangiectasi",
+    "lymphangiectatic"
+  ],
+  "RID29749": [
+    "acute juxta-intestinal lymphatic chain",
+    "no juxta-intestinal lymphatic chain",
+    "no evidence of juxta-intestinal lymphatic chain",
+    "without juxta-intestinal lymphatic chain",
+    "absence of juxta-intestinal lymphatic chain",
+    "juxta-intestinal lymphatic chains"
+  ],
+  "RID30529": [
+    "acute solitary lymphoid follicle of ascending colon",
+    "no solitary lymphoid follicle of ascending colon",
+    "no evidence of solitary lymphoid follicle of ascending colon",
+    "without solitary lymphoid follicle of ascending colon",
+    "absence of solitary lymphoid follicle of ascending colon",
+    "solitary lymphoid follicle of ascending colons"
+  ],
+  "RID31305": [
+    "set of abdomen lymphatic vessels",
+    "acute set of abdominal lymphatic vessels",
+    "no set of abdominal lymphatic vessels",
+    "no evidence of set of abdominal lymphatic vessels",
+    "without set of abdominal lymphatic vessels",
+    "absence of set of abdominal lymphatic vessels",
+    "set of abdominal lymphatic vessel"
+  ],
+  "RID38152": [
+    "acute left cardial lymph node",
+    "no left cardial lymph node",
+    "no evidence of left cardial lymph node",
+    "without left cardial lymph node",
+    "absence of left cardial lymph node",
+    "left cardial lymph nodes"
+  ],
+  "RID4865": [
+    "acute edema",
+    "no edema",
+    "no evidence of edema",
+    "without edema",
+    "absence of edema",
+    "edemas"
+  ],
+  "RID28855": [
+    "pelvis lymph node group",
+    "acute pelvic lymph node group",
+    "no pelvic lymph node group",
+    "no evidence of pelvic lymph node group",
+    "without pelvic lymph node group",
+    "absence of pelvic lymph node group",
+    "pelvic lymph node groups"
+  ],
+  "RID3513": [
+    "acute brodie abscess",
+    "no brodie abscess",
+    "no evidence of brodie abscess",
+    "without brodie abscess",
+    "absence of brodie abscess"
+  ],
+  "RID34420": [
+    "acute mass enhancement pattern",
+    "no mass enhancement pattern",
+    "no evidence of mass enhancement pattern",
+    "without mass enhancement pattern",
+    "absence of mass enhancement pattern",
+    "mass enhancement patterns"
+  ],
+  "RID32138": [
+    "acute circumflex iliac lymph node",
+    "no circumflex iliac lymph node",
+    "no evidence of circumflex iliac lymph node",
+    "without circumflex iliac lymph node",
+    "absence of circumflex iliac lymph node",
+    "circumflex iliac lymph nodes"
+  ],
+  "RID32589": [
+    "acute subpyloric lymphatic vessel",
+    "no subpyloric lymphatic vessel",
+    "no evidence of subpyloric lymphatic vessel",
+    "without subpyloric lymphatic vessel",
+    "absence of subpyloric lymphatic vessel",
+    "subpyloric lymphatic vessels"
+  ],
+  "RID4833": [
+    "acute barium embolism",
+    "no barium embolism",
+    "no evidence of barium embolism",
+    "without barium embolism",
+    "absence of barium embolism",
+    "barium embolisms"
+  ],
+  "RID3328": [
+    "acute mycotic aneurysm",
+    "no mycotic aneurysm",
+    "no evidence of mycotic aneurysm",
+    "without mycotic aneurysm",
+    "absence of mycotic aneurysm",
+    "mycotic aneurysms"
+  ],
+  "RID31954": [
+    "acute ileal lymph node group",
+    "no ileal lymph node group",
+    "no evidence of ileal lymph node group",
+    "without ileal lymph node group",
+    "absence of ileal lymph node group",
+    "ileal lymph node groups"
+  ],
+  "RID50244": [
+    "acute cystourethrography chain",
+    "no cystourethrography chain",
+    "no evidence of cystourethrography chain",
+    "without cystourethrography chain",
+    "absence of cystourethrography chain",
+    "cystourethrography chains"
+  ],
+  "RID32012": [
+    "acute right common iliac lymph node group",
+    "no right common iliac lymph node group",
+    "no evidence of right common iliac lymph node group",
+    "without right common iliac lymph node group",
+    "absence of right common iliac lymph node group",
+    "right common iliac lymph node groups"
+  ],
+  "RID14313": [
+    "acute left masseteric nerve",
+    "no left masseteric nerve",
+    "no evidence of left masseteric nerve",
+    "without left masseteric nerve",
+    "absence of left masseteric nerve",
+    "left masseteric nerves"
+  ],
+  "RID3842": [
+    "acute hodgkin lymphoma",
+    "no hodgkin lymphoma",
+    "no evidence of hodgkin lymphoma",
+    "without hodgkin lymphoma",
+    "absence of hodgkin lymphoma",
+    "hodgkin lymphomas"
+  ],
+  "RID32556": [
+    "acute parametrial lymphatic vessel",
+    "no parametrial lymphatic vessel",
+    "no evidence of parametrial lymphatic vessel",
+    "without parametrial lymphatic vessel",
+    "absence of parametrial lymphatic vessel",
+    "parametrial lymphatic vessels"
+  ],
+  "RID43360": [
+    "acute lesion rim or capsule",
+    "no lesion rim or capsule",
+    "no evidence of lesion rim or capsule",
+    "without lesion rim or capsule",
+    "absence of lesion rim or capsule",
+    "lesion rim or capsules"
+  ],
+  "RID43255": [
+    "acute consolidation",
+    "no consolidation",
+    "no evidence of consolidation",
+    "without consolidation",
+    "absence of consolidation",
+    "consolidations"
+  ],
+  "RID38883": [
+    "acute prostatic lymphatic tree",
+    "no prostatic lymphatic tree",
+    "no evidence of prostatic lymphatic tree",
+    "without prostatic lymphatic tree",
+    "absence of prostatic lymphatic tree",
+    "prostatic lymphatic trees"
+  ],
+  "RID32545": [
+    "acute lateral sacral lymphatic vessel",
+    "no lateral sacral lymphatic vessel",
+    "no evidence of lateral sacral lymphatic vessel",
+    "without lateral sacral lymphatic vessel",
+    "absence of lateral sacral lymphatic vessel",
+    "lateral sacral lymphatic vessels"
+  ],
+  "RID27861": [
+    "acute branch of masseteric nerve",
+    "no branch of masseteric nerve",
+    "no evidence of branch of masseteric nerve",
+    "without branch of masseteric nerve",
+    "absence of branch of masseteric nerve",
+    "branch of masseteric nerves"
+  ],
+  "RID32069": [
+    "acute right gastric lymph node",
+    "no right gastric lymph node",
+    "no evidence of right gastric lymph node",
+    "without right gastric lymph node",
+    "absence of right gastric lymph node"
+  ],
+  "RID28931": [
+    "acute inferior rectal lymph node",
+    "no inferior rectal lymph node",
+    "no evidence of inferior rectal lymph node",
+    "without inferior rectal lymph node",
+    "absence of inferior rectal lymph node",
+    "inferior rectal lymph nodes"
+  ],
+  "RID49682": [
+    "acute intraductal calcifications",
+    "no intraductal calcifications",
+    "no evidence of intraductal calcifications",
+    "without intraductal calcifications",
+    "absence of intraductal calcifications",
+    "intraductal calcification"
+  ],
+  "RID5287": [
+    "acute distal intestinal obstruction syndrome",
+    "no distal intestinal obstruction syndrome",
+    "no evidence of distal intestinal obstruction syndrome",
+    "without distal intestinal obstruction syndrome",
+    "absence of distal intestinal obstruction syndrome",
+    "distal intestinal obstruction syndromes"
+  ],
+  "RID28920": [
+    "set of chest lymph nodes",
+    "acute set of thoracic lymph nodes",
+    "no set of thoracic lymph nodes",
+    "no evidence of set of thoracic lymph nodes",
+    "without set of thoracic lymph nodes",
+    "absence of set of thoracic lymph nodes",
+    "set of thoracic lymph node"
+  ],
+  "RID9969": [
+    "acute submandibular and submental lymph node",
+    "no submandibular and submental lymph node",
+    "no evidence of submandibular and submental lymph node",
+    "without submandibular and submental lymph node",
+    "absence of submandibular and submental lymph node",
+    "submandibular and submental lymph nodes"
+  ],
+  "RID4666": [
+    "acute greenstick fracture",
+    "no greenstick fracture",
+    "no evidence of greenstick fracture",
+    "without greenstick fracture",
+    "absence of greenstick fracture",
+    "greenstick fractures"
+  ],
+  "RID34352": [
+    "acute parallel lesion",
+    "no parallel lesion",
+    "no evidence of parallel lesion",
+    "without parallel lesion",
+    "absence of parallel lesion",
+    "parallel lesions"
+  ],
+  "RID31367": [
+    "acute set of juxta-jejunal mesenteric lymphatic vessels",
+    "no set of juxta-jejunal mesenteric lymphatic vessels",
+    "no evidence of set of juxta-jejunal mesenteric lymphatic vessels",
+    "without set of juxta-jejunal mesenteric lymphatic vessels",
+    "absence of set of juxta-jejunal mesenteric lymphatic vessels",
+    "set of juxta-jejunal mesenteric lymphatic vessel"
+  ],
+  "RID38091": [
+    "acute deep branch of cystic artery",
+    "no deep branch of cystic artery",
+    "no evidence of deep branch of cystic artery",
+    "without deep branch of cystic artery",
+    "absence of deep branch of cystic artery",
+    "deep branch of cystic arterys"
+  ],
+  "RID31925": [
+    "acute right gastroepiploic lymph node group",
+    "no right gastroepiploic lymph node group",
+    "no evidence of right gastroepiploic lymph node group",
+    "without right gastroepiploic lymph node group",
+    "absence of right gastroepiploic lymph node group",
+    "right gastroepiploic lymph node groups"
+  ],
+  "RID29118": [
+    "acute barton fracture",
+    "no barton fracture",
+    "no evidence of barton fracture",
+    "without barton fracture",
+    "absence of barton fracture",
+    "barton fractures"
+  ],
+  "RID5372": [
+    "acute avascular necrosis of capital femoral epiphysis",
+    "no avascular necrosis of capital femoral epiphysis",
+    "no evidence of avascular necrosis of capital femoral epiphysis",
+    "without avascular necrosis of capital femoral epiphysis",
+    "absence of avascular necrosis of capital femoral epiphysis",
+    "avascular necrosis of capital femoral epiphysi",
+    "avascular necrosis of capital femoral epiphytic"
+  ],
+  "RID29107": [
+    "acute cardiophrenic angle lymph node",
+    "no cardiophrenic angle lymph node",
+    "no evidence of cardiophrenic angle lymph node",
+    "without cardiophrenic angle lymph node",
+    "absence of cardiophrenic angle lymph node",
+    "cardiophrenic angle lymph nodes"
+  ],
+  "RID31914": [
+    "acute superior mesenteric lymph node group",
+    "no superior mesenteric lymph node group",
+    "no evidence of superior mesenteric lymph node group",
+    "without superior mesenteric lymph node group",
+    "absence of superior mesenteric lymph node group",
+    "superior mesenteric lymph node groups"
+  ],
+  "RID39374": [
+    "acute region of lens fiber mass",
+    "no region of lens fiber mass",
+    "no evidence of region of lens fiber mass",
+    "without region of lens fiber mass",
+    "absence of region of lens fiber mass"
+  ],
+  "RID21354": [
+    "acute trunk of branch of masseteric nerve to temporomandibular joint",
+    "no trunk of branch of masseteric nerve to temporomandibular joint",
+    "no evidence of trunk of branch of masseteric nerve to temporomandibular joint",
+    "without trunk of branch of masseteric nerve to temporomandibular joint",
+    "absence of trunk of branch of masseteric nerve to temporomandibular joint",
+    "trunk of branch of masseteric nerve to temporomandibular joints"
+  ],
+  "RID3944": [
+    "tumor-like lesion of osseous",
+    "acute tumor-like lesion of bone",
+    "no tumor-like lesion of bone",
+    "no evidence of tumor-like lesion of bone",
+    "without tumor-like lesion of bone",
+    "absence of tumor-like lesion of bone",
+    "tumor-like lesion of bones"
+  ],
+  "RID38040": [
+    "acute lumen of lymphatic vessel",
+    "no lumen of lymphatic vessel",
+    "no evidence of lumen of lymphatic vessel",
+    "without lumen of lymphatic vessel",
+    "absence of lumen of lymphatic vessel",
+    "lumen of lymphatic vessels"
+  ],
+  "RID31399": [
+    "acute set of gastric lymphatic vessels",
+    "no set of gastric lymphatic vessels",
+    "no evidence of set of gastric lymphatic vessels",
+    "without set of gastric lymphatic vessels",
+    "absence of set of gastric lymphatic vessels",
+    "set of gastric lymphatic vessel"
+  ],
+  "RID31388": [
+    "acute set of intestinal lymphatic vessels",
+    "no set of intestinal lymphatic vessels",
+    "no evidence of set of intestinal lymphatic vessels",
+    "without set of intestinal lymphatic vessels",
+    "absence of set of intestinal lymphatic vessels",
+    "set of intestinal lymphatic vessel"
+  ],
+  "RID31086": [
+    "acute nodular lymphoid tissue",
+    "no nodular lymphoid tissue",
+    "no evidence of nodular lymphoid tissue",
+    "without nodular lymphoid tissue",
+    "absence of nodular lymphoid tissue",
+    "nodular lymphoid tissues"
+  ],
+  "RID32582": [
+    "acute right gastro-epiploic lymphatic vessel",
+    "no right gastro-epiploic lymphatic vessel",
+    "no evidence of right gastro-epiploic lymphatic vessel",
+    "without right gastro-epiploic lymphatic vessel",
+    "absence of right gastro-epiploic lymphatic vessel",
+    "right gastro-epiploic lymphatic vessels"
+  ],
+  "RID28881": [
+    "acute gluteal lymph node",
+    "no gluteal lymph node",
+    "no evidence of gluteal lymph node",
+    "without gluteal lymph node",
+    "absence of gluteal lymph node",
+    "gluteal lymph nodes"
+  ],
+  "RID1520": [
+    "acute anterior mediastinal lymph node",
+    "no anterior mediastinal lymph node",
+    "no evidence of anterior mediastinal lymph node",
+    "without anterior mediastinal lymph node",
+    "absence of anterior mediastinal lymph node",
+    "anterior mediastinal lymph nodes"
+  ],
+  "RID5034": [
+    "acute foraminal spinal stenosis",
+    "no foraminal spinal stenosis",
+    "no evidence of foraminal spinal stenosis",
+    "without foraminal spinal stenosis",
+    "absence of foraminal spinal stenosis",
+    "foraminal spinal stenosi",
+    "foraminal spinal stenotic"
+  ],
+  "RID32609": [
+    "acute epicolic lymphatic vessel",
+    "no epicolic lymphatic vessel",
+    "no evidence of epicolic lymphatic vessel",
+    "without epicolic lymphatic vessel",
+    "absence of epicolic lymphatic vessel",
+    "epicolic lymphatic vessels"
+  ],
+  "RID31907": [
+    "acute right lumbar lymph node group proper",
+    "no right lumbar lymph node group proper",
+    "no evidence of right lumbar lymph node group proper",
+    "without right lumbar lymph node group proper",
+    "absence of right lumbar lymph node group proper",
+    "right lumbar lymph node group propers"
+  ],
+  "RID3484": [
+    "acute lymphadenitis",
+    "no lymphadenitis",
+    "no evidence of lymphadenitis",
+    "without lymphadenitis",
+    "absence of lymphadenitis",
+    "lymphadeniti"
+  ],
+  "RID31402": [
+    "acute set of celiac lymphatic vessels",
+    "no set of celiac lymphatic vessels",
+    "no evidence of set of celiac lymphatic vessels",
+    "without set of celiac lymphatic vessels",
+    "absence of set of celiac lymphatic vessels",
+    "set of celiac lymphatic vessel"
+  ],
+  "RID31980": [
+    "acute superior posterior pancreaticoduodenal lymph node group",
+    "no superior posterior pancreaticoduodenal lymph node group",
+    "no evidence of superior posterior pancreaticoduodenal lymph node group",
+    "without superior posterior pancreaticoduodenal lymph node group",
+    "absence of superior posterior pancreaticoduodenal lymph node group",
+    "superior posterior pancreaticoduodenal lymph node groups"
+  ],
+  "RID29720": [
+    "acute subdivision of colic lymphatic chain",
+    "no subdivision of colic lymphatic chain",
+    "no evidence of subdivision of colic lymphatic chain",
+    "without subdivision of colic lymphatic chain",
+    "absence of subdivision of colic lymphatic chain",
+    "subdivision of colic lymphatic chains"
+  ],
+  "RID31864": [
+    "acute retro-aortic lymphatic chain",
+    "no retro-aortic lymphatic chain",
+    "no evidence of retro-aortic lymphatic chain",
+    "without retro-aortic lymphatic chain",
+    "absence of retro-aortic lymphatic chain",
+    "retro-aortic lymphatic chains"
+  ],
+  "RID29731": [
+    "acute anterior ileocolic lymphatic chain",
+    "no anterior ileocolic lymphatic chain",
+    "no evidence of anterior ileocolic lymphatic chain",
+    "without anterior ileocolic lymphatic chain",
+    "absence of anterior ileocolic lymphatic chain",
+    "anterior ileocolic lymphatic chains"
+  ],
+  "RID31962": [
+    "acute middle colic lymph node group",
+    "no middle colic lymph node group",
+    "no evidence of middle colic lymph node group",
+    "without middle colic lymph node group",
+    "absence of middle colic lymph node group",
+    "middle colic lymph node groups"
+  ],
+  "RID7735": [
+    "acute posterior cervical triangle lymph node",
+    "no posterior cervical triangle lymph node",
+    "no evidence of posterior cervical triangle lymph node",
+    "without posterior cervical triangle lymph node",
+    "absence of posterior cervical triangle lymph node",
+    "posterior cervical triangle lymph nodes"
+  ],
+  "RID32614": [
+    "acute midcolic lymphatic vessel",
+    "no midcolic lymphatic vessel",
+    "no evidence of midcolic lymphatic vessel",
+    "without midcolic lymphatic vessel",
+    "absence of midcolic lymphatic vessel",
+    "midcolic lymphatic vessels"
+  ],
+  "RID32056": [
+    "acute lymph node at root of superior mesenteric artery",
+    "no lymph node at root of superior mesenteric artery",
+    "no evidence of lymph node at root of superior mesenteric artery",
+    "without lymph node at root of superior mesenteric artery",
+    "absence of lymph node at root of superior mesenteric artery",
+    "lymph node at root of superior mesenteric arterys"
+  ],
+  "RID32045": [
+    "acute parietal pre-aortic lymph node",
+    "no parietal pre-aortic lymph node",
+    "no evidence of parietal pre-aortic lymph node",
+    "without parietal pre-aortic lymph node",
+    "absence of parietal pre-aortic lymph node",
+    "parietal pre-aortic lymph nodes"
+  ],
+  "RID29738": [
+    "acute superior ileocolic lymphatic chain",
+    "no superior ileocolic lymphatic chain",
+    "no evidence of superior ileocolic lymphatic chain",
+    "without superior ileocolic lymphatic chain",
+    "absence of superior ileocolic lymphatic chain",
+    "superior ileocolic lymphatic chains"
+  ],
+  "RID32603": [
+    "acute juxta-arterial mesenteric lymphatic vessel",
+    "no juxta-arterial mesenteric lymphatic vessel",
+    "no evidence of juxta-arterial mesenteric lymphatic vessel",
+    "without juxta-arterial mesenteric lymphatic vessel",
+    "absence of juxta-arterial mesenteric lymphatic vessel",
+    "juxta-arterial mesenteric lymphatic vessels"
+  ],
+  "RID3894": [
+    "osseous cyst",
+    "acute bone cyst",
+    "no bone cyst",
+    "no evidence of bone cyst",
+    "without bone cyst",
+    "absence of bone cyst",
+    "bone cysts"
+  ],
+  "RID3839": [
+    "acute lymphoproliferative disorder",
+    "no lymphoproliferative disorder",
+    "no evidence of lymphoproliferative disorder",
+    "without lymphoproliferative disorder",
+    "absence of lymphoproliferative disorder",
+    "lymphoproliferative disorders"
+  ],
+  "RID7713": [
+    "acute anterior jugular lymph node",
+    "no anterior jugular lymph node",
+    "no evidence of anterior jugular lymph node",
+    "without anterior jugular lymph node",
+    "absence of anterior jugular lymph node",
+    "anterior jugular lymph nodes"
+  ],
+  "RID31901": [
+    "visceral lymph node group of abdominal proper",
+    "acute visceral lymph node group of abdomen proper",
+    "no visceral lymph node group of abdomen proper",
+    "no evidence of visceral lymph node group of abdomen proper",
+    "without visceral lymph node group of abdomen proper",
+    "absence of visceral lymph node group of abdomen proper",
+    "visceral lymph node group of abdomen propers"
+  ],
+  "RID49646": [
+    "acute oral cholecystographic contrast",
+    "no oral cholecystographic contrast",
+    "no evidence of oral cholecystographic contrast",
+    "without oral cholecystographic contrast",
+    "absence of oral cholecystographic contrast",
+    "oral cholecystographic contrasts"
+  ],
+  "RID28531": [
+    "acute ground-glass opacity",
+    "no ground-glass opacity",
+    "no evidence of ground-glass opacity",
+    "without ground-glass opacity",
+    "absence of ground-glass opacity",
+    "ground-glass opacitys"
+  ],
+  "RID28899": [
+    "acute pyloric lymph node",
+    "no pyloric lymph node",
+    "no evidence of pyloric lymph node",
+    "without pyloric lymph node",
+    "absence of pyloric lymph node",
+    "pyloric lymph nodes"
+  ],
+  "RID28888": [
+    "acute lymph node of lower limb",
+    "no lymph node of lower limb",
+    "no evidence of lymph node of lower limb",
+    "without lymph node of lower limb",
+    "absence of lymph node of lower limb",
+    "lymph node of lower limbs"
+  ],
+  "RID30913": [
+    "acute ascending lumbar lymphatic trunk",
+    "no ascending lumbar lymphatic trunk",
+    "no evidence of ascending lumbar lymphatic trunk",
+    "without ascending lumbar lymphatic trunk",
+    "absence of ascending lumbar lymphatic trunk",
+    "ascending lumbar lymphatic trunks"
+  ],
+  "RID4692": [
+    "acute salter type viii fracture",
+    "no salter type viii fracture",
+    "no evidence of salter type viii fracture",
+    "without salter type viii fracture",
+    "absence of salter type viii fracture",
+    "salter type viii fractures"
+  ],
+  "RID32027": [
+    "acute left internal iliac lymph node group",
+    "no left internal iliac lymph node group",
+    "no evidence of left internal iliac lymph node group",
+    "without left internal iliac lymph node group",
+    "absence of left internal iliac lymph node group",
+    "left internal iliac lymph node groups"
+  ],
+  "RID3930": [
+    "acute pars intermedia cyst",
+    "no pars intermedia cyst",
+    "no evidence of pars intermedia cyst",
+    "without pars intermedia cyst",
+    "absence of pars intermedia cyst",
+    "pars intermedia cysts"
+  ],
+  "RID31922": [
+    "acute superior left gastric lymph node group",
+    "no superior left gastric lymph node group",
+    "no evidence of superior left gastric lymph node group",
+    "without superior left gastric lymph node group",
+    "absence of superior left gastric lymph node group",
+    "superior left gastric lymph node groups"
+  ],
+  "RID34954": [
+    "acute weber type c fracture",
+    "no weber type c fracture",
+    "no evidence of weber type c fracture",
+    "without weber type c fracture",
+    "absence of weber type c fracture",
+    "weber type c fractures"
+  ],
+  "RID29709": [
+    "acute intermediate mesenteric lymphatic chain",
+    "no intermediate mesenteric lymphatic chain",
+    "no evidence of intermediate mesenteric lymphatic chain",
+    "without intermediate mesenteric lymphatic chain",
+    "absence of intermediate mesenteric lymphatic chain",
+    "intermediate mesenteric lymphatic chains"
+  ],
+  "RID32564": [
+    "acute postcaval lymphatic vessel",
+    "no postcaval lymphatic vessel",
+    "no evidence of postcaval lymphatic vessel",
+    "without postcaval lymphatic vessel",
+    "absence of postcaval lymphatic vessel",
+    "postcaval lymphatic vessels"
+  ],
+  "RID34798": [
+    "acute hyatid cyst",
+    "no hyatid cyst",
+    "no evidence of hyatid cyst",
+    "without hyatid cyst",
+    "absence of hyatid cyst",
+    "hyatid cysts"
+  ],
+  "RID29688": [
+    "acute inferior part of left gastric lymphatic chain",
+    "no inferior part of left gastric lymphatic chain",
+    "no evidence of inferior part of left gastric lymphatic chain",
+    "without inferior part of left gastric lymphatic chain",
+    "absence of inferior part of left gastric lymphatic chain",
+    "inferior part of left gastric lymphatic chains"
+  ],
+  "RID5181": [
+    "acute dysbaric osteonecrosis",
+    "no dysbaric osteonecrosis",
+    "no evidence of dysbaric osteonecrosis",
+    "without dysbaric osteonecrosis",
+    "absence of dysbaric osteonecrosis",
+    "dysbaric osteonecrosi",
+    "dysbaric osteonecrotic"
+  ],
+  "RID29677": [
+    "acute mesenteric lymphatic chain",
+    "no mesenteric lymphatic chain",
+    "no evidence of mesenteric lymphatic chain",
+    "without mesenteric lymphatic chain",
+    "absence of mesenteric lymphatic chain",
+    "mesenteric lymphatic chains"
+  ],
+  "RID3297": [
+    "acute post-myocardial infarction syndrome",
+    "no post-myocardial infarction syndrome",
+    "no evidence of post-myocardial infarction syndrome",
+    "without post-myocardial infarction syndrome",
+    "absence of post-myocardial infarction syndrome",
+    "post-myocardial infarction syndromes"
+  ],
+  "RID32553": [
+    "acute parauterine lymphatic vessel",
+    "no parauterine lymphatic vessel",
+    "no evidence of parauterine lymphatic vessel",
+    "without parauterine lymphatic vessel",
+    "absence of parauterine lymphatic vessel",
+    "parauterine lymphatic vessels"
+  ],
+  "RID32109": [
+    "acute intermediate mesenteric lymph node",
+    "no intermediate mesenteric lymph node",
+    "no evidence of intermediate mesenteric lymph node",
+    "without intermediate mesenteric lymph node",
+    "absence of intermediate mesenteric lymph node"
+  ],
+  "RID35459": [
+    "acute pseudo-fracture",
+    "no pseudo-fracture",
+    "no evidence of pseudo-fracture",
+    "without pseudo-fracture",
+    "absence of pseudo-fracture",
+    "pseudo-fractures"
+  ],
+  "RID7708": [
+    "acute mandibular lymph node",
+    "no mandibular lymph node",
+    "no evidence of mandibular lymph node",
+    "without mandibular lymph node",
+    "absence of mandibular lymph node",
+    "mandibular lymph nodes"
+  ],
+  "RID465": [
+    "acute inguinal lymph node",
+    "no inguinal lymph node",
+    "no evidence of inguinal lymph node",
+    "without inguinal lymph node",
+    "absence of inguinal lymph node",
+    "inguinal lymph nodes"
+  ],
+  "RID49690": [
+    "acute simple cyst",
+    "no simple cyst",
+    "no evidence of simple cyst",
+    "without simple cyst",
+    "absence of simple cyst",
+    "simple cysts"
+  ],
+  "RID28513": [
+    "acute linear atelectasis",
+    "no linear atelectasis",
+    "no evidence of linear atelectasis",
+    "without linear atelectasis",
+    "absence of linear atelectasis",
+    "linear atelectasi",
+    "linear atelectatic"
+  ],
+  "RID32088": [
+    "acute anterior superior pancreaticoduodenal lymph node",
+    "no anterior superior pancreaticoduodenal lymph node",
+    "no evidence of anterior superior pancreaticoduodenal lymph node",
+    "without anterior superior pancreaticoduodenal lymph node",
+    "absence of anterior superior pancreaticoduodenal lymph node",
+    "anterior superior pancreaticoduodenal lymph nodes"
+  ],
+  "RID6262": [
+    "acute mass descriptor",
+    "no mass descriptor",
+    "no evidence of mass descriptor",
+    "without mass descriptor",
+    "absence of mass descriptor",
+    "mass descriptors"
+  ],
+  "RID30531": [
+    "acute solitary lymphoid follicle of descending colon",
+    "no solitary lymphoid follicle of descending colon",
+    "no evidence of solitary lymphoid follicle of descending colon",
+    "without solitary lymphoid follicle of descending colon",
+    "absence of solitary lymphoid follicle of descending colon",
+    "solitary lymphoid follicle of descending colons"
+  ],
+  "RID31375": [
+    "acute set of inferior pancreatic lymphatic vessels",
+    "no set of inferior pancreatic lymphatic vessels",
+    "no evidence of set of inferior pancreatic lymphatic vessels",
+    "without set of inferior pancreatic lymphatic vessels",
+    "absence of set of inferior pancreatic lymphatic vessels",
+    "set of inferior pancreatic lymphatic vessel"
+  ],
+  "RID3327": [
+    "acute lymphangiectasia",
+    "no lymphangiectasia",
+    "no evidence of lymphangiectasia",
+    "without lymphangiectasia",
+    "absence of lymphangiectasia",
+    "lymphangiectasias"
+  ],
+  "RID31933": [
+    "acute proximal superior pancreatic lymph node group",
+    "no proximal superior pancreatic lymph node group",
+    "no evidence of proximal superior pancreatic lymph node group",
+    "without proximal superior pancreatic lymph node group",
+    "absence of proximal superior pancreatic lymph node group",
+    "proximal superior pancreatic lymph node groups"
+  ],
+  "RID31364": [
+    "acute set of juxta-jejunal lymphatic vessels",
+    "no set of juxta-jejunal lymphatic vessels",
+    "no evidence of set of juxta-jejunal lymphatic vessels",
+    "without set of juxta-jejunal lymphatic vessels",
+    "absence of set of juxta-jejunal lymphatic vessels",
+    "set of juxta-jejunal lymphatic vessel"
+  ],
+  "RID4687": [
+    "acute salter-harris type iii fracture",
+    "no salter-harris type iii fracture",
+    "no evidence of salter-harris type iii fracture",
+    "without salter-harris type iii fracture",
+    "absence of salter-harris type iii fracture",
+    "salter-harris type iii fractures"
+  ],
+  "RID6342": [
+    "acute closed fracture",
+    "no closed fracture",
+    "no evidence of closed fracture",
+    "without closed fracture",
+    "absence of closed fracture",
+    "closed fractures"
+  ],
+  "RID32527": [
+    "acute common iliac lymphatic vessel",
+    "no common iliac lymphatic vessel",
+    "no evidence of common iliac lymphatic vessel",
+    "without common iliac lymphatic vessel",
+    "absence of common iliac lymphatic vessel",
+    "common iliac lymphatic vessels"
+  ],
+  "RID34769": [
+    "acute viral pneumonia",
+    "no viral pneumonia",
+    "no evidence of viral pneumonia",
+    "without viral pneumonia",
+    "absence of viral pneumonia",
+    "viral pneumonias"
+  ],
+  "RID46009": [
+    "acute semi-consolidation",
+    "no semi-consolidation",
+    "no evidence of semi-consolidation",
+    "without semi-consolidation",
+    "absence of semi-consolidation",
+    "semi-consolidations",
+    "semi-consolidated"
+  ],
+  "RID5176": [
+    "infarction of splenic causing small nonfunctioning splenic",
+    "acute infarction of spleen causing small nonfunctioning spleen",
+    "no infarction of spleen causing small nonfunctioning spleen",
+    "no evidence of infarction of spleen causing small nonfunctioning spleen",
+    "without infarction of spleen causing small nonfunctioning spleen",
+    "absence of infarction of spleen causing small nonfunctioning spleen",
+    "infarction of spleen causing small nonfunctioning spleens"
+  ],
+  "RID32048": [
+    "acute retro-aortic lymph node",
+    "no retro-aortic lymph node",
+    "no evidence of retro-aortic lymph node",
+    "without retro-aortic lymph node",
+    "absence of retro-aortic lymph node"
+  ],
+  "RID4665": [
+    "acute fracture dislocation",
+    "no fracture dislocation",
+    "no evidence of fracture dislocation",
+    "without fracture dislocation",
+    "absence of fracture dislocation",
+    "fracture dislocations",
+    "fracture dislocated"
+  ],
+  "RID32059": [
+    "acute pre-aortic lymph node group proper",
+    "no pre-aortic lymph node group proper",
+    "no evidence of pre-aortic lymph node group proper",
+    "without pre-aortic lymph node group proper",
+    "absence of pre-aortic lymph node group proper",
+    "pre-aortic lymph node group propers"
+  ],
+  "RID7704": [
+    "acute facial lymph node",
+    "no facial lymph node",
+    "no evidence of facial lymph node",
+    "without facial lymph node",
+    "absence of facial lymph node",
+    "facial lymph nodes"
+  ],
+  "RID31357": [
+    "acute set of ileal lymphatic vessels",
+    "no set of ileal lymphatic vessels",
+    "no evidence of set of ileal lymphatic vessels",
+    "without set of ileal lymphatic vessels",
+    "absence of set of ileal lymphatic vessels",
+    "set of ileal lymphatic vessel"
+  ],
+  "RID1494": [
+    "left inferior lung ligament lymph node",
+    "acute left inferior pulmonary ligament lymph node",
+    "no left inferior pulmonary ligament lymph node",
+    "no evidence of left inferior pulmonary ligament lymph node",
+    "without left inferior pulmonary ligament lymph node",
+    "absence of left inferior pulmonary ligament lymph node",
+    "left inferior pulmonary ligament lymph nodes"
+  ],
+  "RID31346": [
+    "acute set of superior rectal lymphatic vessels",
+    "no set of superior rectal lymphatic vessels",
+    "no evidence of set of superior rectal lymphatic vessels",
+    "without set of superior rectal lymphatic vessels",
+    "absence of set of superior rectal lymphatic vessels",
+    "set of superior rectal lymphatic vessel"
+  ],
+  "RID34367": [
+    "acute microcalcifications out of mass",
+    "no microcalcifications out of mass",
+    "no evidence of microcalcifications out of mass",
+    "without microcalcifications out of mass",
+    "absence of microcalcifications out of mass"
+  ],
+  "RID45677": [
+    "lesion effect on hepatic",
+    "acute lesion effect on liver",
+    "no lesion effect on liver",
+    "no evidence of lesion effect on liver",
+    "without lesion effect on liver",
+    "absence of lesion effect on liver",
+    "lesion effect on livers"
+  ],
+  "RID31904": [
+    "acute inferior epigastric lymph node group",
+    "no inferior epigastric lymph node group",
+    "no evidence of inferior epigastric lymph node group",
+    "without inferior epigastric lymph node group",
+    "absence of inferior epigastric lymph node group",
+    "inferior epigastric lymph node groups"
+  ],
+  "RID31335": [
+    "acute set of inferior anterior pancreaticoduodenal lymphatic vessels",
+    "no set of inferior anterior pancreaticoduodenal lymphatic vessels",
+    "no evidence of set of inferior anterior pancreaticoduodenal lymphatic vessels",
+    "without set of inferior anterior pancreaticoduodenal lymphatic vessels",
+    "absence of set of inferior anterior pancreaticoduodenal lymphatic vessels",
+    "set of inferior anterior pancreaticoduodenal lymphatic vessel"
+  ],
+  "RID50154": [
+    "solid component of part-solid lung nodule",
+    "acute solid component of part-solid pulmonary nodule",
+    "no solid component of part-solid pulmonary nodule",
+    "no evidence of solid component of part-solid pulmonary nodule",
+    "without solid component of part-solid pulmonary nodule",
+    "absence of solid component of part-solid pulmonary nodule",
+    "solid component of part-solid pulmonary nodules"
+  ],
+  "RID30534": [
+    "acute solitary lymphoid follicle of appendix",
+    "no solitary lymphoid follicle of appendix",
+    "no evidence of solitary lymphoid follicle of appendix",
+    "without solitary lymphoid follicle of appendix",
+    "absence of solitary lymphoid follicle of appendix",
+    "solitary lymphoid follicle of appendixs"
+  ],
+  "RID4904": [
+    "acute pericecal hernia",
+    "no pericecal hernia",
+    "no evidence of pericecal hernia",
+    "without pericecal hernia",
+    "absence of pericecal hernia",
+    "pericecal hernias"
+  ],
+  "RID50323": [
+    "acute pi-rads x - inadequate or absent (lesion)",
+    "no pi-rads x - inadequate or absent (lesion)",
+    "no evidence of pi-rads x - inadequate or absent (lesion)",
+    "without pi-rads x - inadequate or absent (lesion)",
+    "absence of pi-rads x - inadequate or absent (lesion)",
+    "pi-rads x - inadequate or absent (lesion)s"
+  ],
+  "RID1838": [
+    "acute fracture augmentation",
+    "no fracture augmentation",
+    "no evidence of fracture augmentation",
+    "without fracture augmentation",
+    "absence of fracture augmentation",
+    "fracture augmentations",
+    "fracture augmentated"
+  ],
+  "RID7692": [
+    "acute jugular lymphatic trunk",
+    "no jugular lymphatic trunk",
+    "no evidence of jugular lymphatic trunk",
+    "without jugular lymphatic trunk",
+    "absence of jugular lymphatic trunk",
+    "jugular lymphatic trunks"
+  ],
+  "RID34636": [
+    "polycystic renal disease",
+    "acute polycystic kidney disease",
+    "no polycystic kidney disease",
+    "no evidence of polycystic kidney disease",
+    "without polycystic kidney disease",
+    "absence of polycystic kidney disease",
+    "polycystic kidney diseases"
+  ],
+  "RID32135": [
+    "acute internal iliac lymph node",
+    "no internal iliac lymph node",
+    "no evidence of internal iliac lymph node",
+    "without internal iliac lymph node",
+    "absence of internal iliac lymph node",
+    "internal iliac lymph nodes"
+  ],
+  "RID31378": [
+    "acute set of superior pancreatic lymphatic vessels",
+    "no set of superior pancreatic lymphatic vessels",
+    "no evidence of set of superior pancreatic lymphatic vessels",
+    "without set of superior pancreatic lymphatic vessels",
+    "absence of set of superior pancreatic lymphatic vessels",
+    "set of superior pancreatic lymphatic vessel"
+  ],
+  "RID30523": [
+    "acute solitary lymphoid follicle of duodenum",
+    "no solitary lymphoid follicle of duodenum",
+    "no evidence of solitary lymphoid follicle of duodenum",
+    "without solitary lymphoid follicle of duodenum",
+    "absence of solitary lymphoid follicle of duodenum",
+    "solitary lymphoid follicle of duodenums"
+  ],
+  "RID28852": [
+    "acute set of mediastinal lymph nodes",
+    "no set of mediastinal lymph nodes",
+    "no evidence of set of mediastinal lymph nodes",
+    "without set of mediastinal lymph nodes",
+    "absence of set of mediastinal lymph nodes",
+    "set of mediastinal lymph node"
+  ],
+  "RID5029": [
+    "acute central spinal stenosis",
+    "no central spinal stenosis",
+    "no evidence of central spinal stenosis",
+    "without central spinal stenosis",
+    "absence of central spinal stenosis",
+    "central spinal stenosi",
+    "central spinal stenotic"
+  ],
+  "RID38044": [
+    "acute lumen of intestinal lymphatic trunk",
+    "no lumen of intestinal lymphatic trunk",
+    "no evidence of lumen of intestinal lymphatic trunk",
+    "without lumen of intestinal lymphatic trunk",
+    "absence of lumen of intestinal lymphatic trunk",
+    "lumen of intestinal lymphatic trunks"
+  ],
+  "RID34625": [
+    "acute deep vein thrombosis",
+    "no deep vein thrombosis",
+    "no evidence of deep vein thrombosis",
+    "without deep vein thrombosis",
+    "absence of deep vein thrombosis",
+    "deep vein thrombosi",
+    "deep vein thrombotic"
+  ],
+  "RID32548": [
+    "visceral pelvis lymphatic vessel",
+    "acute visceral pelvic lymphatic vessel",
+    "no visceral pelvic lymphatic vessel",
+    "no evidence of visceral pelvic lymphatic vessel",
+    "without visceral pelvic lymphatic vessel",
+    "absence of visceral pelvic lymphatic vessel",
+    "visceral pelvic lymphatic vessels"
+  ],
+  "RID32559": [
+    "parietal abdomen lymphatic vessel",
+    "acute parietal abdominal lymphatic vessel",
+    "no parietal abdominal lymphatic vessel",
+    "no evidence of parietal abdominal lymphatic vessel",
+    "without parietal abdominal lymphatic vessel",
+    "absence of parietal abdominal lymphatic vessel",
+    "parietal abdominal lymphatic vessels"
+  ],
+  "RID32597": [
+    "acute inferior pancreaticoduodenal lymphatic vessel",
+    "no inferior pancreaticoduodenal lymphatic vessel",
+    "no evidence of inferior pancreaticoduodenal lymphatic vessel",
+    "without inferior pancreaticoduodenal lymphatic vessel",
+    "absence of inferior pancreaticoduodenal lymphatic vessel",
+    "inferior pancreaticoduodenal lymphatic vessels"
+  ],
+  "RID29372": [
+    "acute submucosa of cystic duct",
+    "no submucosa of cystic duct",
+    "no evidence of submucosa of cystic duct",
+    "without submucosa of cystic duct",
+    "absence of submucosa of cystic duct",
+    "submucosa of cystic ducts"
+  ],
+  "RID4227": [
+    "acute adenoid cystic carcinoma",
+    "no adenoid cystic carcinoma",
+    "no evidence of adenoid cystic carcinoma",
+    "without adenoid cystic carcinoma",
+    "absence of adenoid cystic carcinoma",
+    "adenoid cystic carcinomas"
+  ],
+  "RID4926": [
+    "acute inguinal hernia",
+    "no inguinal hernia",
+    "no evidence of inguinal hernia",
+    "without inguinal hernia",
+    "absence of inguinal hernia",
+    "inguinal hernias"
+  ],
+  "RID31390": [
+    "acute set of celiac proper lymphatic vessels",
+    "no set of celiac proper lymphatic vessels",
+    "no evidence of set of celiac proper lymphatic vessels",
+    "without set of celiac proper lymphatic vessels",
+    "absence of set of celiac proper lymphatic vessels",
+    "set of celiac proper lymphatic vessel"
+  ],
+  "RID29141": [
+    "acute piedmont fracture",
+    "no piedmont fracture",
+    "no evidence of piedmont fracture",
+    "without piedmont fracture",
+    "absence of piedmont fracture",
+    "piedmont fractures"
+  ],
+  "RID38588": [
+    "acute pericardial effusion",
+    "no pericardial effusion",
+    "no evidence of pericardial effusion",
+    "without pericardial effusion",
+    "absence of pericardial effusion",
+    "pericardial effusions"
+  ],
+  "RID31372": [
+    "acute set of superior pancreaticoduodenal lymphatic vessels",
+    "no set of superior pancreaticoduodenal lymphatic vessels",
+    "no evidence of set of superior pancreaticoduodenal lymphatic vessels",
+    "without set of superior pancreaticoduodenal lymphatic vessels",
+    "absence of set of superior pancreaticoduodenal lymphatic vessels",
+    "set of superior pancreaticoduodenal lymphatic vessel"
+  ],
+  "RID45735": [
+    "acute lesion transition zone",
+    "no lesion transition zone",
+    "no evidence of lesion transition zone",
+    "without lesion transition zone",
+    "absence of lesion transition zone",
+    "lesion transition zones"
+  ],
+  "RID1776": [
+    "acute cystodiathermy of tumor",
+    "no cystodiathermy of tumor",
+    "no evidence of cystodiathermy of tumor",
+    "without cystodiathermy of tumor",
+    "absence of cystodiathermy of tumor",
+    "cystodiathermy of tumors"
+  ],
+  "RID31966": [
+    "acute retro-aortic lymph node group",
+    "no retro-aortic lymph node group",
+    "no evidence of retro-aortic lymph node group",
+    "without retro-aortic lymph node group",
+    "absence of retro-aortic lymph node group",
+    "retro-aortic lymph node groups"
+  ],
+  "RID49524": [
+    "acute benign prostatic hyperplasia nodule",
+    "no benign prostatic hyperplasia nodule",
+    "no evidence of benign prostatic hyperplasia nodule",
+    "without benign prostatic hyperplasia nodule",
+    "absence of benign prostatic hyperplasia nodule",
+    "benign prostatic hyperplasia nodules"
+  ],
+  "RID3676": [
+    "acute ureteritis cystica",
+    "no ureteritis cystica",
+    "no evidence of ureteritis cystica",
+    "without ureteritis cystica",
+    "absence of ureteritis cystica",
+    "ureteritis cysticas"
+  ],
+  "RID32035": [
+    "acute postvesical lymph node group",
+    "no postvesical lymph node group",
+    "no evidence of postvesical lymph node group",
+    "without postvesical lymph node group",
+    "absence of postvesical lymph node group",
+    "postvesical lymph node groups"
+  ],
+  "RID4886": [
+    "acute communicating hydrocephalus",
+    "no communicating hydrocephalus",
+    "no evidence of communicating hydrocephalus",
+    "without communicating hydrocephalus",
+    "absence of communicating hydrocephalus",
+    "communicating hydrocephalu"
+  ],
+  "RID31977": [
+    "acute precaval lymph node group",
+    "no precaval lymph node group",
+    "no evidence of precaval lymph node group",
+    "without precaval lymph node group",
+    "absence of precaval lymph node group",
+    "precaval lymph node groups"
+  ],
+  "RID32024": [
+    "acute interiliac lymph node group",
+    "no interiliac lymph node group",
+    "no evidence of interiliac lymph node group",
+    "without interiliac lymph node group",
+    "absence of interiliac lymph node group",
+    "interiliac lymph node groups"
+  ],
+  "RID7734": [
+    "acute spinal accessory lymph node",
+    "no spinal accessory lymph node",
+    "no evidence of spinal accessory lymph node",
+    "without spinal accessory lymph node",
+    "absence of spinal accessory lymph node",
+    "spinal accessory lymph nodes"
+  ],
+  "RID29717": [
+    "acute juxta-ileal lymphatic chain",
+    "no juxta-ileal lymphatic chain",
+    "no evidence of juxta-ileal lymphatic chain",
+    "without juxta-ileal lymphatic chain",
+    "absence of juxta-ileal lymphatic chain",
+    "juxta-ileal lymphatic chains"
+  ],
+  "RID29822": [
+    "acute set of right lateral aortic lymphatic vessels",
+    "no set of right lateral aortic lymphatic vessels",
+    "no evidence of set of right lateral aortic lymphatic vessels",
+    "without set of right lateral aortic lymphatic vessels",
+    "absence of set of right lateral aortic lymphatic vessels",
+    "set of right lateral aortic lymphatic vessel"
+  ],
+  "RID29696": [
+    "common liver lymphatic chain",
+    "acute common hepatic lymphatic chain",
+    "no common hepatic lymphatic chain",
+    "no evidence of common hepatic lymphatic chain",
+    "without common hepatic lymphatic chain",
+    "absence of common hepatic lymphatic chain",
+    "common hepatic lymphatic chains"
+  ],
+  "RID39295": [
+    "acute m1 distant metastasis stage",
+    "no m1 distant metastasis stage",
+    "no evidence of m1 distant metastasis stage",
+    "without m1 distant metastasis stage",
+    "absence of m1 distant metastasis stage",
+    "m1 distant metastasis stages"
+  ],
+  "RID29685": [
+    "acute left gastric lymphatic chain",
+    "no left gastric lymphatic chain",
+    "no evidence of left gastric lymphatic chain",
+    "without left gastric lymphatic chain",
+    "absence of left gastric lymphatic chain",
+    "left gastric lymphatic chains"
+  ],
+  "RID29706": [
+    "acute retropyloric lymphatic chain",
+    "no retropyloric lymphatic chain",
+    "no evidence of retropyloric lymphatic chain",
+    "without retropyloric lymphatic chain",
+    "absence of retropyloric lymphatic chain",
+    "retropyloric lymphatic chains"
+  ],
+  "RID3945": [
+    "simple osseous cyst",
+    "acute simple bone cyst",
+    "no simple bone cyst",
+    "no evidence of simple bone cyst",
+    "without simple bone cyst",
+    "absence of simple bone cyst",
+    "simple bone cysts"
+  ],
+  "RID49730": [
+    "acute lymphangiography",
+    "no lymphangiography",
+    "no evidence of lymphangiography",
+    "without lymphangiography",
+    "absence of lymphangiography",
+    "lymphangiographys"
+  ],
+  "RID34305": [
+    "acute heterogeneous mass enhancement",
+    "no heterogeneous mass enhancement",
+    "no evidence of heterogeneous mass enhancement",
+    "without heterogeneous mass enhancement",
+    "absence of heterogeneous mass enhancement",
+    "heterogeneous mass enhancements"
+  ],
+  "RID4916": [
+    "acute richter hernia",
+    "no richter hernia",
+    "no evidence of richter hernia",
+    "without richter hernia",
+    "absence of richter hernia",
+    "richter hernias"
+  ],
+  "RID50152": [
+    "part-solid lung nodule",
+    "acute part-solid pulmonary nodule",
+    "no part-solid pulmonary nodule",
+    "no evidence of part-solid pulmonary nodule",
+    "without part-solid pulmonary nodule",
+    "absence of part-solid pulmonary nodule",
+    "part-solid pulmonary nodules"
+  ],
+  "RID28859": [
+    "acute inferior pancreaticoduodenal lymph node",
+    "no inferior pancreaticoduodenal lymph node",
+    "no evidence of inferior pancreaticoduodenal lymph node",
+    "without inferior pancreaticoduodenal lymph node",
+    "absence of inferior pancreaticoduodenal lymph node",
+    "inferior pancreaticoduodenal lymph nodes"
+  ],
+  "RID32579": [
+    "acute ileal lymphatic vessel",
+    "no ileal lymphatic vessel",
+    "no evidence of ileal lymphatic vessel",
+    "without ileal lymphatic vessel",
+    "absence of ileal lymphatic vessel",
+    "ileal lymphatic vessels"
+  ],
+  "RID45746": [
+    "acute lesion matrix characteristic",
+    "no lesion matrix characteristic",
+    "no evidence of lesion matrix characteristic",
+    "without lesion matrix characteristic",
+    "absence of lesion matrix characteristic",
+    "lesion matrix characteristics"
+  ],
+  "RID3341": [
+    "acute lymphatic malformation",
+    "no lymphatic malformation",
+    "no evidence of lymphatic malformation",
+    "without lymphatic malformation",
+    "absence of lymphatic malformation",
+    "lymphatic malformations",
+    "lymphatic malformated"
+  ],
+  "RID31383": [
+    "acute set of inferior left gastric lymphatic vessels",
+    "no set of inferior left gastric lymphatic vessels",
+    "no evidence of set of inferior left gastric lymphatic vessels",
+    "without set of inferior left gastric lymphatic vessels",
+    "absence of set of inferior left gastric lymphatic vessels",
+    "set of inferior left gastric lymphatic vessel"
+  ],
+  "RID32090": [
+    "acute anterior inferior pancreaticoduodenal lymph node",
+    "no anterior inferior pancreaticoduodenal lymph node",
+    "no evidence of anterior inferior pancreaticoduodenal lymph node",
+    "without anterior inferior pancreaticoduodenal lymph node",
+    "absence of anterior inferior pancreaticoduodenal lymph node",
+    "anterior inferior pancreaticoduodenal lymph nodes"
+  ],
+  "RID4691": [
+    "acute salter type vii fracture",
+    "no salter type vii fracture",
+    "no evidence of salter type vii fracture",
+    "without salter type vii fracture",
+    "absence of salter type vii fracture",
+    "salter type vii fractures"
+  ],
+  "RID32535": [
+    "acute intermediate external iliac lymphatic vessel",
+    "no intermediate external iliac lymphatic vessel",
+    "no evidence of intermediate external iliac lymphatic vessel",
+    "without intermediate external iliac lymphatic vessel",
+    "absence of intermediate external iliac lymphatic vessel",
+    "intermediate external iliac lymphatic vessels"
+  ],
+  "RID31937": [
+    "acute pancreaticoduodenal lymph node group",
+    "no pancreaticoduodenal lymph node group",
+    "no evidence of pancreaticoduodenal lymph node group",
+    "without pancreaticoduodenal lymph node group",
+    "absence of pancreaticoduodenal lymph node group",
+    "pancreaticoduodenal lymph node groups"
+  ],
+  "RID14311": [
+    "acute masseteric nerve",
+    "no masseteric nerve",
+    "no evidence of masseteric nerve",
+    "without masseteric nerve",
+    "absence of masseteric nerve",
+    "masseteric nerves"
+  ],
+  "RID6034": [
+    "acute radiopacity",
+    "no radiopacity",
+    "no evidence of radiopacity",
+    "without radiopacity",
+    "absence of radiopacity",
+    "radiopacitys"
+  ],
+  "RID32524": [
+    "lymphatic vessel of abdominal",
+    "acute lymphatic vessel of abdomen",
+    "no lymphatic vessel of abdomen",
+    "no evidence of lymphatic vessel of abdomen",
+    "without lymphatic vessel of abdomen",
+    "absence of lymphatic vessel of abdomen",
+    "lymphatic vessel of abdomens"
+  ],
+  "RID7729": [
+    "acute lateral retropharyngeal lymph node",
+    "no lateral retropharyngeal lymph node",
+    "no evidence of lateral retropharyngeal lymph node",
+    "without lateral retropharyngeal lymph node",
+    "absence of lateral retropharyngeal lymph node",
+    "lateral retropharyngeal lymph nodes"
+  ],
+  "RID29761": [
+    "acute superior anterior pancreaticoduodenal lymphatic chain",
+    "no superior anterior pancreaticoduodenal lymphatic chain",
+    "no evidence of superior anterior pancreaticoduodenal lymphatic chain",
+    "without superior anterior pancreaticoduodenal lymphatic chain",
+    "absence of superior anterior pancreaticoduodenal lymphatic chain",
+    "superior anterior pancreaticoduodenal lymphatic chains"
+  ],
+  "RID5180": [
+    "acute osteonecrosis",
+    "no osteonecrosis",
+    "no evidence of osteonecrosis",
+    "without osteonecrosis",
+    "absence of osteonecrosis",
+    "osteonecrosi",
+    "osteonecrotic"
+  ],
+  "RID34125": [
+    "acute nodule of vermis of cerebellum",
+    "no nodule of vermis of cerebellum",
+    "no evidence of nodule of vermis of cerebellum",
+    "without nodule of vermis of cerebellum",
+    "absence of nodule of vermis of cerebellum",
+    "nodule of vermis of cerebellums"
+  ],
+  "RID1501": [
+    "left broncholung lymph node",
+    "acute left bronchopulmonary lymph node",
+    "no left bronchopulmonary lymph node",
+    "no evidence of left bronchopulmonary lymph node",
+    "without left bronchopulmonary lymph node",
+    "absence of left bronchopulmonary lymph node",
+    "left bronchopulmonary lymph nodes"
+  ],
+  "RID29772": [
+    "acute superior pancreaticoduodenal lymphatic chain",
+    "no superior pancreaticoduodenal lymphatic chain",
+    "no evidence of superior pancreaticoduodenal lymphatic chain",
+    "without superior pancreaticoduodenal lymphatic chain",
+    "absence of superior pancreaticoduodenal lymphatic chain",
+    "superior pancreaticoduodenal lymphatic chains"
+  ],
+  "RID5232": [
+    "acute metastasis by lymphatic and interstitial infiltration",
+    "no metastasis by lymphatic and interstitial infiltration",
+    "no evidence of metastasis by lymphatic and interstitial infiltration",
+    "without metastasis by lymphatic and interstitial infiltration",
+    "absence of metastasis by lymphatic and interstitial infiltration",
+    "metastasis by lymphatic and interstitial infiltrations",
+    "metastasis by lymphatic and interstitial infiltrated"
+  ],
+  "RID3323": [
+    "acute berry aneurysm",
+    "no berry aneurysm",
+    "no evidence of berry aneurysm",
+    "without berry aneurysm",
+    "absence of berry aneurysm",
+    "berry aneurysms"
+  ],
+  "RID31998": [
+    "acute middle pre-aortic lymph node group",
+    "no middle pre-aortic lymph node group",
+    "no evidence of middle pre-aortic lymph node group",
+    "without middle pre-aortic lymph node group",
+    "absence of middle pre-aortic lymph node group",
+    "middle pre-aortic lymph node groups"
+  ],
+  "RID7699": [
+    "acute superficial parotid lymph node",
+    "no superficial parotid lymph node",
+    "no evidence of superficial parotid lymph node",
+    "without superficial parotid lymph node",
+    "absence of superficial parotid lymph node",
+    "superficial parotid lymph nodes"
+  ],
+  "RID31354": [
+    "acute set of appendicular lymphatic vessels",
+    "no set of appendicular lymphatic vessels",
+    "no evidence of set of appendicular lymphatic vessels",
+    "without set of appendicular lymphatic vessels",
+    "absence of set of appendicular lymphatic vessels",
+    "set of appendicular lymphatic vessel"
+  ],
+  "RID30521": [
+    "acute solitary lymphoid nodule of intestine",
+    "no solitary lymphoid nodule of intestine",
+    "no evidence of solitary lymphoid nodule of intestine",
+    "without solitary lymphoid nodule of intestine",
+    "absence of solitary lymphoid nodule of intestine",
+    "solitary lymphoid nodule of intestines"
+  ],
+  "RID3915": [
+    "acute meniscal cyst",
+    "no meniscal cyst",
+    "no evidence of meniscal cyst",
+    "without meniscal cyst",
+    "absence of meniscal cyst",
+    "meniscal cysts"
+  ],
+  "RID32111": [
+    "acute intermediate ileal lymph node",
+    "no intermediate ileal lymph node",
+    "no evidence of intermediate ileal lymph node",
+    "without intermediate ileal lymph node",
+    "absence of intermediate ileal lymph node"
+  ],
+  "RID32017": [
+    "acute promontorial lymph node group",
+    "no promontorial lymph node group",
+    "no evidence of promontorial lymph node group",
+    "without promontorial lymph node group",
+    "absence of promontorial lymph node group",
+    "promontorial lymph node groups"
+  ],
+  "RID31343": [
+    "acute set of proximal superior mesenteric lymphatic vessels",
+    "no set of proximal superior mesenteric lymphatic vessels",
+    "no evidence of set of proximal superior mesenteric lymphatic vessels",
+    "without set of proximal superior mesenteric lymphatic vessels",
+    "absence of set of proximal superior mesenteric lymphatic vessels",
+    "set of proximal superior mesenteric lymphatic vessel"
+  ],
+  "RID1523": [
+    "acute retrocrural lymph node",
+    "no retrocrural lymph node",
+    "no evidence of retrocrural lymph node",
+    "without retrocrural lymph node",
+    "absence of retrocrural lymph node",
+    "retrocrural lymph nodes"
+  ],
+  "RID3525": [
+    "acute osteitis fibrosa cystica",
+    "no osteitis fibrosa cystica",
+    "no evidence of osteitis fibrosa cystica",
+    "without osteitis fibrosa cystica",
+    "absence of osteitis fibrosa cystica",
+    "osteitis fibrosa cysticas"
+  ]
+}

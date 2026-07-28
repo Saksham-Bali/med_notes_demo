@@ -1,0 +1,85 @@
+{
+  "naive": {
+    "rows": [
+      {
+        "date": "2025-01-15",
+        "sld": 95.0,
+        "pct_baseline": 0.0,
+        "new_lesion": false,
+        "classification": "SD"
+      },
+      {
+        "date": "2025-03-20",
+        "sld": 86.0,
+        "pct_baseline": -9.473684210526317,
+        "new_lesion": true,
+        "classification": "PD"
+      },
+      {
+        "date": "2025-05-22",
+        "sld": 78.0,
+        "pct_baseline": -17.894736842105264,
+        "new_lesion": false,
+        "classification": "SD"
+      },
+      {
+        "date": "2025-07-24",
+        "sld": 74.0,
+        "pct_baseline": -22.105263157894736,
+        "new_lesion": false,
+        "classification": "SD"
+      }
+    ],
+    "best_overall": "PD",
+    "target_keys": [
+      "primary_tumor|thorax|left",
+      "liver_metastasis|liver_segment_vii|right"
+    ],
+    "new_lesion_key": "liver_metastasis|liver|right"
+  },
+  "confirmed": {
+    "rows": [
+      {
+        "date": "2025-01-15",
+        "sld": 95.0,
+        "pct_baseline": 0.0,
+        "new_lesion": false,
+        "classification": "SD"
+      },
+      {
+        "date": "2025-03-20",
+        "sld": 78.0,
+        "pct_baseline": -17.894736842105264,
+        "new_lesion": false,
+        "classification": "SD"
+      },
+      {
+        "date": "2025-05-22",
+        "sld": 64.0,
+        "pct_baseline": -32.631578947368425,
+        "new_lesion": false,
+        "classification": "PR"
+      },
+      {
+        "date": "2025-07-24",
+        "sld": 58.0,
+        "pct_baseline": -38.94736842105263,
+        "new_lesion": false,
+        "classification": "PR"
+      }
+    ],
+    "best_overall": "PR",
+    "target_keys": [
+      "primary_tumor|thorax|left",
+      "liver_metastasis|liver|right|CONFIRMED_MERGE"
+    ],
+    "merged_from": [
+      "liver_metastasis|liver_segment_vii|right",
+      "liver_metastasis|liver|right"
+    ]
+  },
+  "baseline_mm": {
+    "lung": 55.0,
+    "liver": 40.0
+  }
+}

@@ -1,0 +1,36 @@
+# FindingFrame backend — FastAPI (uvicorn), Python 3.12.
+#
+# Build context MUST be the findingframe/ repo root (see infra/docker-compose.yml),
+# so this can COPY both backend/ and the vendored engine at infra/engine_vendor/
+# (produced by infra/scripts/vendor_engine.sh — run that first, or `docker compose build`
+# will fail with "engine_vendor: no such file or directory").
+FROM python:3.12-slim AS base
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
+WORKDIR /app
+
+# curl for the HEALTHCHECK; nothing else — the engine's frame path needs no
+# spaCy/FAISS/native deps (see docs/BUILD_SPEC.md).
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY backend/requirements.txt ./requirements.txt
+RUN pip install -r requirements.txt
+
+COPY backend/app ./app
+
+# Vendored, allowlisted engine copy (infra/scripts/vendor_engine.sh) — NOT the full
+# research repo. Overrides FF_ENGINE_PATH away from the dev default (../../tmc).
+COPY infra/engine_vendor ./engine
+ENV FF_ENGINE_PATH=/app/engine
+
+EXPOSE 8000
+
+HEALTHCHECK --interval=10s --timeout=5s --start-period=15s --retries=5 \
+  CMD curl -fsS http://localhost:8000/health || exit 1
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

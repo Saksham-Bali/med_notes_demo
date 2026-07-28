@@ -1,0 +1,34 @@
+{
+  "subject_code": "DEMO-NSCLC-01",
+  "cancer_type": "lung",
+  "reports": [
+    {
+      "source_report_id": "report_1",
+      "chart_date": "2025-01-15 09:30:00",
+      "note_id": "DEMO-NSCLC-01-CT-0001",
+      "note_type": "CT CHEST/ABDOMEN/PELVIS W CONTRAST",
+      "text": "SYNTHETIC DEMONSTRATION REPORT - NOT A REAL PATIENT\n\nEXAM: CT of the chest, abdomen and pelvis with IV contrast.\n\nCLINICAL HISTORY: Stage IV non-small cell lung carcinoma. Baseline staging prior\nto initiation of first-line systemic therapy.\n\nCOMPARISON: None available.\n\nTECHNIQUE: Multidetector CT was performed from the thoracic inlet through the\npubic symphysis following administration of intravenous contrast.\n\nFINDINGS:\n\nCHEST:\nThere is a spiculated primary mass in the left lower lobe measuring 55 mm in\ngreatest dimension, consistent with the patient's known non-small cell lung\ncarcinoma. No cavitation. A subcentimeter pulmonary nodule in the right upper\nlobe measures 6 mm and is indeterminate, too small to characterize. No pleural\neffusion. No pneumothorax. Heart size is normal.\n\nABDOMEN:\nA hepatic segment VII metastatic deposit measures 40 mm. No biliary ductal\ndilatation. The spleen, pancreas, and adrenal glands are unremarkable. No\nascites. The kidneys enhance symmetrically without hydronephrosis.\n\nPELVIS:\nNo pelvic lymphadenopathy. Urinary bladder is unremarkable. No free pelvic fluid.\n\nOSSEOUS STRUCTURES:\nNo aggressive osseous lesion. No fracture.\n\nIMPRESSION:\n1. Left lower lobe primary NSCLC measuring 55 mm (target lesion).\n2. Hepatic segment VII metastatic deposit measuring 40 mm (target lesion).\n3. Indeterminate 6 mm right upper lobe nodule, too small to characterize;\n   recommend follow-up.\n4. No osseous metastatic disease. No malignant lymphadenopathy.\n"
+    },
+    {
+      "source_report_id": "report_2",
+      "chart_date": "2025-03-20 10:05:00",
+      "note_id": "DEMO-NSCLC-01-CT-0002",
+      "note_type": "CT CHEST/ABDOMEN/PELVIS W CONTRAST",
+      "text": "SYNTHETIC DEMONSTRATION REPORT - NOT A REAL PATIENT\n\nEXAM: CT of the chest, abdomen and pelvis with IV contrast.\n\nCLINICAL HISTORY: Stage IV non-small cell lung carcinoma on first-line systemic\ntherapy. Restaging.\n\nCOMPARISON: CT chest/abdomen/pelvis dated 2025-01-15.\n\nTECHNIQUE: Contrast-enhanced multidetector CT from the thoracic inlet through the\npubic symphysis.\n\nFINDINGS:\n\nCHEST:\nThe left lower lobe primary mass has decreased in size and now measures 46 mm,\npreviously 55 mm. The indeterminate 6 mm right upper lobe nodule is unchanged and\nremains too small to characterize. No pleural effusion. No pneumothorax.\n\nABDOMEN:\nThe segment VII hepatic metastatic deposit has decreased and now measures 32 mm,\npreviously 40 mm. No biliary ductal dilatation. No ascites. No hydronephrosis.\n\nPELVIS:\nNo pelvic lymphadenopathy. No free pelvic fluid.\n\nOSSEOUS STRUCTURES:\nNo aggressive osseous lesion. No fracture.\n\nIMPRESSION:\n1. Decreasing left lower lobe primary NSCLC, now 46 mm (previously 55 mm).\n2. Decreasing segment VII hepatic metastatic deposit, now 32 mm (previously\n   40 mm).\n3. Stable indeterminate 6 mm right upper lobe nodule.\n4. Overall favorable interval response to therapy.\n"
+    },
+    {
+      "source_report_id": "report_3",
+      "chart_date": "2025-05-22 09:50:00",
+      "note_id": "DEMO-NSCLC-01-CT-0003",
+      "note_type": "CT CHEST/ABDOMEN/PELVIS W CONTRAST",
+      "text": "SYNTHETIC DEMONSTRATION REPORT - NOT A REAL PATIENT\n\nEXAM: CT of the chest, abdomen and pelvis with IV contrast.\n\nCLINICAL HISTORY: Stage IV non-small cell lung carcinoma on systemic therapy.\nRestaging.\n\nCOMPARISON: CT chest/abdomen/pelvis dated 2025-03-20.\n\nTECHNIQUE: Contrast-enhanced multidetector CT from the thoracic inlet through the\npubic symphysis.\n\nFINDINGS:\n\nCHEST:\nThe left lower lobe primary mass continues to decrease and now measures 38 mm,\npreviously 46 mm. The indeterminate right upper lobe nodule remains 6 mm and too\nsmall to characterize. No pleural effusion. No pneumothorax.\n\nABDOMEN:\nA metastatic deposit in the right hepatic lobe measures 26 mm and has decreased\ncompared with the prior examination. No biliary ductal dilatation. No ascites.\nNo hydronephrosis.\n\nPELVIS:\nNo pelvic lymphadenopathy. No free pelvic fluid.\n\nOSSEOUS STRUCTURES:\nNo aggressive osseous lesion. No fracture.\n\nIMPRESSION:\n1. Further decreasing left lower lobe primary NSCLC, now 38 mm.\n2. Decreasing right hepatic lobe metastatic deposit, now 26 mm.\n3. Stable indeterminate 6 mm right upper lobe nodule.\n4. Continued favorable response to therapy.\n"
+    },
+    {
+      "source_report_id": "report_4",
+      "chart_date": "2025-07-24 10:15:00",
+      "note_id": "DEMO-NSCLC-01-CT-0004",
+      "note_type": "CT CHEST/ABDOMEN/PELVIS W CONTRAST",
+      "text": "SYNTHETIC DEMONSTRATION REPORT - NOT A REAL PATIENT\n\nEXAM: CT of the chest, abdomen and pelvis with IV contrast.\n\nCLINICAL HISTORY: Stage IV non-small cell lung carcinoma on systemic therapy.\nRestaging.\n\nCOMPARISON: CT chest/abdomen/pelvis dated 2025-05-22.\n\nTECHNIQUE: Contrast-enhanced multidetector CT from the thoracic inlet through the\npubic symphysis.\n\nFINDINGS:\n\nCHEST:\nThe left lower lobe primary mass measures 34 mm, further decreased from 38 mm.\nThe indeterminate right upper lobe nodule remains 6 mm and too small to\ncharacterize. No pleural effusion. No pneumothorax.\n\nABDOMEN:\nThe right hepatic lobe metastatic deposit measures 24 mm, further decreased from\n26 mm. No biliary ductal dilatation. No ascites. No hydronephrosis.\n\nPELVIS:\nNo pelvic lymphadenopathy. No free pelvic fluid.\n\nOSSEOUS STRUCTURES:\nNo aggressive osseous lesion. No fracture.\n\nIMPRESSION:\n1. Further decreasing left lower lobe primary NSCLC, now 34 mm.\n2. Further decreasing right hepatic lobe metastatic deposit, now 24 mm.\n3. Stable indeterminate 6 mm right upper lobe nodule.\n4. Sustained favorable response to therapy.\n"
+    }
+  ]
+}

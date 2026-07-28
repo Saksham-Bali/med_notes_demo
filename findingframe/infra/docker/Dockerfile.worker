@@ -1,0 +1,38 @@
+# FindingFrame extraction worker — imports the backend `app` package (see
+# worker/_bootstrap.py, which expects a `backend/` sibling directory containing `app/`).
+# Mirrors the repo layout under /app so that bootstrap path resolution just works.
+#
+# Build context MUST be the findingframe/ repo root (see infra/docker-compose.yml),
+# so this can COPY backend/, worker/, and the vendored engine at infra/engine_vendor/
+# (produced by infra/scripts/vendor_engine.sh — run that first).
+FROM python:3.12-slim AS base
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
+WORKDIR /app
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# worker/ has no separate requirements.txt (BUILD_SPEC: "worker/ imports backend.app"),
+# so it shares backend/requirements.txt.
+COPY backend/requirements.txt ./backend/requirements.txt
+RUN pip install -r backend/requirements.txt
+
+COPY backend/app ./backend/app
+COPY worker ./worker
+
+# Vendored, allowlisted engine copy (infra/scripts/vendor_engine.sh) — NOT the full
+# research repo. Overrides FF_ENGINE_PATH away from the dev default (../../tmc).
+COPY infra/engine_vendor ./engine
+ENV FF_ENGINE_PATH=/app/engine
+
+# No HTTP surface; healthcheck asserts the process (and its DB connection) is alive by
+# running the worker's own settings/import path.
+HEALTHCHECK --interval=15s --timeout=5s --start-period=15s --retries=5 \
+  CMD python -c "import worker._bootstrap, app.core.config" || exit 1
+
+CMD ["python", "-m", "worker.main"]
