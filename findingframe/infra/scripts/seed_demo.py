@@ -111,12 +111,26 @@ def build_pg_dsn(database_url: str) -> str:
 
 
 def resolve_git_sha(repo_path: Path) -> str:
+    """HEAD sha, suffixed "+dirty" when the checkout has uncommitted changes.
+
+    Mirrors backend/app/engine/adapter.py::_resolve_git_sha — keep the two in sync so a
+    seeded run and a live run label engine provenance identically.
+    """
     try:
         out = subprocess.run(
             ["git", "-C", str(repo_path), "rev-parse", "HEAD"],
             capture_output=True, text=True, timeout=10,
         )
-        return out.stdout.strip() if out.returncode == 0 else ""
+        if out.returncode != 0:
+            return ""
+        sha = out.stdout.strip()
+        status = subprocess.run(
+            ["git", "-C", str(repo_path), "status", "--porcelain"],
+            capture_output=True, text=True, timeout=10,
+        )
+        if status.returncode == 0 and status.stdout.strip():
+            return f"{sha}+dirty"
+        return sha
     except Exception:
         return ""
 
