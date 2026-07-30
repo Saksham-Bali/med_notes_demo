@@ -43,6 +43,10 @@
 #   infra/scripts/vendor_engine.sh              # vendor into infra/engine_vendor/
 #   infra/scripts/vendor_engine.sh --dry-run     # print the plan only, copy nothing
 #   infra/scripts/vendor_engine.sh --verify-only  # re-check an existing vendor dir
+#   infra/scripts/vendor_engine.sh --allow-untraceable
+#       # skip the provenance guard below (dirty tree / unreachable-from-main) for a
+#       # deliberate, documented exception. Record WHY in the commit that updates
+#       # VENDOR_SHA -- this flag exists for real exceptions, not to silence the check.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -54,10 +58,12 @@ VENDOR_DIR="${FF_VENDOR_DIR:-$INFRA_DIR/engine_vendor}"
 
 DRY_RUN=false
 VERIFY_ONLY=false
+ALLOW_UNTRACEABLE=false
 for arg in "$@"; do
   case "$arg" in
     --dry-run) DRY_RUN=true ;;
     --verify-only) VERIFY_ONLY=true ;;
+    --allow-untraceable) ALLOW_UNTRACEABLE=true ;;
     *) echo "Unknown arg: $arg" >&2; exit 1 ;;
   esac
 done
@@ -99,6 +105,74 @@ RSYNC_EXCLUDES=(
   --exclude='.env'
   --exclude='.env.*'
 )
+
+# ---------------------------------------------------------------------------
+# Provenance guard: refuse to vendor (or claim clean via --dry-run/--verify-only)
+# a source tree we could not trace back to a commit on the main line. This is the
+# fix for the exact failure that shipped e04d3c6: it sat on an abandoned branch
+# ("Frames") after a history rewrite and was never an ancestor of origin/main, so
+# nobody could resolve its provenance from the main line at all
+# (PRE_UPDATE_PLAN_2026-07-30.md §1.3). Runs in every mode (not just a real vendor)
+# so `--dry-run`/`--verify-only` actually tell you whether the CURRENT checkout at
+# $ENGINE_SRC would pass, per the same plan's requirement to verify this guard
+# without re-vendoring.
+# ---------------------------------------------------------------------------
+if [[ "$ALLOW_UNTRACEABLE" == true ]]; then
+  echo "WARNING: --allow-untraceable set -- skipping the source-tree provenance guard." >&2
+  echo "  Record why in the commit that updates VENDOR_SHA." >&2
+else
+  if ! git -C "$ENGINE_SRC" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    echo "ERROR: $ENGINE_SRC is not a git checkout -- cannot verify provenance." >&2
+    echo "  Fix: vendor from a real git checkout of the engine repo, or pass" >&2
+    echo "  --allow-untraceable for a deliberate, documented exception." >&2
+    exit 1
+  fi
+
+  # (a) no uncommitted changes inside what actually gets vendored. Checked as tracked
+  # + untracked (mirrors backend/app/engine/adapter.py::_resolve_git_sha's definition
+  # of "dirty" -- one definition across the system), but scoped to INCLUDE_DIRS /
+  # OPTIONAL_FILES only: an untracked scratch note in e.g. paper/ or research/ never
+  # ships and must not block vendoring something that IS clean.
+  dirty="$(git -C "$ENGINE_SRC" status --porcelain -- \
+      "${INCLUDE_DIRS[@]}" "${OPTIONAL_FILES[@]}" 2>/dev/null || true)"
+  if [[ -n "$dirty" ]]; then
+    echo "ERROR: $ENGINE_SRC has uncommitted changes inside the vendored paths:" >&2
+    echo "$dirty" >&2
+    echo "  Fix: commit or stash these changes so the vendored copy traces to a real" >&2
+    echo "  commit, then re-run. Use --allow-untraceable only for a deliberate," >&2
+    echo "  documented exception." >&2
+    exit 1
+  fi
+  echo "OK: no uncommitted changes in vendored paths"
+
+  # (b) the resolved SHA must be reachable from the SOURCE repo's own origin/main --
+  # NOT the product (pre) repo's; a tmc SHA does not resolve inside pre. Best-effort
+  # fetch first (freshest signal); a fetch failure (offline, no credentials) is a
+  # connectivity problem, not a provenance one, so we fall back to whatever
+  # origin/main ref is already known locally rather than hard-failing on it.
+  # GIT_TERMINAL_PROMPT=0 stops git from blocking on an interactive credential prompt.
+  SRC_SHA="$(git -C "$ENGINE_SRC" rev-parse HEAD)"
+  if ! GIT_TERMINAL_PROMPT=0 git -C "$ENGINE_SRC" fetch origin main --quiet 2>/dev/null; then
+    echo "WARN: could not fetch $ENGINE_SRC's origin/main (offline?) -- checking" >&2
+    echo "  reachability against the last-known local origin/main ref instead." >&2
+  fi
+  if ! git -C "$ENGINE_SRC" rev-parse --verify -q origin/main >/dev/null; then
+    echo "ERROR: $ENGINE_SRC has no origin/main ref to check reachability against." >&2
+    echo "  Fix: add/fetch a remote named 'origin' with a 'main' branch, or pass" >&2
+    echo "  --allow-untraceable to skip this check for a deliberate exception." >&2
+    exit 1
+  fi
+  if ! git -C "$ENGINE_SRC" merge-base --is-ancestor "$SRC_SHA" origin/main; then
+    echo "ERROR: $SRC_SHA is not an ancestor of $ENGINE_SRC's origin/main." >&2
+    echo "  This is the exact failure mode that shipped e04d3c6: a commit that sits on" >&2
+    echo "  an abandoned branch after a history rewrite and cannot be traced from the" >&2
+    echo "  main line. Fix: get this commit onto origin/main (merge/rebase it there)" >&2
+    echo "  first, or pass --allow-untraceable for a deliberate, documented exception." >&2
+    exit 1
+  fi
+  echo "OK: $SRC_SHA is an ancestor of origin/main"
+fi
+echo
 
 echo "FindingFrame engine vendor"
 echo "  source: $ENGINE_SRC"
@@ -228,6 +302,15 @@ PY
 else
   echo "(skipping import smoke test: $PYBIN not found/executable)"
 fi
+
+# The smoke test imports from VENDOR_DIR, so CPython writes __pycache__/*.pyc back into
+# it -- after rsync already excluded exactly those paths. Dockerfile.backend/.worker COPY
+# this directory wholesale, so left alone the image ships host bytecode (built here on
+# macOS, loaded in a Linux container, where the magic number never matches and it is dead
+# weight), and the vendored tree stops being byte-reproducible from a given VENDOR_SHA --
+# which is the one property it exists to provide. Clean up after ourselves.
+find "$VENDOR_DIR" -name '__pycache__' -type d -prune -exec rm -rf {} + 2>/dev/null || true
+find "$VENDOR_DIR" -name '*.pyc' -delete 2>/dev/null || true
 
 echo
 echo "Vendor complete."

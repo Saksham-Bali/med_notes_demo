@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any
 
 from extraction.finding_frame_schema import FINDING_FRAME_SCHEMA_VERSION, FindingFrame
+from extraction.rule_layer_provenance import rule_layer_fingerprint
 from fact_graph.frame_linker import FRAME_LINKER_SCHEMA_VERSION, link_frame_events
 
 
@@ -130,6 +131,11 @@ def frames_to_frame_fact_graph(
         "unresolved_link_queue": link_result["unresolved_link_queue"],
         "false_split_candidates": link_result["false_split_candidates"],
         "link_summary": link_result["summary"],
+        # Content-addressed hash of the anatomy alias map, oncology taxonomy,
+        # and slot-normalization tables that decided the anatomy/laterality
+        # views feeding the composite track key above (P2-2). See
+        # extraction/rule_layer_provenance.py.
+        "rule_layer_provenance": rule_layer_fingerprint(),
     }
 
 

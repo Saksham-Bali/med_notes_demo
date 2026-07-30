@@ -529,6 +529,15 @@ class FindingFramePatientProcessor:
             },
             "report_manifest_hash": report_manifest_hash,
             "report_manifest": report_manifest,
+            # Content-addressed fingerprint of the deterministic rule layer
+            # (anatomy alias map, oncology taxonomy, slot-normalization
+            # tables) that produced `tracks` below -- recorded alongside
+            # extraction_provenance's model id and prompt version so a reader
+            # can tell which rule-layer version, not just which reports, went
+            # into this artifact (P2-2). Computed once inside
+            # frames_to_frame_fact_graph; reused here rather than
+            # recomputed.
+            "rule_layer_provenance": frame_graph.get("rule_layer_provenance"),
             "reports_attempted": len(patient_reports),
             "reports_succeeded": len(reports_payload),
             "reports_failed": len(report_errors),

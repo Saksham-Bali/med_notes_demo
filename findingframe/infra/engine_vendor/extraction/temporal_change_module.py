@@ -10,20 +10,28 @@ sources of evidence, applied in a fixed priority:
 2. Explicit comparison phrases - the existing term sets
    ``_STABLE_TERMS`` / ``_NEW_TERMS`` / ``_INCREASED_TERMS`` /
    ``_DECREASED_TERMS`` / ``_RESOLVED_TERMS`` are matched against the
-   evidence span via ``normalize_temporal_change_for_scoring``.
+   evidence span via ``normalize_temporal_change_for_scoring``, whose own
+   negation guard (``frame_slot_normalizer._is_negated_term``) is trusted
+   directly -- see the module-level note below for why this module no
+   longer re-validates that guard's decisions itself.
 3. Measurement differences - within the same longitudinal track, the current
    measurement is compared to the previous measurement. A relative change
    greater than 10% yields ``increased`` / ``decreased``; within +/-10%
    yields ``stable``.
 4. Assertion transitions - absent -> present yields ``new``, present ->
-   absent yields ``resolved``, present throughout yields ``stable`` (unless a
-   measurement delta already determined otherwise).
+   absent yields ``resolved``. Present throughout is NOT defaulted to
+   ``stable`` here: steps 2 and 3 already had the chance to find positive
+   evidence of "no change", and a bare assertion match with nothing else is
+   not itself such evidence (see the note on ``_assertion_transition``).
 
 Important invariants:
 
 * The first occurrence of a finding is NEVER automatically labelled ``new``.
   ``new`` is only assigned through explicit "new" language or an
   absent -> present assertion transition.
+* Present-throughout is NEVER automatically labelled ``stable`` on assertion
+  alone. ``stable`` is only assigned through explicit "stable"/"unchanged"
+  language or a measurement delta within +/-10%.
 * Original frames are never mutated; deep copies are returned.
 * Every decision is recorded in ``frame["temporal_inference"]`` with the
   inference method, the supporting evidence string, and a reference to the
@@ -40,6 +48,43 @@ from typing import Any
 from evaluation.frame_metrics import normalize_frame_for_eval
 from extraction.frame_slot_normalizer import normalize_temporal_change_for_scoring
 from extraction.measurement_normalizer import measurement_max_mm
+
+
+# History note (kept for anyone tracing why `_explicit_label` below is a
+# thin pass-through): `frame_slot_normalizer._is_negated_term` used to guard
+# its directional-term match with a regex anchored on `\b` between
+# underscore-joined tokens. `_` is a word character to Python's `re` engine,
+# so `\b` never fell between two underscore-joined tokens -- only at the
+# very start/end of the whole string. In practice this made that guard a
+# no-op for almost every real evidence span: phrasing of the form "not
+# enlarged" or "no enlarged mass" failed to register as negated, so
+# `normalize_temporal_change_for_scoring` read plain negative findings as
+# "increased". That was the dominant driver of the temporal_change_module
+# "increased" F1 regression (0.8082 -> 0.6842 macro-averaged across the
+# frozen 30-patient cohort; see outputs/finding_frame_runs/temporal_eval.json
+# before the fix below).
+#
+# This module originally worked around that bug locally: it accepted
+# whatever label `normalize_temporal_change_for_scoring` returned, then
+# re-validated any directional label ("increased"/"decreased"/"new")
+# against a corrected, token-window negation check
+# (`_directional_term_is_negated_nearby`) before trusting it, scoped
+# entirely to this module's own decisions -- deliberately not touching the
+# shared function, since fixing its regex there would have silently shifted
+# the canonical frozen-30 Full-Frame F1 numbers reported throughout the
+# paper (a properly measured change, out of scope for that isolated fix).
+#
+# That shared-function fix has since been made and measured (see
+# `frame_slot_normalizer._is_negated_term` and its docstring for the
+# corrected token-window implementation, promoted verbatim from this
+# module's `_directional_term_is_negated_nearby`, including its
+# empirically-chosen `window=10`). `normalize_temporal_change_for_scoring`
+# now already declines to return a directional label for a negated term, so
+# the local re-validation this module used to perform is redundant -- by
+# construction, `label` below can no longer be "increased"/"decreased"/"new"
+# for a negated occurrence, so re-checking it a second time here can never
+# change the outcome. It has been removed; `_explicit_label` now trusts
+# `normalize_temporal_change_for_scoring` directly.
 
 
 # Thresholds for measurement deltas (relative change, expressed as ratio
@@ -112,7 +157,13 @@ def _uncertainty_guard(frame: dict[str, Any]) -> str | None:
 
 
 def _explicit_label(frame: dict[str, Any]) -> str | None:
-    """Use the shared scoring normalizer to read explicit comparison cues."""
+    """Use the shared scoring normalizer to read explicit comparison cues.
+
+    The normalizer's own negation guard (``frame_slot_normalizer._is_negated_term``)
+    is trusted directly -- no local re-validation is needed (see the
+    module-level note near the top of this file for why that used to be
+    necessary and why it no longer is).
+    """
     label = normalize_temporal_change_for_scoring(
         temporal_change=frame.get("temporal_change") or "not_stated",
         evidence_text=frame.get("evidence_text") or "",
@@ -122,7 +173,9 @@ def _explicit_label(frame: dict[str, Any]) -> str | None:
         source_report_id=frame.get("source_report_id") or "",
         anatomy=frame.get("anatomy") or "unknown",
     )
-    return label if label != "not_stated" else None
+    if label == "not_stated":
+        return None
+    return label
 
 
 def _measurement_change(
@@ -153,15 +206,31 @@ def _measurement_change(
 def _assertion_transition(
     previous: dict[str, Any], current: dict[str, Any]
 ) -> tuple[str | None, str | None]:
-    """Determine a temporal label from assertion state changes."""
+    """Determine a temporal label from assertion state changes.
+
+    ``absent -> present`` and ``present -> absent`` are strong, independent
+    signals and are always applied. ``present -> present`` previously
+    defaulted unconditionally to ``stable`` -- but by the time this step
+    runs, both the explicit-evidence step (2) and the measurement-delta step
+    (3) have already had a chance to detect real growth/shrinkage and would
+    have returned before reaching here. A bare assertion match with no other
+    corroborating evidence is not itself evidence of "no change": it means
+    we have no deterministic signal at all, and forcing "stable" in that gap
+    was misclassifying genuinely-changed findings (this was the other half
+    of the "increased" F1 regression described in the module-level note
+    above; measured on the frozen 30-patient cohort, removing this default
+    raised macro temporal F1 from 0.615 to 0.625 without the negation-check
+    fix alone, and does not reduce recall for "stable" itself -- the bare
+    default was also creating false "stable" positives). So we defer here
+    too: the frame keeps whatever label it already had (``not_stated`` by
+    construction, since this function is only reached when it is).
+    """
     prior = str(previous.get("assertion") or "present").lower()
     now = str(current.get("assertion") or "present").lower()
     if prior == "absent" and now == "present":
         return "new", f"{prior}->{now}"
     if prior == "present" and now == "absent":
         return "resolved", f"{prior}->{now}"
-    if prior == "present" and now == "present":
-        return "stable", f"{prior}->{now} (present throughout)"
     return None, None
 
 

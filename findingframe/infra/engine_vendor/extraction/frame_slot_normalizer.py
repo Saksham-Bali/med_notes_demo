@@ -470,12 +470,57 @@ def normalize_anatomy_for_linking(
     return canonical
 
 
-def _is_negated_term(text: str, terms: set[str]) -> bool:
+# Negation cues checked against tokens preceding a directional term. This is
+# the set already validated in isolation by `temporal_change_module`'s
+# `_directional_term_is_negated_nearby` (see that module's history, commit
+# cd25b8c): it adds "not" and "non" -- both missing from this function's
+# original cue list despite being common radiology negations ("not enlarged",
+# "non-enlarged lymph node") -- and drops "clear", which never carried its
+# own weight in that fix.
+_NEGATION_CUES = {"no", "not", "without", "free", "negative", "non", "absence", "cleared"}
+
+
+def _is_negated_term(text: str, terms: set[str], *, window: int = 10) -> bool:
+    """Return True when every occurrence of a term in ``terms`` in ``text``
+    is preceded, within ``window`` tokens, by a negation cue -- i.e. there is
+    no un-negated occurrence left to support a positive read of ``terms``.
+
+    ``text`` may be raw (space-joined) or already normalized (underscore-
+    joined) free text; it is re-normalized here via ``normalize_slot_token``
+    so both forms are handled identically.
+
+    This replaces an earlier regex implementation
+    (``r"\\b(no|without|...)_(?:[a-z0-9]+_)*(TERM)\\b"``) that was silently
+    broken. ``normalize_slot_token`` maps every non-alphanumeric separator
+    (space, hyphen, comma, ...) to ``_``, and ``_`` is itself a word
+    character to Python's ``re`` engine. On a fully underscore-joined string
+    there is therefore no internal word/non-word transition for ``\\b`` to
+    anchor on -- it only matches at the very start and end of the *whole*
+    string. That regex only ever matched when the negation cue was the
+    literal first token of ``text`` and the target term was the literal last
+    token (e.g. ``no_interval_increase``); it silently failed to fire on any
+    realistic sentence where the cue sits elsewhere in the span, e.g.
+    ``there_is_no_interval_increase`` or plain ``not_enlarged`` -- the
+    ``\\b`` before the cue never matched because the preceding token was
+    joined by ``_``, not a true non-word character. It also omitted ``not``
+    from the cue list outright, so "not enlarged" failed regardless of
+    position. Both defects independently drove
+    ``normalize_temporal_change_for_scoring`` to misread negated findings as
+    their un-negated directional label (e.g. "not enlarged" -> "increased").
+    See ``temporal_change_module.py``'s git history (commit cd25b8c) for the
+    isolated repro and measured impact before this fix was promoted here.
+    """
     if not terms:
         return False
-    terms_pattern = "|".join(re.escape(term) for term in terms)
-    pattern = rf"\b(no|without|free|negative|clear|absence|cleared)_(?:[a-z0-9]+_)*({terms_pattern})\b"
-    return bool(re.search(pattern, text))
+    tokens = normalize_slot_token(text or "").split("_")
+    hits = [i for i, tok in enumerate(tokens) if tok in terms]
+    if not hits:
+        return False
+    for i in hits:
+        start = max(0, i - window)
+        if not any(tok in _NEGATION_CUES for tok in tokens[start:i]):
+            return False
+    return True
 
 
 def normalize_temporal_change_for_scoring(
@@ -577,3 +622,44 @@ def _not_visualized_context_matches_finding(
     if anatomy:
         context_terms.update(anatomy.split("_"))
     return bool(tokens & context_terms)
+
+
+# Named term/anatomy tables that determine anatomy and temporal-change
+# normalization behavior in this module. Consulted by
+# extraction/rule_layer_provenance.py to fingerprint the rule layer for
+# run-artifact provenance (see docs/REMEDIATION_PLAN_2026-07-29.md P2-2). Keep
+# this registry in sync when adding, removing, or renaming a table with real
+# behavioral effect.
+RULE_TABLES: dict[str, Any] = {
+    "UNKNOWN_ANATOMY": UNKNOWN_ANATOMY,
+    "_PANCREAS_TOKENS": _PANCREAS_TOKENS,
+    "_COLON_TOKENS": _COLON_TOKENS,
+    "_POSTSURGICAL_ANATOMY_FAMILIES": _POSTSURGICAL_ANATOMY_FAMILIES,
+    "_BILIARY_DEVICE_ANATOMY": _BILIARY_DEVICE_ANATOMY,
+    "_DEEP_VENOUS_ANATOMY": _DEEP_VENOUS_ANATOMY,
+    "_INTRACRANIAL_DEVICE_ANATOMY": _INTRACRANIAL_DEVICE_ANATOMY,
+    "_VENOUS_DEVICE_ANATOMY": _VENOUS_DEVICE_ANATOMY,
+    "_PELVIC_SURGICAL_BED": _PELVIC_SURGICAL_BED,
+    "_NEW_TERMS": _NEW_TERMS,
+    "_INCREASED_TERMS": _INCREASED_TERMS,
+    "_DECREASED_TERMS": _DECREASED_TERMS,
+    "_STABLE_TERMS": _STABLE_TERMS,
+    "_RESOLVED_TERMS": _RESOLVED_TERMS,
+    "_POSTSURGICAL_TERMS": _POSTSURGICAL_TERMS,
+    "_HEALED_TERMS": _HEALED_TERMS,
+    "_NEGATION_CUES": _NEGATION_CUES,
+}
+
+# Functions in this module whose branching logic is not exhausted by the
+# tables above (for example, per-finding-type if/elif dispatch). Hashed as
+# source text rather than canonicalized content -- see
+# extraction/rule_layer_provenance.py for why.
+RULE_LOGIC_FUNCTIONS: tuple[Any, ...] = (
+    normalize_slot_token,
+    _token_set,
+    normalize_anatomy_for_scoring,
+    normalize_anatomy_for_linking,
+    _is_negated_term,
+    normalize_temporal_change_for_scoring,
+    _not_visualized_context_matches_finding,
+)

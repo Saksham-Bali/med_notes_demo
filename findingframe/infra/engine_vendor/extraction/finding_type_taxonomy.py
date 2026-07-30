@@ -822,6 +822,26 @@ def taxonomy_prompt_block() -> str:
     return "\n".join(lines)
 
 
+# Oncology taxonomy tables and canonicalization logic that determine
+# FindingFrame track identity (composite key = finding_type | anatomy |
+# laterality). Consulted by extraction/rule_layer_provenance.py to fingerprint
+# the rule layer for run-artifact provenance (see docs/REMEDIATION_PLAN_2026-07-29.md
+# P2-2). The echo/CXR taxonomies below belong to a separate pipeline and are
+# intentionally excluded. Keep this registry in sync when adding, removing, or
+# renaming a table or function with real behavioral effect on oncology anatomy
+# or finding-type identity.
+ONCOLOGY_RULE_TABLES: dict[str, Any] = {
+    "INITIAL_FINDING_TYPES": INITIAL_FINDING_TYPES,
+    "TAXONOMY_ALIASES": TAXONOMY_ALIASES,
+    "ANATOMY_ALIASES": ANATOMY_ALIASES,
+}
+ONCOLOGY_RULE_LOGIC_FUNCTIONS: tuple[Any, ...] = (
+    _normalize_anatomy_text,
+    canonicalize_anatomy,
+    canonicalize_finding_type,
+)
+
+
 ECHO_ANATOMY_ALIASES: dict[str, str] = {
     "heart": "heart",
     "cardiac": "heart",
