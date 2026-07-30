@@ -14,7 +14,7 @@ An authenticated, multi-tenant web platform where oncology data abstractors and 
 ## 1. Understanding of the current system (verified)
 
 ### 1.1 The engine (`pre/tmc/`) — the crown jewel, reused as-is
-- **Extract one report:** `FindingFrameExtractor(domain="radiology").extract(report_text, chart_date, study_type, source_report_id) -> FindingFrameExtractionResult` (`extraction/finding_frame_extractor.py`). LLM call at T=0, JSON-schema-constrained; checklist over 20 oncology finding types + catch-all; deterministic regex "rescue" passes; evidence gate annotates (does **not** drop) each frame with a verifiable span.
+- **Extract one report:** `FindingFrameExtractor(domain="radiology").extract(report_text, chart_date, study_type, source_report_id) -> FindingFrameExtractionResult` (`extraction/finding_frame_extractor.py`). LLM call requests temperature 0 via `OpenRouterLLMClient`, which sets it with no per-model guard (unlike the direct-OpenAI client, which skips the parameter for models that reject it); whether OpenRouter's `openai/gpt-5.5` honours, ignores, or rejects the value is unverified. JSON-schema-constrained; checklist over 20 oncology finding types + catch-all; deterministic regex "rescue" passes; evidence gate annotates (does **not** drop) each frame with a verifiable span.
 - **Process a patient (multi-report):** `FindingFramePatientProcessor.process_patient(subject_id, reports_df)` (`pipeline/finding_frame_processor.py`) → `FrameArtifact` JSON: frames, `frame_events`, `tracks`, `track_graph` (4 edge types), `unresolved_link_queue`, `false_split_candidates`, telemetry, verifier report. `reports_df` cols: `subject_id, charttime, note_id, note_type, text`. **Pure JSON, deterministic, no DB, no LLM beyond extraction.**
 - **Linking:** `fact_graph/frame_linker.py` — deterministic composite key `track_key = finding_type|anatomy|laterality[|lesion_key]`. Decisions: new_track / exact_key / compatible_merge / unresolved_link.
 - **RECIST / response (frame-native, deterministic):** `oncology_response/frame_response.build_response_review(tracks, subject_id)`. (Legacy `recist/recist_engine.py` operates on the *legacy* entity fact-graph shape, not frames — not on the product path.)
@@ -27,7 +27,7 @@ An authenticated, multi-tenant web platform where oncology data abstractors and 
 - **Debt to fix:** no auth, wide-open CORS, **two divergent frontends** (vanilla `track_review.html` vs a React/Vite SPA that bypasses the API and persists to jsonbin/localStorage), demo-only GC/quick-`10000935` heuristics, precomputed-packet fragility (`sys.path` import at request time).
 
 ### 1.3 Honest constraints (must shape the product)
-- **Track-linking F1 = 0.338** (Jaccard-strict); dominant failure = *false splits* from anatomy-granularity variation. → product is a **reviewer accelerator, not autonomous**; UI must foreground `unresolved_link` / `false_split_candidates`.
+- **Track-linking F1 = 0.382** (strict Jaccard≥0.5, all 30 patients); dominant failure = *false splits* from anatomy-granularity variation. → product is a **reviewer accelerator, not autonomous**; UI must foreground `unresolved_link` / `false_split_candidates`.
 - **No clinician κ exists yet.** All gold is *engineering-curated*. The product's review + feedback loop **is** the path to clinician validation (Phase C) and the startup's fundability unlock — one system serves both.
 - **Integrity guardrails:** never present engineering-curated gold as clinician-validated; **never surface the simulated-IRR data as real**; latest-status accuracy (~0.90) is strong, identity is the weak axis.
 
@@ -128,7 +128,7 @@ Modularity (deep modules, thin adapters) · strong typing (Pydantic DTOs backend
 
 Fable (external reviewer) flagged three **strategic** defects and several sequencing fixes. All accepted:
 
-### R1 — Invert the product around *human-confirmed linking* (don't render RECIST from a 0.338 linker)
+### R1 — Invert the product around *human-confirmed linking* (don't render RECIST from a 0.382 strict-Jaccard linker)
 A false split fabricates a "new lesion," and in RECIST 1.1 a new lesion = **unconditional PD** — the most consequential wrong answer in oncology. So:
 - **New table `link_decisions`** (human confirms/merges/splits track identity per report-pair; signed, versioned) — the most important table in the system.
 - **RECIST computed *only* over human-confirmed tracks;** the RECIST panel refuses to render otherwise. This turns the weakest metric into the audit-grade differentiator ("clinician-confirmed lesion identity").

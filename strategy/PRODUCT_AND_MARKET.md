@@ -26,11 +26,13 @@ Radiology reports
 **Each finding = a "frame" with 6 slots** (finding_type, anatomy, laterality, measurement, temporal_change, assertion) **+ a verbatim evidence sentence.** Nothing enters the record without a source anchor and a human sign-off.
 
 **Validated capability (engineering gold, 30 MIMIC-IV patients — *pre-clinical-validation*):**
-- Type F1 **0.855**, Identity F1 **0.751**, Full-Frame F1 **0.634**; ~92% per-slot accuracy.
-- Evidence-anchoring ~97%; **0% hallucination by construction** on a 208-question QA benchmark.
-- Domain-transfer to chest X-ray (RadGraph2 / ImaGenome) at Type F1 0.74–0.78 with no retraining.
-- Backend-agnostic across GPT-5, DeepSeek-V4-Pro, GLM-5.2, MiniMax — Type-F1 spread only 0.027.
-- **Honest weakness:** track-linking F1 = **0.34**; no clinician κ yet. → product is a *reviewer accelerator*, not an autonomous system, until validation says otherwise.
+- Type F1 **0.855**, Identity F1 **0.751**, Full-Frame F1 **0.639**; mean per-slot accuracy **0.924** on the 20 held-out patients. (The 8 development patients score 0.962, but prompts and rules were tuned on them, so that figure measures fit, not capability — and it averages in a temporal-change accuracy of 1.000 that the deterministic normaliser earns at scoring time, not the model.)
+- On a 208-question longitudinal QA benchmark over the same cohort: **0% hallucination by construction**, 95.2% evidence-grounding rate.
+- Domain-transfer to chest X-ray (RadGraph2 / ImaGenome): Type F1 0.74–0.78 with no retraining, 96.3–96.6% evidence-anchoring.
+- Backend-agnostic across GPT-5, DeepSeek-V4-Pro, GLM-5.2, MiniMax — Type-F1 spread only 0.030.
+- **Honest weakness:** track-linking F1 = **0.382** under strict Jaccard≥0.5 matching (all 30 patients); a permissive frame-cluster match gives 0.741 — the two are not interchangeable. No clinician κ yet. → product is a *reviewer accelerator*, not an autonomous system, until validation says otherwise.
+
+> **Reading these figures:** they are patient-macro averages over the frozen 30-patient cohort, under one scorer convention. That convention collapses metastasis anatomy to an organ family, so a wrong anatomy value is not penalised on 41.1% of gold frames — a `liver_metastasis` frame recorded with anatomy `spleen` scores as correct. A clinician reading a track should know the anatomy field was not independently checked there.
 
 ## 2. Key differentiators (ranked)
 
@@ -86,7 +88,7 @@ Midpoint **~$1.1B.** Variance dominated by the BICR estimate (least analyst-veri
 
 - **No clinical-validation claims yet** — 30 MIMIC-IV patients, engineering gold, no κ. Say *"architecturally validated; clinical validation underway at Tata Memorial."*
 - **Never conflate 0% hallucination with 0% error** — the gate guarantees no *fabricated* facts, not recall/slot accuracy. Precise phrasing: *"zero unsupported facts by construction."*
-- **No autonomous RECIST / BICR-replacement claims** — track F1 is 0.34; it's a *pre-read + abstraction accelerator with clinician sign-off* until data says otherwise.
+- **No autonomous RECIST / BICR-replacement claims** — track F1 is 0.382 under strict Jaccard matching; it's a *pre-read + abstraction accelerator with clinician sign-off* until data says otherwise.
 - **No regulatory-clearance implication** — say *"audit-ready architecture,"* never "FDA-cleared." (Carta/JSL's "regulatory-grade" is aspirational too — but you'll be held to yours.)
 - **Don't pitch the broad $20B RWE TAM.**
 

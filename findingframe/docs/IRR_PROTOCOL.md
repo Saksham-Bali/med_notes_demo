@@ -80,7 +80,7 @@ FindingFrame platform pilot:
 | Stratum | % of sample | Source in `ff.*` | Rationale |
 |---|---|---|---|
 | Standard / representative | 50% | Random `ff.frames` across confirmed runs | Unbiased estimate of overall agreement |
-| Unresolved-link / false-split candidates | 25% | `ff.tracks.unresolved_link = true` OR `ff.tracks.false_split_candidate = true` → their member frames | Over-samples the hardest linking cases — this is where the 0.34 track-F1 weakness lives, and where clinician judgment is most valuable |
+| Unresolved-link / false-split candidates | 25% | `ff.tracks.unresolved_link = true` OR `ff.tracks.false_split_candidate = true` → their member frames | Over-samples the hardest linking cases — this is where the 0.382 strict-Jaccard track-F1 weakness lives, and where clinician judgment is most valuable |
 | Low-confidence / gate-adjacent | 25% | `ff.frames.evidence_verified = false` (gate-failed, already force-routed to review) or `ff.frames.uncertainty is not null` | Validates the evidence-gate's own false-positive/false-negative rate — directly tests the source-linking guarantee ("100% source-linked; gate-failed facts quarantined") at its edges |
 | *(optional, track-level slice)* Track-level adjudication set | separate, ~30–50 tracks | Tracks touched by any `ff.link_decisions` in the demo/pilot data, oversampled for `unresolved_link`/`false_split_candidate` | Feeds the track-linking κ (see §3) — pick tracks, not individual frames, since track identity is what's being judged |
 

@@ -154,7 +154,7 @@ reframed "100% source-linked" claim.
 ## 9. Known gaps / deferred (honest)
 
 - The κ shown is **synthetic** (banner-labeled). A real 2-reader clinician study has not run.
-- Track-linking F1 upstream is ~0.34 — *why* human confirmation is the product; no clinician κ yet.
+- Track-linking F1 upstream is 0.382 (strict Jaccard≥0.5, all 30 patients) — *why* human confirmation is the product; no clinician κ yet.
 - MIMIC text on the public URL → screen-share only until sanitized (user's decision).
 - Single org; no SSO, CI/CD, DICOM/EHR, crypto-shredding — deferred by design.
 - Throughput capped at ~5 LLM calls/min (fine for pilots; not a 10k-report backfill).
