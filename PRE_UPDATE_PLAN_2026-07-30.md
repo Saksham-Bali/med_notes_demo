@@ -324,3 +324,55 @@ The doc written to warn about that trap gets it wrong. The paper is correct.
 provenance and the cache (6, 7) — which opens exactly the window where the database can hold two
 inconsistent "current" views of a patient. Since no run has been created, the window is still shut.
 Items 6, 7 and 9 are in flight now, and **no run gets created until they land.**
+
+**Items 6, 7, 9 — done.** `82 passed, 1 skipped` (was 71/1).
+
+The cache diagnosis in §1.6 was right about the bug and wrong about its location.
+`extract_report()` has **no production caller** — only tests. The worker's real path is
+`worker/main.py:131` → `process_patient()`, which built `FindingFramePatientProcessor` with no
+`extractor=` override, so the engine's own default took over: `./outputs/cache/…`, cwd-relative and
+never touching the temp dir at all. Both call sites now share `_build_extractor()`, cached under
+`ff_engine_cache/<sha>/`. An unresolved SHA disables caching rather than sharing an "unknown"
+bucket, which would recreate the bug between two engine states we cannot distinguish.
+
+Provenance precedence was **inverted** — resolve from shipped code first, env var last. Without
+that, tyrone's hardcoded `FF_ENGINE_GIT_SHA` would have won forever and the whole update would have
+stayed invisible. `VENDOR_SHA` is validated against `^[0-9a-f]{7,40}$` so an empty file, or the
+literal `unknown` the vendor script writes on its own failure, cannot pass as resolved.
+
+The vendor guard rejects a dirty source or a SHA unreachable from the source repo's `origin/main`,
+with `--allow-untraceable` for deliberate exceptions. Verified adversarially in a scratch repo,
+including a simulated history rewrite reproducing the real `e04d3c6`/`Frames` case.
+
+One defect I found in the guard's own verification: the import smoke test writes `__pycache__` back
+into the vendored tree *after* rsync excluded it — 9 dirs, 46 `.pyc` files. Docker `COPY`s the
+directory wholesale, so the image shipped macOS bytecode and the tree stopped being byte-reproducible
+from its `VENDOR_SHA`, the one property it exists to provide. The script now cleans up after itself.
+
+**Item 10 — deployed, with your go-ahead.** Live and verified:
+
+- `https://deep.taile0f78b.ts.net/api/v1/health` → `engine_sha: 5edaa997…`, `db: ok` (was `e04d3c6d9c…`)
+- in-container: `VENDOR_SHA` = 5edaa997…, normalizer 665 lines, `rule_layer_provenance.py` present
+- in-container adapter after `_prepare()`: sha resolves, cache root
+  `/tmp/ff_engine_cache/5edaa997…/`
+- `process_patient` calls `_prepare()` before `_build_extractor`, so production is not silently
+  running with caching disabled
+- backend and worker rebuilt and healthy; caddy and web untouched
+- tyrone's compose file backed up to `~/docker-compose.tyrone.yml.bak-2026-07-30`, then brought into
+  the repo — it had never been committed
+
+**No run was created**, so P0-4 (a new run silently replacing a reviewer's signed-off view) has not
+been triggered. It remains unfixed and is now the top open item.
+
+## 5. Open after this pass
+
+| Item | Why it matters |
+|------|----------------|
+| P0-4 | A new successful run still silently replaces a reviewer's signed-off view. Needs an explicit "engine changed" state, not a silent swap. Do this before any re-extraction. |
+| P0-5 | 10000935's manifest still describes an LLM call that never happened. |
+| Re-extracting 10000935 | 37 real MIMIC reports would go to a third-party API. Deliberate decision, not a side effect. |
+| `build_money_patient.py` | Still uses the unscoped cache path; same staleness risk, off the serving path. |
+| `seed_demo.py:113-135` | Duplicate `resolve_git_sha` that never exercises the VENDOR_SHA branch. Hygiene. |
+| `findingframe_deploy_snapshot/` | 17 Jul, carries live secrets, no owner. |
+| `tmc/AGENTS.md:38-40` | Calls 0.816 the 21-class average; it is the 20-class one. A tmc fix. |
+| Shell-script tests | The vendor guard has no automated test; verified by hand only. |
