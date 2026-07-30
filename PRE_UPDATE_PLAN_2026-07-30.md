@@ -370,7 +370,7 @@ been triggered. It remains unfixed and is now the top open item.
 |------|----------------|
 | P0-4 | A new successful run still silently replaces a reviewer's signed-off view. Needs an explicit "engine changed" state, not a silent swap. Do this before any re-extraction. |
 | P0-5 | 10000935's manifest still describes an LLM call that never happened. |
-| Re-extracting 10000935 | 37 real MIMIC reports would go to a third-party API. Deliberate decision, not a side effect. |
+| ~~Re-extracting existing patients~~ | **Not required.** The engine update is forward-looking: new reports get the new engine, and both existing runs correctly record `engine_git_sha: e04d3c6d9c…`, the engine that produced them. Nothing claims to be newer than it is. Re-extraction would only refresh *displayed* demo data, and it risks the PD→PR moment — that discrepancy is computed from stored tracks, and +790 taxonomy lines can change which findings are extracted, hence the classification. For 10000935 it would also send 37 real MIMIC reports to a third-party API. If it is ever done, fix P0-4 first. |
 | `build_money_patient.py` | Still uses the unscoped cache path; same staleness risk, off the serving path. |
 | `seed_demo.py:113-135` | Duplicate `resolve_git_sha` that never exercises the VENDOR_SHA branch. Hygiene. |
 | `findingframe_deploy_snapshot/` | 17 Jul, carries live secrets, no owner. |
