@@ -101,8 +101,23 @@ fact_graph/frame_adapter.py           |   6 +
 8 files changed, 1325 insertions(+), 25 deletions(-)
 ```
 
-This is a real update to the shipped product, not a docs sync. +790 taxonomy lines change what
-the extractor recognises.
+**Correction, later on 2026-07-30.** I wrote that "+790 taxonomy lines change what the extractor
+recognises". Wrong — and it is the third time I inferred behaviour from diff size. Measured rather
+than read, the oncology pipeline is very nearly untouched:
+
+| Change | Effect on `domain="radiology"` |
+|--------|-------------------------------|
+| taxonomy +790 | **none.** A new CXR domain plus provenance registries. Loaded both versions side by side: `taxonomy_prompt_block()` — the literal text that goes into the LLM prompt — and `all_finding_types()` identical; `TAXONOMY_ALIASES`, `ANATOMY_ALIASES`, `EVIDENCE_SUPPORT_TERMS_BY_TYPE` identical; all 20 type definitions field-wise identical. Only 2 lines were removed from the entire file, both in echo helpers. |
+| extractor +173 | **none.** A hydropneumothorax de-duplicator. `hydropneumothorax` is not an oncology type, so `hydro_keys` is empty and it early-returns. |
+| rule_layer_provenance +152 (new) | **additive metadata.** Adds a `rule_layer_provenance` fingerprint to the artifact. Changes no extraction or linking output, and is a real gain for an audit-grade product: a reader can now tell which rule-layer version produced the tracks. |
+| normalizer +94 | **none.** The negation fix, scorer-only (§1.4). `normalize_anatomy_for_linking` and `normalize_anatomy_for_scoring` are byte-identical across the two SHAs. |
+| temporal_change_module +85 | **none.** Dead code in the product. |
+| schema +41 | **the only real change.** `_ABSENT_ASSERTION_SUPPORT_TERMS_BY_TYPE["cardiomegaly"]` went 7 → 10 terms, a strict superset adding three "within normal limits" phrasings. A `cardiomegaly` frame asserted **absent** on evidence like "cardiomediastinal silhouette is within normal limits" now counts as properly supported. One finding type, one assertion value, three phrasings. |
+| processor +9, frame_adapter +6 | wiring the provenance field through. |
+
+So the engine *content* update is close to a no-op for oncology output. What this pass actually
+delivered was the provenance fix, the cache fix, the vendor guard and the docs. It also strengthens
+the "do not re-extract" call: re-running would produce near-identical frames.
 
 ### 1.6 The cache will not notice any of it
 
