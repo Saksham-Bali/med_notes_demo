@@ -1,0 +1,89 @@
+# FindingFrame — Tyrone deploy stack (single public origin via Caddy).
+#
+# Topology: browser -> tunnel(TLS) -> caddy:8080 -> { web:3000, backend:8000 }.
+# The browser hits ONE origin; the web app calls same-origin relative /api/v1 (Caddy
+# proxies /api/* and /health to the backend), so no CORS and no API URL is baked in.
+#
+# No local Postgres: everything points at the hosted Supabase project via backend/.env.
+# The LLM key (FF_OPENROUTER_API_KEY) also comes from backend/.env; the engine adapter
+# forwards it to the vendored engine via env, so no tmc/config/.env file is needed.
+#
+# Build + run (from the repo root, so the web build args resolve from web/.env.local):
+#   docker compose --env-file web/.env.local -f infra/docker-compose.tyrone.yml build
+#   docker compose --env-file web/.env.local -f infra/docker-compose.tyrone.yml up -d
+#
+# Only Caddy publishes a host port (8080, a high port — safe under rootless Docker).
+# backend/worker/web talk over the compose network by service name and publish nothing.
+name: findingframe
+
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: infra/docker/Dockerfile.backend
+    env_file:
+      - ../backend/.env
+    environment:
+      FF_ENGINE_PATH: /app/engine
+      # Vendored engine isn't a git repo in the image; supply the real sha so
+      # /health and reproducibility manifests report it instead of "unknown".
+      # FF_ENGINE_GIT_SHA deliberately unset: the adapter resolves engine identity
+      # from /app/engine/VENDOR_SHA (written by infra/scripts/vendor_engine.sh) and
+      # only falls back to this env var when the engine dir carries no identity at
+      # all. A hardcoded value here silently outlived several engine updates and
+      # made every manifest report a stale SHA. Do not reintroduce it.
+    expose:
+      - "8000"
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: ..
+      dockerfile: infra/docker/Dockerfile.worker
+    env_file:
+      - ../backend/.env
+    environment:
+      FF_ENGINE_PATH: /app/engine
+      # Vendored engine isn't a git repo in the image; supply the real sha so
+      # /health and reproducibility manifests report it instead of "unknown".
+      # FF_ENGINE_GIT_SHA deliberately unset: the adapter resolves engine identity
+      # from /app/engine/VENDOR_SHA (written by infra/scripts/vendor_engine.sh) and
+      # only falls back to this env var when the engine dir carries no identity at
+      # all. A hardcoded value here silently outlived several engine updates and
+      # made every manifest report a stale SHA. Do not reintroduce it.
+      FF_WORKER_ID: worker-1
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ..
+      dockerfile: infra/docker/Dockerfile.web
+      args:
+        NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL:-}
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY:-}
+        # Empty -> browser calls same-origin relative /api/v1 (see web/lib/env.ts).
+        # Hardcoded here so web/.env.local's dev value (127.0.0.1:8000) can't leak in.
+        NEXT_PUBLIC_API_URL: ""
+        NEXT_PUBLIC_API_MODE: "live"
+    expose:
+      - "3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2-alpine
+    volumes:
+      - ../infra/Caddyfile:/etc/caddy/Caddyfile:ro
+    ports:
+      - "8080:8080"
+    depends_on:
+      backend:
+        condition: service_healthy
+      web:
+        condition: service_started
+    restart: unless-stopped
