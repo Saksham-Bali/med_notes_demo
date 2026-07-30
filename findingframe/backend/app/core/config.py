@@ -54,7 +54,13 @@ class Settings(BaseSettings):
 
     # --- engine (FindingFrame at ../../tmc) ---
     engine_path: str = str(PRE_DIR / "tmc")
-    engine_git_sha: str = ""          # resolved at runtime if empty
+    # Last-resort override only: EngineAdapter._prepare() prefers auto-resolution
+    # (git checkout, else VENDOR_SHA) and falls back to this env var only when the
+    # engine directory has no verifiable identity of its own. Do NOT hardcode this in
+    # a deployment config as a substitute for keeping the vendored engine up to date --
+    # that is what decoupled tyrone's provenance from its shipped code in the first
+    # place (PRE_UPDATE_PLAN_2026-07-30.md §2.0). See adapter.py::_prepare().
+    engine_git_sha: str = ""
     llm_provider: str = "openrouter"
     llm_model: str = "openai/gpt-5.5"
     llm_reasoning_effort: str = "medium"

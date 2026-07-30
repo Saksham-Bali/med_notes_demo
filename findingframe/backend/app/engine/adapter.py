@@ -24,6 +24,13 @@ import pandas as pd
 
 _MEAS_RE = re.compile(r"(\d+(?:\.\d+)?)\s*(mm|cm)\b", re.IGNORECASE)
 
+# A git commit SHA is lowercase hex, 7 (abbreviated) to 40 (full) characters. Used to
+# reject anything read from VENDOR_SHA that isn't actually a SHA -- e.g. the literal
+# string "unknown" that infra/scripts/vendor_engine.sh writes when its own git
+# rev-parse failed at vendor time, or a truncated/corrupted file. Without this check
+# such a value would silently be treated as a confidently-resolved engine identity.
+_SHA_RE = re.compile(r"^[0-9a-f]{7,40}$")
+
 
 def _normalize_measurement(m: Any) -> Any:
     """Populate normalized_mm/values (in mm) from a measurement's raw/text when the
@@ -106,7 +113,17 @@ class EngineAdapter:
         else:
             os.environ.setdefault("OPENAI_MODEL", settings.llm_model)
 
-        self._git_sha = settings.engine_git_sha or self._resolve_git_sha(engine_path)
+        # Resolution order: derive from the shipped code first (git checkout, else the
+        # vendor script's pin -- see _resolve_git_sha), and only fall back to the env
+        # var if the engine directory itself carries no verifiable identity at all.
+        # This is the inverse of the old order (env var first). The env var is a
+        # hand-set constant with no tie to what is actually on disk; on tyrone it is
+        # hardcoded in infra/docker-compose.tyrone.yml to a SHA that does not track
+        # engine updates (PRE_UPDATE_PLAN_2026-07-30.md §2.0). Preferring it would keep
+        # rewarding that hardcode. Auto-resolution is now the source of truth; the env
+        # var survives only as a last resort for environments where neither a .git
+        # checkout nor a VENDOR_SHA file is present (e.g. an ad hoc test harness).
+        self._git_sha = self._resolve_git_sha(engine_path) or settings.engine_git_sha
         # Versions are cheap module constants; import lazily.
         try:
             from extraction.finding_frame_extractor import _PROMPT_VERSION  # type: ignore
@@ -122,26 +139,50 @@ class EngineAdapter:
 
     @staticmethod
     def _resolve_git_sha(engine_path: str) -> str:
+        """Best-effort engine identity, in order:
+
+        1. A real git checkout (dev default: settings.engine_path -> ../../tmc).
+           rev-parse HEAD, "+dirty" suffix if the tree carries uncommitted changes.
+        2. VENDOR_SHA (production: Dockerfile.backend/.worker COPY infra/engine_vendor/
+           to /app/engine, a plain directory with no .git -- rev-parse can't work there
+           at all. infra/scripts/vendor_engine.sh pins the source commit into this file
+           at vendor time; §2.0 of PRE_UPDATE_PLAN_2026-07-30.md is the reason this
+           fallback exists -- without it, production provenance had no path back to the
+           shipped code and depended entirely on a hand-set env var.)
+
+        Returns "" ("unresolved") rather than pass through a value we cannot stand
+        behind: an empty, truncated or corrupted VENDOR_SHA file -- or the literal
+        "unknown" the vendor script writes when ITS OWN git rev-parse failed -- must
+        never be mistaken by a caller (`sha or "unknown"`) for a confidently-resolved
+        SHA just because it happens to be a non-empty string.
+        """
         try:
             out = subprocess.run(
                 ["git", "-C", engine_path, "rev-parse", "HEAD"],
                 capture_output=True, text=True, timeout=10,
             )
-            if out.returncode != 0:
-                return ""
-            sha = out.stdout.strip()
-            # rev-parse alone claims the engine is exactly HEAD even when the checkout
-            # carries uncommitted changes. Report "<sha>+dirty" for those so manifests,
-            # health, exports and signoff never mistake a patched tree for a clean one.
-            status = subprocess.run(
-                ["git", "-C", engine_path, "status", "--porcelain"],
-                capture_output=True, text=True, timeout=10,
-            )
-            if status.returncode == 0 and status.stdout.strip():
-                return f"{sha}+dirty"
-            return sha
+            if out.returncode == 0:
+                sha = out.stdout.strip()
+                # rev-parse alone claims the engine is exactly HEAD even when the
+                # checkout carries uncommitted changes. Report "<sha>+dirty" for those
+                # so manifests, health, exports and signoff never mistake a patched
+                # tree for a clean one.
+                status = subprocess.run(
+                    ["git", "-C", engine_path, "status", "--porcelain"],
+                    capture_output=True, text=True, timeout=10,
+                )
+                if status.returncode == 0 and status.stdout.strip():
+                    return f"{sha}+dirty"
+                return sha
         except Exception:
+            pass
+
+        # Not a git checkout (or git itself unusable here) -- try the vendor pin.
+        try:
+            vendor_sha = (Path(engine_path) / "VENDOR_SHA").read_text(encoding="utf-8").strip()
+        except OSError:
             return ""
+        return vendor_sha if _SHA_RE.match(vendor_sha) else ""
 
     # -- manifest ------------------------------------------------------------
     def manifest_base(self) -> ExtractionManifest:
@@ -183,15 +224,70 @@ class EngineAdapter:
         return m
 
     # -- extraction ----------------------------------------------------------
-    def extract_report(self, report: ReportInput, *, domain: str = "radiology") -> ReportExtraction:
-        self._prepare()
+    def _cache_root(self) -> Path | None:
+        """Directory partition for this resolved engine version's extraction cache.
+
+        None ("caching disabled") when self._git_sha could not be confidently resolved
+        (see _resolve_git_sha) -- deliberately, not a shared "unknown" bucket. A cache
+        keyed by report text alone survives an engine change silently: the +1325-line
+        taxonomy update that shipped 5edaa99 changed what gets extracted, but
+        CACHE_VERSION (schema+prompt version) was unchanged and no engine SHA
+        participated in the key, so every already-cached report kept returning the OLD
+        engine's output after the update (PRE_UPDATE_PLAN_2026-07-30.md §1.6). Scoping
+        the cache directory by SHA fixes that for any resolved SHA; falling back to a
+        shared bucket for the unresolved case would just recreate the same bug between
+        any two engine states we can't tell apart. Refusing to cache is the safe choice
+        -- slower/costlier, never silently wrong.
+        """
+        if not self._git_sha:
+            return None
+        # Make the SHA filesystem-safe. Note "+dirty" is a meaningful partition, not
+        # noise: a patched checkout must not share a cache with the clean commit it was
+        # edited from.
+        safe_sha = re.sub(r"[^A-Za-z0-9+_.-]", "_", self._git_sha)
+        root = Path(tempfile.gettempdir()) / "ff_engine_cache" / safe_sha
+        root.mkdir(parents=True, exist_ok=True)
+        return root
+
+    def _build_extractor(self, domain: str):
+        """Construct a FindingFrameExtractor whose disk cache is partitioned by engine
+        SHA (see _cache_root). Shared by extract_report() and process_patient() -- the
+        latter passes this into FindingFramePatientProcessor(extractor=...) instead of
+        letting it build its own default extractor, which used an unversioned,
+        cwd-relative cache path (./outputs/cache/finding_frame_extraction_cache.json)
+        that bypassed SHA scoping entirely; see the comment on that call site.
+        Import is lazy: must only run after _prepare() has put the engine on sys.path.
+
+        NOTE on outputs/cache/finding_frame_extraction_cache.json (committed in this
+        repo): that path is exactly FindingFrameExtractor()'s own default cache_path --
+        what gets used when something builds a FindingFramePatientProcessor without an
+        extractor= override and runs with cwd == the findingframe/ repo root, the gap
+        process_patient() used to have. Its keys (report_1..report_4, chart dates
+        matching infra/scripts/money_patient_reports.py, model=deepseek/deepseek-v4-pro)
+        match infra/scripts/build_money_patient.py, a one-off script that calls
+        FindingFramePatientProcessor directly (bypassing this adapter) and is re-run
+        often enough during development that the cache is almost certainly there on
+        purpose, to avoid re-paying for real LLM calls on every re-run -- not an
+        accident. It is LIVE for that script, not vestigial, so it is left in place
+        rather than deleted here. It is NOT written or read by backend/ or worker/ any
+        more now that both adapter call sites pass an explicit, SHA-scoped extractor.
+        It carries the same staleness risk this fix addresses (no SHA in its key
+        either) if build_money_patient.py is ever run against a different engine
+        version without clearing it -- out of scope here since that script is not part
+        of the serving path, but worth the same treatment later.
+        """
         from extraction.finding_frame_extractor import FindingFrameExtractor  # type: ignore
 
-        cache_dir = Path(tempfile.gettempdir()) / "ff_engine_cache"
-        cache_dir.mkdir(parents=True, exist_ok=True)
-        extractor = FindingFrameExtractor(
-            domain=domain, use_cache=True, cache_path=str(cache_dir / "extract_cache.json"),
+        cache_root = self._cache_root()
+        return FindingFrameExtractor(
+            domain=domain,
+            use_cache=cache_root is not None,
+            cache_path=str((cache_root or Path(tempfile.gettempdir())) / "extract_cache.json"),
         )
+
+    def extract_report(self, report: ReportInput, *, domain: str = "radiology") -> ReportExtraction:
+        self._prepare()
+        extractor = self._build_extractor(domain)
         res = extractor.extract(
             report.text,
             chart_date=report.chart_date.strftime("%Y-%m-%d"),
@@ -236,7 +332,16 @@ class EngineAdapter:
         reports_df = pd.DataFrame(rows).sort_values("charttime").reset_index(drop=True)
 
         with tempfile.TemporaryDirectory(prefix="ff_run_") as tmp:
-            proc = FindingFramePatientProcessor(output_dir=tmp, save_artifacts=True)
+            # extractor=... matters: left default, FindingFramePatientProcessor builds its
+            # own FindingFrameExtractor() (pipeline/finding_frame_processor.py), which in
+            # turn defaults to cache_path="./outputs/cache/finding_frame_extraction_cache.json"
+            # -- relative to the *process's* cwd, not scoped by engine SHA at all. This is
+            # the worker's actual call path (worker/main.py -> process_patient), so it is
+            # the one that matters most: passing our own SHA-scoped extractor here is what
+            # makes an engine update actually invalidate cached patients being re-run.
+            proc = FindingFramePatientProcessor(
+                output_dir=tmp, save_artifacts=True, extractor=self._build_extractor(domain),
+            )
             proc.process_patient(str(subj_int), reports_df, run_id=run_id)
             artifact_path = Path(tmp) / f"subject_{subj_int}_frame_pipeline.json"
             if not artifact_path.exists():
