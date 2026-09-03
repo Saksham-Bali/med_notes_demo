@@ -18,7 +18,7 @@ FindingFrame's current validation story is **engineering gold**: 30 MIMIC-IV pat
 labels curated by the engineering team against source reports, no board-certified clinician
 has adjudicated any label
 (`pre/tmc/new_plan/verified_specs/phase_c_clinician_validation.md` §2.1 calls this
-`engineering_curated_not_clinician_adjudicated`). `strategy/PRODUCT_AND_MARKET.md` is explicit
+`engineering_curated_not_clinician_adjudicated`). `pre/strategy/PRODUCT_AND_MARKET.md` is explicit
 that this is a diligence liability: *"No clinical-validation claims yet ... say
 'architecturally validated; clinical validation underway.'"* This protocol is how that
 changes to a real number: a blinded, double-read, chance-corrected inter-rater agreement
@@ -73,8 +73,8 @@ exactly this, with no other purpose. `compute_kappa.py` reads only from this pat
 
 ### 2.2 Sample: stratified, 150–200 frames
 
-Aligned with `phase_c_clinician_validation_spec.md` §3.1 and its verified refinement in
-`verified_specs/phase_c_clinician_validation.md` §3.1. Recommended stratification for the
+Aligned with `pre/tmc/new_plan/phase_c_clinician_validation_spec.md` §3.1 and its verified refinement in
+`pre/tmc/new_plan/verified_specs/phase_c_clinician_validation.md` §3.1. Recommended stratification for the
 FindingFrame platform pilot:
 
 | Stratum | % of sample | Source in `ff.*` | Rationale |
@@ -116,13 +116,13 @@ for exactly this reason — each level answers a different question and gets its
 | **Track** | Do the two readers agree this frame/pair belongs to the same longitudinal finding (link/split)? | `ff.tracks.id`, or a frame-pair key | κ over the binary/categorical linking judgment (whatever key the reader recorded, e.g. `belongs_to_same_track` or `linked`) |
 
 A single pilot task is recommended at `unit_of_agreement = 'frame'` with `labels` holding
-all six core slots per frame (richer than phase_c's original per-slot binary
+all six core slots per frame (richer than `pre/tmc/new_plan/phase_c_clinician_validation_spec.md`'s original per-slot binary
 "is `X` correct?" design — see box below), plus a **second, separate** task at
 `unit_of_agreement = 'track'` for the track-linking judgment, since its `item_ref`
 namespace (tracks) is different from the frame task's (frames).
 
 > **Design note — why raw category labels beat binary correctness flags.**
-> `phase_c_clinician_validation_spec.md` §3.2 and the original `tmc/scripts/compute_kappa.py`
+> `pre/tmc/new_plan/phase_c_clinician_validation_spec.md` §3.2 and the original `pre/tmc/scripts/compute_kappa.py`
 > record a *binary* judgment per slot (`finding_type_correct: true/false`) rather than the
 > reader's actual chosen label. That is a legitimate design but it is *not* what
 > `ff.annotation_records.labels` stores here, and the difference matters statistically:
@@ -192,8 +192,8 @@ itself an honest signal — see the N=2/N=8 examples in §7).
 | 0.60 – 0.80 | Substantial |
 | 0.80 – 1.00 | Almost perfect |
 
-`ANNOTATION_GUIDELINES.md` Appendix A already targets **inter-rater agreement > 0.70**
-("substantial") as the paper's headline bar, and `phase_c_clinician_validation_spec.md` §7
+`pre/tmc/docs/ANNOTATION_GUIDELINES.md` Appendix A already targets **inter-rater agreement > 0.70**
+("substantial") as the paper's headline bar, and `pre/tmc/new_plan/phase_c_clinician_validation_spec.md` §7
 treats ≥0.60 as the adjudication trigger (see §4).
 
 ### 3.4 Correction rate (ties to the ROI claim)
@@ -207,7 +207,7 @@ model's. (`measurement` is deliberately excluded — the reader's free-text/deri
 measurement representation and the model's normalized `jsonb` aren't directly comparable
 without a units-aware equality check this script doesn't implement; flagged as a gap in §5.)
 
-This is the number that feeds `strategy/PRODUCT_AND_MARKET.md`'s ROI claim ("~1 hour → ~20
+This is the number that feeds `pre/strategy/PRODUCT_AND_MARKET.md`'s ROI claim ("~1 hour → ~20
 minutes per patient") with an actual per-slot correction frequency instead of an anecdote —
 and, because it's computed independently for each of the two blinded readers, a large gap
 between reader A's and reader B's correction rate against the same model output is itself
@@ -231,7 +231,7 @@ from ff.annotation_records group by assignment_id;
 divided by item count for a rough seconds-per-item figure. This is a **coarse proxy** (it
 doesn't exclude breaks/interruptions between records) — adequate to sanity-check the pilot
 didn't take an implausible amount of time, not precise enough to cite as the ROI number
-itself. `ANNOTATION_GUIDELINES.md` §5 separately targets 10–15 min/patient for the
+itself. `pre/tmc/docs/ANNOTATION_GUIDELINES.md` §5 separately targets 10–15 min/patient for the
 *production* review workflow, which does have real instrumentation via `review_sessions`.
 
 ---
@@ -257,7 +257,7 @@ ff.annotation_assignments (rad2, blinded)  ─┼─► ff.annotation_records (b
                                                    - source = 'adjudication'
 ```
 
-Procedure (matches `phase_c_clinician_validation_spec.md` §8 "Open Question: Adjudication"):
+Procedure (matches `pre/tmc/new_plan/phase_c_clinician_validation_spec.md` §8 "Open Question: Adjudication"):
 
 1. Run `compute_kappa.py --task-id <id>` after both readers submit. For every `item_ref`
    where the two readers' labels disagree on any slot, that item is a candidate for
@@ -268,13 +268,13 @@ Procedure (matches `phase_c_clinician_validation_spec.md` §8 "Open Question: Ad
    the κ calculation) and records a `ff.adjudications` row: `resolves_assignment_ids` lists
    the two `ff.annotation_assignments.id`s being reconciled, `consensus` holds the resolved
    label set.
-3. **If κ ≥ 0.60** (substantial-or-better, per `phase_c`'s recommendation): promote
+3. **If κ ≥ 0.60** (substantial-or-better, per the `pre/tmc/new_plan/phase_c_clinician_validation_spec.md` recommendation): promote
    adjudicated items into `ff.gold_candidates` with `source = 'adjudication'` and
    `contamination_model_visible = false`. This is the first row of *genuinely
    clinician-validated* gold FindingFrame will have.
    **If κ < 0.60**: still adjudicate (produces useful ambiguity data — see §6), but do not
    yet claim a validated gold set; report the low κ as a finding about task difficulty
-   (`phase_c` §8 explicitly anticipates this: *"a publishable finding ... reframes the 0.338
+   (`pre/tmc/new_plan/phase_c_clinician_validation_spec.md` §8 explicitly anticipates this: *"a publishable finding ... reframes the 0.338
    track F1 as approaching the ceiling of human agreement rather than systematic failure"*).
 4. Items where the two blinded readers **agreed** don't strictly need adjudication (no
    disagreement to resolve) — they may be promoted directly to `gold_candidates` with
@@ -372,7 +372,7 @@ it is named explicitly:
 |---|---|---|---|---|
 | **Today: 0 blinded readers** | — | *"Clinical validation protocol and tooling are built and verified end-to-end (schema, sampling design, kappa computation); the pilot itself has not yet been run."* | Any κ number; "clinician-validated"; "IRR-tested" | Shows diligence the team distinguishes infrastructure-readiness from validation — itself a credibility signal |
 | **2 readers, small pilot batch (N < 50)** | κ point estimate only; bootstrap CI will be wide | *"Preliminary pilot κ = X (wide 95% CI, N=Y) — directional, not conclusive"* | "Validated"; any journal-citable IRR; any product marketing claim | Internal go/no-go signal for whether to scale the pilot to full N |
-| **2 readers, full N≈150–200 (the planned pilot)** | Per-slot κ with a reasonably tight 95% CI, plus track-linking κ | *"Blinded double-read inter-rater agreement (κ=X, 95% CI [.,.]) on a stratified N=150–200 pilot"* — the exact claim `strategy/PRODUCT_AND_MARKET.md` §7 needs, and the bar `phase_c_clinician_validation_spec.md` §7 sets for JBI/AIM-tier submission | Population-level accuracy; "prospectively validated"; regulatory-grade claims; anything about sites other than the one(s) the readers came from | **This is the fundability unlock** — converts "engineering-curated gold, no κ" (current `AUDIT_AND_UPGRADE_ROADMAP_2026-07.md` framing) into a real number; also the FindingFrame paper's single highest-impact addition per `LITERATURE_REVIEW_2022_2026.md` |
+| **2 readers, full N≈150–200 (the planned pilot)** | Per-slot κ with a reasonably tight 95% CI, plus track-linking κ | *"Blinded double-read inter-rater agreement (κ=X, 95% CI [.,.]) on a stratified N=150–200 pilot"* — the exact claim `pre/strategy/PRODUCT_AND_MARKET.md` §7 needs, and the bar `pre/tmc/new_plan/phase_c_clinician_validation_spec.md` §7 sets for JBI/AIM-tier submission | Population-level accuracy; "prospectively validated"; regulatory-grade claims; anything about sites other than the one(s) the readers came from | **This is the fundability unlock** — converts "engineering-curated gold, no κ" (current `pre/tmc/docs/AUDIT_AND_UPGRADE_ROADMAP_2026-07.md` framing) into a real number; also the FindingFrame paper's single highest-impact addition per `pre/tmc/docs/LITERATURE_REVIEW_2022_2026.md` |
 | **≥3 readers / multiple independence groups (Fleiss' κ extension)** | Multi-rater reliability; adjudicated majority-vote gold | *"Reproducible across N≥3 independent readers"* — a stronger claim than pairwise κ alone | Still not a prospective or multi-site trial | Strengthens a JAMIA-tier submission; not required for the immediate fundability unlock |
 | **200-patient TMC engagement, clinician-adjudicated at scale** | Full validated benchmark, per `PRODUCT_AND_MARKET.md` §7 item 1 | *"200-patient clinician-adjudicated validation at Tata Memorial"* — the full claim | "FDA-cleared"; "regulatory-cleared" (never — see `PRODUCT_AND_MARKET.md` §5) | Unlocks pharma/CRO pilot conversations and the registry-licensing revenue line |
 
@@ -488,6 +488,6 @@ promoted to `ff.gold_candidates` with `source='adjudication'`,
 ### 7.7 Report
 
 Feed the printed κ + CI table directly into: the paper's IAA subsection (matches
-`ANNOTATION_GUIDELINES.md` Appendix A's Table 3 shape), the diligence data room (§6's
-honesty table sets the exact claim boundary), and `strategy/PRODUCT_AND_MARKET.md`'s
+`pre/tmc/docs/ANNOTATION_GUIDELINES.md` Appendix A's Table 3 shape), the diligence data room (§6's
+honesty table sets the exact claim boundary), and `pre/strategy/PRODUCT_AND_MARKET.md`'s
 critical-path item 1.

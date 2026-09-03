@@ -6,8 +6,19 @@ import { EvidenceTable } from "./EvidenceTable";
 import { ReviewForm } from "./ReviewForm";
 import { FalseSplitBadge, ProgressionBadge, UnresolvedBadge } from "./Badges";
 import { Badge } from "./ui";
-import { cx } from "@/lib/format";
-import { CheckCircle2, ChevronDown, ChevronRight } from "lucide-react";
+import { cx, fmtDate } from "@/lib/format";
+import { CheckCircle2, ChevronDown, ChevronRight, Sparkles } from "lucide-react";
+
+/** Pull the dates out of an acknowledgement's jsonb snapshot, defensively — it is
+ *  free-form on the backend, so nothing here may assume a shape. */
+function ackDates(ack?: Review): string[] {
+  const v = ack?.reviewed_value;
+  if (!v || typeof v !== "object") return [];
+  const inner = (v as Record<string, unknown>).acknowledgement;
+  if (!inner || typeof inner !== "object") return [];
+  const dates = (inner as Record<string, unknown>).gained_event_dates;
+  return Array.isArray(dates) ? dates.filter((d): d is string => typeof d === "string") : [];
+}
 
 export const TrackCard = forwardRef<
   HTMLDivElement,
@@ -17,6 +28,8 @@ export const TrackCard = forwardRef<
     selected?: boolean;
     reviewOpen?: boolean;
     existingReview?: Review;
+    /** Set when the reviewer was shown evidence added to an already-confirmed track. */
+    acknowledgement?: Review;
     submitting?: boolean;
     onSelect?: () => void;
     onToggleReview?: () => void;
@@ -28,6 +41,7 @@ export const TrackCard = forwardRef<
     selected,
     reviewOpen,
     existingReview,
+    acknowledgement,
     submitting,
     onSelect,
     onToggleReview,
@@ -36,6 +50,10 @@ export const TrackCard = forwardRef<
   ref
 ) {
   const reviewed = Boolean(existingReview);
+  // A review carried from an earlier run keeps that run's timestamp, so it predates this
+  // run's tracks. Distinguishing it matters: "someone already checked this" and "someone
+  // checked this while looking at the new report" are different assurances.
+  const gained = ackDates(acknowledgement);
   return (
     <div
       ref={ref}
@@ -52,8 +70,28 @@ export const TrackCard = forwardRef<
             <h3 className="text-sm font-semibold text-ink truncate">{track.display_name}</h3>
             <ProgressionBadge progression={track.progression} fallback={track.latest_status} />
             {reviewed && (
-              <span className="inline-flex items-center gap-1 text-2xs font-semibold text-good">
+              <span
+                className="inline-flex items-center gap-1 text-2xs font-semibold text-good"
+                title={existingReview?.comment ?? undefined}
+              >
                 <CheckCircle2 className="w-3.5 h-3.5" /> reviewed
+              </span>
+            )}
+            {acknowledgement && (
+              <span
+                className="inline-flex items-center gap-1 rounded-full bg-info-soft px-2 py-0.5
+                           text-2xs font-semibold text-info-ink"
+                title={acknowledgement.comment ?? undefined}
+              >
+                <Sparkles className="w-3 h-3" />
+                {gained.length
+                  ? `new evidence ${gained.map((d) => fmtDate(d)).join(", ")}`
+                  : "new evidence acknowledged"}
+              </span>
+            )}
+            {!reviewed && !acknowledgement && (
+              <span className="text-2xs font-semibold uppercase tracking-wide text-ink-muted">
+                needs review
               </span>
             )}
           </div>

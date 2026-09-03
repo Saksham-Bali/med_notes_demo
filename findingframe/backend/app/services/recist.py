@@ -208,11 +208,15 @@ def classify(
     return "SD"
 
 
-async def compute_recist(
+async def _worksheet(
     session: AsyncSession, *, org_id: uuid.UUID, run_id: uuid.UUID
-) -> dict:
-    """Compute + persist per-timepoint RECIST over confirmed target tracks. 422 if there
-    are no confirmed tracks or no target selection."""
+) -> tuple[TargetLesionSelection, list[dict], list[dict], dict[str, dict]]:
+    """The RECIST worksheet for a run, computed and NOT persisted.
+
+    Split out of ``compute_recist`` so a read-only caller (the progression view) can render
+    the same numbers a reviewer would compute, without writing assessment rows or needing
+    the reviewer role. ``compute_recist`` is this plus ``_persist``.
+    """
     await get_run(session, org_id=org_id, run_id=run_id)
 
     confirmed = await derive_confirmed_tracks(session, org_id=org_id, run_id=run_id)
@@ -270,6 +274,18 @@ async def compute_recist(
     # contrast endpoint (compute_contrast) so both compute RECIST identically — the only
     # difference is which track set feeds ``targets``.
     assessments = compute_timeline(targets, new_lesion_dates)
+    return selection, targets, assessments, confirmed_by_key
+
+
+async def compute_recist(
+    session: AsyncSession, *, org_id: uuid.UUID, run_id: uuid.UUID
+) -> dict:
+    """Compute + persist per-timepoint RECIST over confirmed target tracks. 422 if there
+    are no confirmed tracks or no target selection."""
+    selection, targets, assessments, _ = await _worksheet(
+        session, org_id=org_id, run_id=run_id
+    )
+    baseline_sld = sum(t["baseline_mm"] for t in targets)
 
     await _persist(
         session, org_id=org_id, run_id=run_id, selection=selection, assessments=assessments,
@@ -292,6 +308,115 @@ async def compute_recist(
             {
                 **a,
                 "assessment_date": a["assessment_date"].isoformat(),
+            }
+            for a in assessments
+        ],
+    }
+
+
+def _name_from_key(key: str) -> dict:
+    """Track keys are ``finding_type|anatomy|laterality[|…]``, so a lesion that is not
+    currently confirmed can still be named — which is what the "waiting on
+    re-confirmation" list needs."""
+    parts = (key or "").split("|")
+    return {
+        "finding_type": parts[0] if len(parts) > 0 else None,
+        "anatomy": parts[1] if len(parts) > 1 else None,
+        "laterality": parts[2] if len(parts) > 2 else None,
+    }
+
+
+def _display_name(track: dict) -> str:
+    """A lesion label a clinician reads, built from the same tokens as the track key."""
+    finding = (track.get("finding_type") or "").replace("_", " ").strip()
+    anatomy = (track.get("anatomy") or "").replace("_", " ").strip()
+    laterality = (track.get("laterality") or "").strip()
+    if laterality in {"not_applicable", "unknown", ""}:
+        laterality = ""
+    # "Liver metastasis — liver" says liver twice. Drop the site when it adds nothing,
+    # but keep it whenever laterality needs somewhere to attach ("— right lung").
+    if not laterality and anatomy and anatomy.lower() in finding.lower():
+        anatomy = ""
+    site = " ".join(p for p in (laterality, anatomy) if p)
+    label = " — ".join(p for p in (finding, site) if p)
+    return label[:1].upper() + label[1:] if label else ""
+
+
+async def progression(
+    session: AsyncSession, *, org_id: uuid.UUID, run_id: uuid.UUID
+) -> dict:
+    """Read-only disease trajectory for one run: per-lesion diameters over time plus the
+    SLD timeline, the baseline, and the nadir the PD test is measured against.
+
+    ``compute_recist`` already returns the SLD timeline, but not the per-lesion series it
+    was summed from — so a reader can see the total move without seeing which lesion moved
+    it. This adds that, and names the nadir timepoint, because RECIST progression is
+    measured against the smallest the disease ever got, not against the previous scan.
+    Nothing here is persisted; it recomputes what a reviewer would compute.
+    """
+    _, targets, assessments, confirmed_by_key = await _worksheet(
+        session, org_id=org_id, run_id=run_id
+    )
+
+    nadir_date = None
+    if assessments:
+        smallest = min(assessments, key=lambda a: a["sld_mm"])
+        nadir_date = smallest["assessment_date"]
+
+    # A selected target that is not in the confirmed set on THIS run has no series, so the
+    # trajectory is incomplete and the page must say why rather than imply the reports
+    # carried no measurements. On an incremental run this is the normal state: identities
+    # whose new evidence moved the RECIST call are reopened for re-attestation.
+    unconfirmed = [
+        {
+            "confirmed_track_key": t["confirmed_track_key"],
+            "display_name": _display_name(_name_from_key(t["confirmed_track_key"]))
+            or t["confirmed_track_key"],
+        }
+        for t in targets
+        if t["confirmed_track_key"] not in confirmed_by_key
+    ]
+
+    out_targets = []
+    for t in targets:
+        key = t["confirmed_track_key"]
+        track = confirmed_by_key.get(key) or _name_from_key(key)
+        out_targets.append(
+            {
+                "confirmed_track_key": t["confirmed_track_key"],
+                "display_name": _display_name(track) or t["confirmed_track_key"],
+                "finding_type": track.get("finding_type"),
+                "anatomy": track.get("anatomy"),
+                "organ": t["organ"],
+                "is_nodal": t["is_nodal"],
+                "baseline_mm": t["baseline_mm"],
+                "series": [
+                    {"date": d.date().isoformat(), "mm": mm} for d, mm in t["series"]
+                ],
+            }
+        )
+
+    return {
+        "run_id": str(run_id),
+        "baseline_sld_mm": sum(t["baseline_mm"] for t in targets),
+        "baseline_date": assessments[0]["assessment_date"].date().isoformat()
+        if assessments
+        else None,
+        "nadir_sld_mm": min((a["sld_mm"] for a in assessments), default=None),
+        "nadir_date": nadir_date.date().isoformat() if nadir_date else None,
+        "targets": out_targets,
+        "unconfirmed_targets": unconfirmed,
+        "timeline": [
+            {
+                "date": a["assessment_date"].date().isoformat(),
+                "sld_mm": a["sld_mm"],
+                "pct_from_baseline": a["pct_from_baseline"],
+                "pct_from_nadir": a["pct_from_nadir"],
+                # RECIST 1.1 needs BOTH >=20% and >=5mm over nadir to call PD, so the
+                # absolute rise is a value the reader has to see, not derive.
+                "abs_from_nadir_mm": a["sld_mm"] - a["nadir_sld_mm"],
+                "classification": a["classification"],
+                "new_lesion": a["new_lesion"],
             }
             for a in assessments
         ],

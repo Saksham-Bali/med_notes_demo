@@ -33,8 +33,7 @@ Same data, opposite treatment-decision, fully attributed and signed.
 ## 2. What was built
 
 Everything lives in `pre/findingframe/` (monorepo). The research engine at `pre/tmc/` is its own
-git repo (currently at commit `e04d3c6`, remote `med-notes.git`) with 18 dirty files — the same
-uncommitted changes as the working copy at `~/project/tmc`. It is not a fresh, untouched clone.
+git repo (currently at commit `5edaa99`, remote `med-notes.git`), clean — it is not a fresh, untouched clone.
 
 - **Backend** (`backend/`, FastAPI, Python 3.12): 11 routers, 16 services, 24+ endpoints. Async
   SQLAlchemy over Supabase Postgres. Supabase ES256 JWT auth (verified via public JWKS). Every
@@ -71,7 +70,7 @@ department-merge, discharge-summary, multi-tenant onboarding UI, SSO, DICOM/EHR.
 Browser ── HTTPS (Tailscale Funnel) ── Caddy :8080 ──┬── web  :3000  (Next.js, same-origin /api)
                                                      └── backend :8000 (FastAPI)  ──► Supabase Postgres (schema ff, IPv4 session pooler)
                                                           │                            (auth: Supabase ES256 JWT via JWKS)
-                                                          ├── engine adapter ──► pre/tmc FindingFrame engine (vendored, untouched)
+                                                          ├── engine adapter ──► FindingFrame engine via FF_ENGINE_PATH (local dev: pre/tmc checkout; containers: infra/engine_vendor/ copy)
                                                           └── worker (PG job queue) ──► OpenRouter LLM (DeepSeek-V4-Pro default)
 ```
 Single origin (Caddy) → no CORS. Backend connects as the least-privilege `ff_app` role (not
@@ -86,8 +85,7 @@ Tailscale) · OpenRouter (DeepSeek-V4-Pro for cost; GPT-5.5 available).
 
 - **Immutable extraction runs + reproducibility manifest** (engine git SHA, model id, prompt/schema
   versions, temperature, input-report hashes, manifest hash). Re-extraction = a new run, never an edit.
-- **Append-only** on all signed/clinical tables — enforced by Postgres triggers that fire even for
-  the app role, plus `ff_app` has no UPDATE/DELETE/TRUNCATE grant on them.
+- **Append-only** on all signed/clinical tables — enforced by Postgres triggers, enforced for all application roles, plus `ff_app` has no UPDATE/DELETE/TRUNCATE grant on them.
 - **Hash-chained sign-off + audit log**, computed in the database, genesis-defined and race-safe;
   **independently re-verifiable** by `verify_chain.py` (walks the chain, recomputes every hash,
   exits 0/1 — with a negative control proving tampering is caught).
@@ -103,7 +101,7 @@ Tailscale) · OpenRouter (DeepSeek-V4-Pro for cost; GPT-5.5 available).
 ## 5. What is verified (evidence, not assertion)
 
 Confirmed live against the public URL and/or the DB:
-- `/health` → `db:ok`, engine SHA `e04d3c6…`.
+- `/health` → `db:ok`, engine SHA `5edaa99…` (vendored copy at `infra/engine_vendor/VENDOR_SHA`; verified 2026-07-18 against the then-deployed `e04d3c6`, not re-verified since).
 - Login (real Supabase ES256 token) → 2-patient roster with report counts (10000935 → 37, DEMO-NSCLC-01 → 4).
 - Full write path: link-confirm → review → target-lesion → **RECIST contrast (naive PD → confirmed PR, discrepancy=true)** → hash-chained sign-off → audit packet (JSON/CSV/PDF).
 - `verify_chain.py` → OVERALL PASS (signoffs + audit chains recompute).
@@ -131,7 +129,7 @@ RECIST needs numeric measurements; the adapter normalizes them (mm/cm) on the wa
 - **Public URL:** `https://deep.taile0f78b.ts.net` (Tailscale Funnel, stable). Backup: a cloudflared
   quick tunnel (ephemeral).
 - **On Tyrone** (`ssh tyrone`, user `deep`): stack at `~/findingframe/`, compose
-  `infra/docker-compose.tyrone.yml`, Caddyfile `infra/Caddyfile`.
+  `infra/docker-compose.tyrone.yml`; Caddy reverse-proxy config lives on the tyrone host only (no Caddyfile in this repo — compose bind-mounts it).
 - Restart app: `ssh tyrone 'cd ~/findingframe && docker compose --env-file web/.env.local -f infra/docker-compose.tyrone.yml restart'`
 - Web-only rebuild: `docker compose … build web && docker compose … up -d --no-deps web`
 - Funnel toggle: `tailscale funnel --bg 8080` / `tailscale funnel --https=443 off`
@@ -196,7 +194,7 @@ pre/
     ├── backend/         FastAPI app (app/{api,core,db,engine,jobs,services,schemas}) + tests
     ├── worker/          extraction worker (PG job queue)
     ├── web/             Next.js 14 app
-    ├── infra/           migrations · docker · Caddyfile · seed/verify/kappa scripts · engine_vendor
+    ├── infra/           migrations · docker · seed/verify/kappa scripts · engine_vendor (Caddyfile: tyrone host only, not in repo)
     ├── docs/            BUILD_SPEC · RUNBOOK · DEMO_MONEY_PATIENT · IRR_PROTOCOL
     ├── README.md        product overview + quickstart
     └── HANDOFF.md       this file

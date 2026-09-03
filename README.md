@@ -11,12 +11,23 @@ earlier work that product replaced.
   links frames into longitudinal tracks and computes RECIST 1.1 progression; a clinician
   reviews and signs off on every track; every fact and every sign-off is hash-chained and
   independently re-verifiable. Sold to market as **Dasyante**. Backend (FastAPI), worker, and
-  web app (Next.js) are deployed and healthy — see `findingframe/HANDOFF.md` for current status
+  web app (Next.js) were deployed and healthy as last verified 2026-07-18 — see `findingframe/HANDOFF.md` for that status (not re-verified since; incremental-demo status is separately unresolved per the 2026-09-03 NOTE in `findingframe/docs/HANDOFF_INCREMENTAL_DEMO.md`)
   and `findingframe/README.md` for the quickstart. It productionizes the FindingFrame research
   engine kept at `tmc/` (below).
-- **`strategy/`** — the positioning: `PITCH.md`, `MARKET_RESEARCH.md`, `PRODUCT_AND_MARKET.md`,
-  `PRODUCT_BUILD_PLAN.md`. Read these for why the product is shaped the way it is, and for the
-  India-first, pharma/CRO-revenue plan.
+- **`strategy/`** — the positioning. Oncology-first (still live for the deployed product):
+  `PITCH.md`, `MARKET_RESEARCH.md`, `PRODUCT_AND_MARKET.md`, `PRODUCT_BUILD_PLAN.md`.
+  Read these for why the product is shaped the way it is, and for the
+  India-first, pharma/CRO-revenue plan. Aug 13–14 memory-layer pivot
+  (strategy drafts, not product — no go/no-go decision taken; the deployed
+  oncology product is not being shut down): `PIVOT_MEMORY_LAYER_2026-08-13.md`,
+  `MEMORY_LAYER_IMPLEMENTATION_PLAN_2026-08-13.md`, `DATASET_ACQUISITION_PLAN_2026-08-13.md`,
+  `PILOT_DATA_FINDINGS_2026-08-14.md`, `MEMORY_PLATFORM_TRACK_2026-08-14.md`,
+  `PIVOT_CRITIQUE_BASICS_2026-08-14.md`.
+
+- **`docs/`** — repo-level docs (start at `docs/README.md`; currently the
+  2026-08-14 memory-layer handoff). **`PRE_UPDATE_PLAN_2026-07-30.md`** — the
+  ledger for updating this product after the `tmc/` engine audit (four live
+  engine copies, vendoring via `vendor_engine.sh`, cache staleness).
 
 ## What is archived, and why
 

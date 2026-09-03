@@ -41,6 +41,11 @@ export function LinkConfirmation({ runId, digest }: { runId: string; digest: Dig
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["link-decisions", runId] });
       qc.invalidateQueries({ queryKey: ["confirmed-tracks", runId] });
+      // RECIST is computed only over confirmed tracks, so a link decision can change the
+      // response category. Without this the contrast card keeps showing the pre-merge
+      // call and the reviewer sees a stale verdict next to the decision that changed it.
+      qc.invalidateQueries({ queryKey: ["recist-contrast", runId] });
+      qc.invalidateQueries({ queryKey: ["run-delta", runId] });
     },
   });
 

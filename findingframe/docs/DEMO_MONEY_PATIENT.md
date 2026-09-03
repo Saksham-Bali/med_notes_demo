@@ -12,7 +12,7 @@ link-confirmation workflow merges them, and the correct response is Partial
 Response.**
 
 Everything below was produced by the **real engine** (`deepseek/deepseek-v4-pro`
-via OpenRouter, engine `e04d3c6d9c79`) and the **real backend RECIST logic**
+via OpenRouter, engine `e04d3c6d9c79` — **frozen at engine `e04d3c6`**; the artifact below was built at that SHA and is not re-extracted on newer engines) and the **real backend RECIST logic**
 (`app/services/recist.py::classify`), then verified — not asserted.
 
 ---

@@ -33,6 +33,7 @@ import type {
   Patient,
   RecistContrast,
   RecistDistribution,
+  RecistProgression,
   RecistResult,
   Report,
   Review,
@@ -46,6 +47,7 @@ import type {
   TargetLesionInput,
   Track,
   TrackEvent,
+  RunDelta,
 } from "./types";
 
 export class ApiError extends Error {
@@ -389,6 +391,24 @@ export const api = {
   // The money moment: naive (machine linking) vs human-confirmed RECIST side by side.
   getRecistContrast: (runId: string): Promise<RecistContrast> =>
     IS_MOCK ? mock.recistContrast(runId) : request("GET", `/runs/${runId}/recist/contrast`),
+  // Read-only disease trajectory: per-lesion diameters + the SLD timeline. 422 until
+  // there are confirmed tracks and a target-lesion selection, same as the worksheet.
+  getRecistProgression: (runId: string): Promise<RecistProgression> =>
+    request("GET", `/runs/${runId}/recist/progression`),
+
+  // what one new report changed, relative to the run this one extends. Returns null for a
+  // first run (nothing to compare against) and in mock mode, which has no run lineage.
+  getRunDelta: async (runId: string): Promise<RunDelta | null> => {
+    if (IS_MOCK) return null;
+    try {
+      return await request<RunDelta>("GET", `/runs/${runId}/delta`);
+    } catch (e) {
+      if (e instanceof ApiError && (e.code === "no_parent_run" || e.status === 404)) return null;
+      throw e;
+    }
+  },
+  applyCarryForward: (runId: string): Promise<RunDelta> =>
+    request("POST", `/runs/${runId}/carry-forward`),
 
   // sign-off + audit
   signoff: (patientId: string): Promise<Signoff> =>

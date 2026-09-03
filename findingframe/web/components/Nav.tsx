@@ -6,7 +6,7 @@ import { signOut } from "@/lib/auth";
 import { useUser } from "./AuthGuard";
 import { IS_MOCK } from "@/lib/env";
 import { cx } from "@/lib/format";
-import { Activity, BarChart3, ClipboardCheck, LogOut, Settings, ShieldCheck } from "lucide-react";
+import { Activity, BarChart3, ClipboardCheck, LogOut, Settings, ShieldCheck, Workflow } from "lucide-react";
 
 export function Nav() {
   const pathname = usePathname();
@@ -31,12 +31,15 @@ export function Nav() {
           <span className="text-2xs text-ink-faint hidden sm:inline">audit-grade oncology review</span>
         </Link>
 
-        <nav className="flex items-center gap-1 ml-2">
+        <nav className="flex items-center gap-1 ml-2 overflow-x-auto scroll-thin">
           <NavLink href="/dashboard" active={pathname?.startsWith("/dashboard") ?? false}>
             <Activity className="w-4 h-4" /> Patients
           </NavLink>
           <NavLink href="/analytics" active={pathname?.startsWith("/analytics") ?? false}>
             <BarChart3 className="w-4 h-4" /> Analytics
+          </NavLink>
+          <NavLink href="/pipeline" active={pathname?.startsWith("/pipeline") ?? false}>
+            <Workflow className="w-4 h-4" /> Pipeline
           </NavLink>
           <NavLink href="/irr" active={pathname?.startsWith("/irr") ?? false}>
             <ClipboardCheck className="w-4 h-4" /> Validation
@@ -82,7 +85,7 @@ function NavLink({
     <Link
       href={href}
       className={cx(
-        "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors",
+        "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors shrink-0 whitespace-nowrap",
         active ? "bg-accent-soft text-accent-ink" : "text-ink-soft hover:bg-paper-sunk"
       )}
     >

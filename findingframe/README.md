@@ -21,7 +21,7 @@ under a tamper-evident audit trail. It is a **reviewer accelerator**, not an aut
   proposal: the clinician confirms/merges/splits lesion identity, and **RECIST is computed only over
   human-confirmed tracks** (a false split would otherwise fabricate a "new lesion" = false PD).
 - **Audit-grade, enforced in the database.** Immutable extraction runs with a reproducibility
-  manifest, append-only tables (trigger-enforced against the app role itself), DB-computed
+  manifest, append-only tables (trigger-enforced for all application roles), DB-computed
   hash-chained sign-off + audit log, independently re-verifiable with `verify_chain.py`.
 - **Model-agnostic** (OpenRouter/OpenAI; DeepSeek-V4-Pro, GPT-5.5, …) and **multi-tenant** with
   per-org isolation.
@@ -34,7 +34,7 @@ web/  (Next.js 14)  ──JWT──>  backend/ (FastAPI)  ──asyncpg (ff_app)
                                    └── worker/  PG job queue (FOR UPDATE SKIP LOCKED) ──> extraction
 ```
 - **Auth:** Supabase Auth, ES256 JWTs verified via public JWKS.
-- **DB:** `infra/supabase/migrations/0001..0005` — schema, RLS, integrity hardening, digest-searchpath fix, least-privilege `ff_app` role.
+- **DB:** `infra/supabase/migrations/0001..0008` — schema, RLS, integrity hardening, digest-searchpath fix, least-privilege `ff_app` role, rate limiting, run-grant fix, incremental runs + carry-forward. (⚠ 0008 is untracked in git — see `AGENTS.md`; a fresh clone lacks the incremental schema.)
 - **Engine boundary:** `backend/app/engine/adapter.py` is the only code that imports the research engine.
 
 ## Quickstart (local)
@@ -77,7 +77,10 @@ backend/.venv/bin/python infra/scripts/verify_chain.py   # recomputes signoff + 
 - `docs/BUILD_SPEC.md` — the API + worker contract and data model.
 - `docs/RUNBOOK.md` — run/seed/deploy steps.
 - `docs/DEMO_MONEY_PATIENT.md` — the flagship demo script.
+- `docs/HANDOFF_INCREMENTAL_DEMO.md` — the incremental-run / carry-forward demo handoff (⚠ status NOTE 2026-09-03).
+- `docs/DEMO_INCREMENTAL.md` — pre-build proposal, partly superseded (see the handoff above §3).
 - `docs/IRR_PROTOCOL.md` — the blinded clinician-validation (Cohen's κ) protocol.
+- `docs/INDEX.md` — one-line status for each doc above.
 
 ## Status
 R6 vertical slice: complete and verified end-to-end (extraction → review → human-confirmed linking →

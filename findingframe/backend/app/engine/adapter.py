@@ -369,6 +369,46 @@ class EngineAdapter:
         )
 
 
+def extraction_provenance(
+    artifact: PatientArtifact, report_manifest: list[dict[str, Any]]
+) -> dict[str, Any]:
+    """Which reports this run actually read, and which came back from the cache.
+
+    The engine's extraction cache is content-addressed (report text hash + model + prompt
+    and schema version + engine SHA via the cache directory), so on a run that adds one
+    report to ten existing ones, only the new report reaches the model. That is the
+    property the incremental story rests on -- and without recording it per report, "only
+    one report was read" is a claim nobody downstream can check. So record it.
+
+    Note this does NOT weaken reproduction: report_manifest still describes every report,
+    and the cache key is a strict subset of the manifest's identity tuple, so a cached
+    frame set is the same frame set a fresh extraction of that text would produce.
+    """
+    by_source: dict[str, dict[str, Any]] = {
+        str(e.get("source_report_id")): e for e in report_manifest if e.get("source_report_id")
+    }
+    cache_served: list[dict[str, Any]] = []
+    fresh: list[dict[str, Any]] = []
+    for report in (artifact.raw or {}).get("reports", []) or []:
+        source_report_id = str(report.get("report_id") or "")
+        entry = by_source.get(source_report_id, {})
+        row = {
+            "source_report_id": source_report_id,
+            "report_version_id": entry.get("report_version_id"),
+            "text_sha256": entry.get("text_sha256"),
+            "chart_date": entry.get("chart_date"),
+        }
+        diagnostics = report.get("extraction_diagnostics") or {}
+        (cache_served if diagnostics.get("cache_hit") else fresh).append(row)
+
+    return {
+        "cache_served": cache_served,
+        "freshly_extracted": fresh,
+        "llm_calls": len(fresh),
+        "reports_total": len(cache_served) + len(fresh),
+    }
+
+
 _adapter: EngineAdapter | None = None
 
 

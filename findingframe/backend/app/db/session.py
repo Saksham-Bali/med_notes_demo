@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import ssl
 from collections.abc import AsyncGenerator
+from urllib.parse import urlsplit
 
 from sqlalchemy.ext.asyncio import (
     AsyncEngine,
@@ -35,6 +36,18 @@ def _ssl_context() -> ssl.SSLContext:
     return ctx
 
 
+def _is_local(database_url: str) -> bool:
+    """Whether the DSN points at a loopback / unix-socket Postgres.
+
+    A local scratch database generally has no TLS configured and rejects the upgrade
+    outright, so demanding SSL makes the backend impossible to run against one — which in
+    turn makes the seed and verification scripts impossible to exercise anywhere but the
+    live database. Only loopback hosts skip TLS; anything remote still requires it.
+    """
+    host = (urlsplit(database_url).hostname or "").lower()
+    return host in {"localhost", "127.0.0.1", "::1", ""}
+
+
 def get_engine() -> AsyncEngine:
     global _engine
     if _engine is None:
@@ -47,7 +60,7 @@ def get_engine() -> AsyncEngine:
             pool_pre_ping=True,
             echo=False,
             connect_args={
-                "ssl": _ssl_context(),
+                **({} if _is_local(settings.database_url) else {"ssl": _ssl_context()}),
                 "server_settings": {"search_path": f"{settings.db_schema},public"},
             },
         )

@@ -28,7 +28,7 @@ from sqlalchemy.pool import NullPool
 from app.core.config import settings
 from app.core.errors import NotFound
 from app.db.models import ExtractionRun, Org, ReviewSession
-from app.db.session import _ssl_context
+from app.db.session import _is_local, _ssl_context
 from app.services import (
     digest,
     export,
@@ -96,7 +96,10 @@ async def tenants():
         settings.database_url,
         poolclass=NullPool,
         connect_args={
-            "ssl": _ssl_context(),
+            # Match app.db.session: a loopback scratch Postgres has no TLS and rejects
+            # the upgrade, so demanding SSL would skip these tests everywhere but the
+            # live database -- which is the one place you least want to run them.
+            **({} if _is_local(settings.database_url) else {"ssl": _ssl_context()}),
             "server_settings": {"search_path": f"{settings.db_schema},public"},
         },
     )

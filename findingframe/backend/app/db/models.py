@@ -175,6 +175,14 @@ class ExtractionRun(Base):
     progress_total: Mapped[int] = mapped_column(Integer, server_default=sa_text("0"))
     progress_done: Mapped[int] = mapped_column(Integer, server_default=sa_text("0"))
     checkpoint: Mapped[dict[str, Any]] = mapped_column(JSONB, server_default=sa_text("'{}'::jsonb"))
+    # Run lineage (0008). An incremental run extends parent_run_id rather than replacing it;
+    # extraction_provenance records which reports were cache-served vs freshly read, so the
+    # "only the new report was read" claim is checkable rather than asserted.
+    parent_run_id: Mapped[uuid.UUID | None] = mapped_column(Uuid, nullable=True)
+    run_kind: Mapped[str] = mapped_column(Text, server_default=sa_text("'full'"))
+    extraction_provenance: Mapped[dict[str, Any]] = mapped_column(
+        JSONB, server_default=sa_text("'{}'::jsonb")
+    )
     created_at: Mapped[dt.datetime] = _now()
     created_by: Mapped[uuid.UUID | None] = mapped_column(Uuid, nullable=True)
     started_at: Mapped[dt.datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
@@ -266,6 +274,10 @@ class LinkDecision(Base):
     decided_by: Mapped[uuid.UUID] = mapped_column(Uuid)
     decided_at: Mapped[dt.datetime] = _now()
     signature_sha256: Mapped[str | None] = mapped_column(Text, nullable=True)
+    # Carry-forward provenance (0008). Set when this row replays a decision a clinician
+    # made on an earlier run; decided_by/decided_at keep the ORIGINAL act's attribution.
+    carried_from_run_id: Mapped[uuid.UUID | None] = mapped_column(Uuid, nullable=True)
+    carried_from_decision_id: Mapped[uuid.UUID | None] = mapped_column(Uuid, nullable=True)
 
 
 class TargetLesionSelection(Base):
@@ -279,6 +291,9 @@ class TargetLesionSelection(Base):
     selected_by: Mapped[uuid.UUID] = mapped_column(Uuid)
     selected_at: Mapped[dt.datetime] = _now()
     signature_sha256: Mapped[str | None] = mapped_column(Text, nullable=True)
+    # Carry-forward provenance (0008); see LinkDecision.
+    carried_from_run_id: Mapped[uuid.UUID | None] = mapped_column(Uuid, nullable=True)
+    carried_from_selection_id: Mapped[uuid.UUID | None] = mapped_column(Uuid, nullable=True)
 
 
 class RecistAssessment(Base):
@@ -327,6 +342,9 @@ class Review(Base):
     comment: Mapped[str | None] = mapped_column(Text, nullable=True)
     model_output_visible: Mapped[bool] = mapped_column(Boolean, server_default=sa_text("true"))
     assignment_id: Mapped[uuid.UUID | None] = mapped_column(Uuid, nullable=True)
+    # 'review' = full slot-correctness review. 'acknowledgement' = the reviewer saw new
+    # evidence added to a track whose identity they had already confirmed (0008).
+    review_kind: Mapped[str] = mapped_column(Text, server_default=sa_text("'review'"))
     created_at: Mapped[dt.datetime] = _now()
 
 

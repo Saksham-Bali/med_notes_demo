@@ -34,6 +34,7 @@ import seed_demo  # noqa: E402
 from seed_demo import (  # noqa: E402
     _sha256,
     build_pg_dsn,
+    resolve_database_url,
     clinical_section_for,
     load_env_file,
     progression_for,
@@ -83,7 +84,7 @@ def main() -> int:
     schema_version = manifest.get("schema_version", "unknown")
 
     env = load_env_file(BACKEND_ENV)
-    database_url = env.get("FF_DATABASE_URL", "")
+    database_url = resolve_database_url(env)
     if not database_url:
         print(f"ERROR: FF_DATABASE_URL missing from {BACKEND_ENV}", file=sys.stderr)
         return 1

@@ -32,7 +32,7 @@ Append-only tables reject UPDATE/DELETE for `authenticated`. Enums in `ff.*` (as
 ## Connectivity (verified)
 - Postgres 17, Supabase project `cuhrmxeqcgkvggdzlrye`, region ap-southeast-1.
 - Async DSN in `backend/.env` as `FF_DATABASE_URL` (asyncpg, direct IPv6 host; needs SSL + `server_settings={"search_path":"ff,public"}`).
-- **Backend connects as `postgres` (superuser) = the tenant boundary.** RLS is defense-in-depth. Enforce org scoping in the service layer on EVERY query; never trust client-supplied org_id without a membership check.
+- **Backend connects as the least-privilege `ff_app` role (not superuser).** RLS is defense-in-depth. Enforce org scoping in the service layer on EVERY query; never trust client-supplied org_id without a membership check. Append-only triggers are enforced for all application roles (plain `ORIGIN` triggers — not superuser-proof, so never claim they are).
 - Auth: **ES256 JWTs verified via JWKS** (`FF_SUPABASE_JWKS_URL`) — no secret needed. Use `jwt.PyJWKClient`. Audience `authenticated`. `sub` = user id (matches auth.users.id / profiles.id).
 
 ## Engine adapter (DONE — use it, don't reimplement)
@@ -80,6 +80,10 @@ Every mutating call writes an `audit_log` row (actor, action, entity, before/aft
   - `GET /runs/{id}/recist` → compute per-timepoint SLD + PD/SD/PR/CR over confirmed target tracks; persist
     `recist_assessments`. Return **422** with a clear message if no confirmed tracks or no target selection exist
     (never render RECIST from unconfirmed linking).
+   - `GET /runs/{id}/recist/progression` → read-only disease-trajectory view (per-lesion series + SLD curve against response/progression lines; persists nothing).
+ - **Incremental runs (post-R6; full design in `docs/HANDOFF_INCREMENTAL_DEMO.md`)**
+   - `GET /runs/{id}/delta` → what changed vs the parent run (carried / needs-re-confirmation / new-evidence / new tracks, reports read, RECIST before→after).
+   - `POST /runs/{id}/carry-forward` → replay the parent run's still-valid link decisions, reviews and target selections onto this run by stable `track_key`.
 - **Sign-off / audit / export**
   - `POST /patients/{id}/signoff` → build payload {run manifest + review deltas + link decisions + recist inputs},
     hash it, chain from prior signoff → insert `signoffs`.

@@ -78,6 +78,22 @@ Verifying password login for demo@findingframe.dev ...
 
 Demo credentials: **demo@findingframe.dev / demo1234**.
 
+### The other two demo patients (in order — TRUNCATE warning)
+
+```bash
+backend/.venv/bin/python infra/scripts/seed_money_patient.py  # 2nd: synthetic DEMO-NSCLC-01
+backend/.venv/bin/python infra/scripts/seed_long_patient.py   # 3rd: synthetic DEMO-NSCLC-LONG-01
+```
+
+- `seed_demo.py` **TRUNCATEs** the demo clinical tables — re-running it wipes
+  both patients below, so re-run all three in order. The other two seeds are
+  additive (no TRUNCATE) but require the demo org/user from step 1.
+- Money patient: `docs/DEMO_MONEY_PATIENT.md` (flagship naive-PD →
+  human-confirmed-PR demo; artifact frozen at engine `e04d3c6`).
+- Long patient: `docs/HANDOFF_INCREMENTAL_DEMO.md` (incremental run +
+  carry-forward; ⚠ 2026-09-03 status NOTE — needs migration 0008, which is
+  untracked in git).
+
 ### Vendoring the engine (R2 hardening — optional for local dev, required for Docker)
 
 ```bash
@@ -147,6 +163,11 @@ backend instead of the built-in mock dataset.
    pseudonymized audit-grade bundle (the demo centerpiece).
 
 ## Docker Compose
+
+Local/dev stack (`infra/docker-compose.yml`). The tyrone deploy stack is
+`infra/docker-compose.tyrone.yml` (adds Caddy as the single public origin; on
+tyrone the checkout lives at `~/findingframe/` — see `HANDOFF.md` §7; the
+Caddyfile itself lives on the tyrone host, not in this repo).
 
 No local Postgres — everything still points at the hosted Supabase project via
 `backend/.env`. Build context for every service is the `findingframe/` repo root.

@@ -224,11 +224,18 @@ function RunRow({ run }: { run: Run }) {
           </div>
         </div>
         {run.status === "succeeded" && (
-          <Link href={`/runs/${run.id}/review`}>
-            <Button size="sm" variant="subtle">
-              Open review →
-            </Button>
-          </Link>
+          <div className="flex shrink-0 items-center gap-2">
+            <Link href={`/runs/${run.id}/progression`}>
+              <Button size="sm" variant="subtle">
+                Trajectory
+              </Button>
+            </Link>
+            <Link href={`/runs/${run.id}/review`}>
+              <Button size="sm" variant="subtle">
+                Open review →
+              </Button>
+            </Link>
+          </div>
         )}
       </div>
       {inProgress && (

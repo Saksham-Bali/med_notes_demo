@@ -33,6 +33,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
@@ -77,6 +78,17 @@ def _sha256(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
+def resolve_database_url(env: dict[str, str]) -> str:
+    """The DSN to use: an explicit FF_DATABASE_URL in the environment wins over the .env file.
+
+    The override exists so these scripts can be pointed at a scratch database — a local
+    Postgres with the migrations applied, or a CI instance — and actually be run end to end.
+    Without it the only way to exercise a seed script is against the live demo database,
+    which is both risky and impossible for anyone holding only the least-privilege role.
+    """
+    return os.environ.get("FF_DATABASE_URL") or env.get("FF_DATABASE_URL", "")
+
+
 def load_env_file(path: Path) -> dict[str, str]:
     env: dict[str, str] = {}
     if not path.exists():
@@ -105,8 +117,13 @@ def build_pg_dsn(database_url: str) -> str:
     # psycopg.conninfo to be safe with quoting.
     from psycopg.conninfo import make_conninfo
 
+    # Supabase requires TLS; a local scratch Postgres generally has none configured, and
+    # sslmode=require would refuse to connect at all. "prefer" still negotiates TLS when
+    # the server offers it, so this weakens nothing for a remote host.
+    local = host in {"localhost", "127.0.0.1", "::1", ""} or host.startswith("/")
     return make_conninfo(
-        host=host, port=port, user=user, password=password, dbname=dbname, sslmode="require",
+        host=host, port=port, user=user, password=password, dbname=dbname,
+        sslmode="prefer" if local else "require",
     )
 
 
@@ -243,7 +260,7 @@ def main() -> int:
         return 1
 
     env = load_env_file(BACKEND_ENV)
-    database_url = env.get("FF_DATABASE_URL", "")
+    database_url = resolve_database_url(env)
     if not database_url:
         print(f"ERROR: FF_DATABASE_URL missing from {BACKEND_ENV}", file=sys.stderr)
         return 1

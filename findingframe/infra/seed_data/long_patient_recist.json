@@ -1,0 +1,133 @@
+{
+  "targets": [
+    {
+      "name": "lung",
+      "track_key": "primary_tumor|thorax|left",
+      "baseline_mm": 52.0
+    },
+    {
+      "name": "liver",
+      "track_key": "liver_metastasis|liver|not_applicable",
+      "baseline_mm": 40.0
+    },
+    {
+      "name": "lung_mets",
+      "track_key": "lung_metastasis|thorax|right",
+      "baseline_mm": 28.0
+    }
+  ],
+  "timeline": [
+    {
+      "assessment_date": "2024-02-05T00:00:00",
+      "sld_mm": 120.0,
+      "baseline_sld_mm": 120.0,
+      "nadir_sld_mm": 120.0,
+      "pct_from_baseline": 0.0,
+      "pct_from_nadir": 0.0,
+      "classification": "SD",
+      "new_lesion": false
+    },
+    {
+      "assessment_date": "2024-04-01T00:00:00",
+      "sld_mm": 105.0,
+      "baseline_sld_mm": 120.0,
+      "nadir_sld_mm": 105.0,
+      "pct_from_baseline": -12.5,
+      "pct_from_nadir": 0.0,
+      "classification": "SD",
+      "new_lesion": false
+    },
+    {
+      "assessment_date": "2024-05-27T00:00:00",
+      "sld_mm": 91.0,
+      "baseline_sld_mm": 120.0,
+      "nadir_sld_mm": 91.0,
+      "pct_from_baseline": -24.166666666666668,
+      "pct_from_nadir": 0.0,
+      "classification": "SD",
+      "new_lesion": false
+    },
+    {
+      "assessment_date": "2024-07-22T00:00:00",
+      "sld_mm": 78.0,
+      "baseline_sld_mm": 120.0,
+      "nadir_sld_mm": 78.0,
+      "pct_from_baseline": -35.0,
+      "pct_from_nadir": 0.0,
+      "classification": "PR",
+      "new_lesion": false
+    },
+    {
+      "assessment_date": "2024-09-16T00:00:00",
+      "sld_mm": 66.0,
+      "baseline_sld_mm": 120.0,
+      "nadir_sld_mm": 66.0,
+      "pct_from_baseline": -45.0,
+      "pct_from_nadir": 0.0,
+      "classification": "PR",
+      "new_lesion": false
+    },
+    {
+      "assessment_date": "2024-11-11T00:00:00",
+      "sld_mm": 60.0,
+      "baseline_sld_mm": 120.0,
+      "nadir_sld_mm": 60.0,
+      "pct_from_baseline": -50.0,
+      "pct_from_nadir": 0.0,
+      "classification": "PR",
+      "new_lesion": false
+    },
+    {
+      "assessment_date": "2025-01-06T00:00:00",
+      "sld_mm": 60.0,
+      "baseline_sld_mm": 120.0,
+      "nadir_sld_mm": 60.0,
+      "pct_from_baseline": -50.0,
+      "pct_from_nadir": 0.0,
+      "classification": "PR",
+      "new_lesion": false
+    },
+    {
+      "assessment_date": "2025-03-03T00:00:00",
+      "sld_mm": 62.0,
+      "baseline_sld_mm": 120.0,
+      "nadir_sld_mm": 60.0,
+      "pct_from_baseline": -48.333333333333336,
+      "pct_from_nadir": 3.3333333333333335,
+      "classification": "PR",
+      "new_lesion": false
+    },
+    {
+      "assessment_date": "2025-04-28T00:00:00",
+      "sld_mm": 66.0,
+      "baseline_sld_mm": 120.0,
+      "nadir_sld_mm": 60.0,
+      "pct_from_baseline": -45.0,
+      "pct_from_nadir": 10.0,
+      "classification": "PR",
+      "new_lesion": false
+    },
+    {
+      "assessment_date": "2025-06-23T00:00:00",
+      "sld_mm": 70.0,
+      "baseline_sld_mm": 120.0,
+      "nadir_sld_mm": 60.0,
+      "pct_from_baseline": -41.66666666666667,
+      "pct_from_nadir": 16.666666666666664,
+      "classification": "PR",
+      "new_lesion": false
+    },
+    {
+      "assessment_date": "2025-08-18T00:00:00",
+      "sld_mm": 78.0,
+      "baseline_sld_mm": 120.0,
+      "nadir_sld_mm": 60.0,
+      "pct_from_baseline": -35.0,
+      "pct_from_nadir": 30.0,
+      "classification": "PD",
+      "new_lesion": false
+    }
+  ],
+  "best_overall_through_t10": "PR",
+  "best_overall_through_t11": "PD"
+}

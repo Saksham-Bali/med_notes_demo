@@ -7,6 +7,7 @@ the actual extraction.
 from __future__ import annotations
 
 import uuid
+from typing import Any
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -41,6 +42,47 @@ def build_report_inputs(current_versions: list[dict]) -> list[ReportInput]:
     return inputs
 
 
+async def _extendable_parent(
+    session: AsyncSession,
+    *,
+    org_id: uuid.UUID,
+    patient_id: uuid.UUID,
+    manifest: Any,
+) -> ExtractionRun | None:
+    """The most recent succeeded run whose reports are a strict subset of the current set.
+
+    That is the run a new one *extends* rather than replaces: every report it covered is
+    still here unchanged (matched on report_version_id, so an addendum creates a new
+    version and correctly disqualifies the parent), and at least one report is new. When
+    no such run exists — first run, or a report was edited or removed — the new run is a
+    plain full run with no parent.
+    """
+    current_ids = {
+        e.get("report_version_id") for e in manifest.report_manifest if e.get("report_version_id")
+    }
+    candidates = (
+        await session.execute(
+            select(ExtractionRun)
+            .where(
+                ExtractionRun.org_id == org_id,
+                ExtractionRun.patient_id == patient_id,
+                ExtractionRun.status == "succeeded",
+            )
+            .order_by(ExtractionRun.created_at.desc())
+            .limit(20)
+        )
+    ).scalars().all()
+    for run in candidates:
+        parent_ids = {
+            e.get("report_version_id")
+            for e in (run.report_manifest or [])
+            if e.get("report_version_id")
+        }
+        if parent_ids and parent_ids < current_ids:
+            return run
+    return None
+
+
 async def create_run(
     session: AsyncSession,
     *,
@@ -49,7 +91,15 @@ async def create_run(
     created_by: uuid.UUID,
 ) -> tuple[ExtractionRun, bool]:
     """Returns (run, created). If an identical succeeded run exists, returns it with
-    created=False (idempotent)."""
+    created=False (idempotent).
+
+    When the patient already has a succeeded run covering a subset of the current
+    reports, the new run is marked ``incremental`` and points at it. That does not change
+    what gets recorded — ``report_manifest`` still describes every report in the history,
+    so the run stays independently reproducible from its manifest alone. What it changes
+    is what the new run may reuse: the clinician's confirmations carry forward by track
+    key (see ``services/carry_forward.py``) instead of being silently orphaned.
+    """
     await get_patient(session, org_id=org_id, patient_id=patient_id)
     current_versions = await reports_svc.current_report_versions(
         session, org_id=org_id, patient_id=patient_id
@@ -76,10 +126,15 @@ async def create_run(
     if existing is not None:
         return existing, False
 
+    parent = await _extendable_parent(
+        session, org_id=org_id, patient_id=patient_id, manifest=manifest
+    )
     run = ExtractionRun(
         org_id=org_id,
         patient_id=patient_id,
         status="queued",
+        parent_run_id=parent.id if parent else None,
+        run_kind="incremental" if parent else "full",
         engine_git_sha=manifest.engine_git_sha,
         model_provider=manifest.model_provider,
         model_id=manifest.model_id,

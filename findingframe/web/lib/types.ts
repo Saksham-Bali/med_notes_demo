@@ -244,6 +244,12 @@ export interface Review {
   clinically_significant?: boolean;
   comment?: string | null;
   model_output_visible: boolean;
+  /** 'review' = slot-correctness pass. 'acknowledgement' = new evidence on an
+   *  already-confirmed track was shown to the reviewer. */
+  review_kind?: "review" | "acknowledgement";
+  /** Arbitrary jsonb snapshot of what the reviewer saw. For an acknowledgement it holds
+   *  `{ acknowledgement: { gained_event_dates, carried_from_run_id, ... } }`. */
+  reviewed_value?: unknown;
   created_at: string;
 }
 
@@ -361,6 +367,49 @@ export interface RecistContrast {
   confirmed: ContrastArm | null;
   discrepancy: boolean;
   discrepancy_note: string;
+}
+
+// ---- Disease trajectory ---------------------------------------------------
+
+export interface ProgressionPoint {
+  date: string;
+  mm: number;
+}
+
+export interface ProgressionTarget {
+  confirmed_track_key: string;
+  display_name: string;
+  finding_type: string | null;
+  anatomy: string | null;
+  organ: string | null;
+  is_nodal: boolean;
+  baseline_mm: number;
+  series: ProgressionPoint[];
+}
+
+export interface ProgressionTimepoint {
+  date: string;
+  sld_mm: number;
+  pct_from_baseline: number;
+  pct_from_nadir: number;
+  /** RECIST 1.1 needs BOTH >=20% and >=5mm over nadir to call PD, so both are carried. */
+  abs_from_nadir_mm: number;
+  classification: RecistClassification;
+  new_lesion: boolean;
+}
+
+/** GET /runs/{id}/recist/progression — per-lesion diameters + the SLD timeline. */
+export interface RecistProgression {
+  run_id: string;
+  baseline_sld_mm: number;
+  baseline_date: string | null;
+  nadir_sld_mm: number | null;
+  nadir_date: string | null;
+  targets: ProgressionTarget[];
+  /** Selected targets not human-confirmed on THIS run — on an incremental run, the
+   *  lesions reopened for re-attestation. While non-empty the trajectory is incomplete. */
+  unconfirmed_targets: { confirmed_track_key: string; display_name: string }[];
+  timeline: ProgressionTimepoint[];
 }
 
 // ---- Sign-off / audit -----------------------------------------------------
@@ -728,5 +777,67 @@ export const SECTION_META: Record<
     label: "Routine negatives",
     description: "Absent throughout — batch-verifiable",
     tone: "quiet",
+  },
+};
+
+// ---- Run delta (what one new report actually changed) ---------------------
+
+/** How a previously-confirmed lesion identity fared when a new report arrived. */
+export type IdentityStatus = "carry" | "acknowledge" | "reopen" | "new";
+
+export interface DeltaIdentity {
+  confirmed_track_key: string;
+  status: IdentityStatus;
+  reason: string;
+  member_track_keys: string[];
+  gained_event_dates: string[];
+  /** A per-report catch-all fragment, not a lesion that links across scans. */
+  review_only?: boolean;
+}
+
+export interface RunDelta {
+  run_id: string;
+  parent_run_id: string;
+  /** RECIST call on the parent run, and what it becomes with the new evidence. */
+  recist_call_before: string | null;
+  recist_call_after: string | null;
+  category_moved: boolean;
+  /** The whole history this run covers. */
+  reports_total: number;
+  /** How many of them the model actually had to read. */
+  llm_calls: number | null;
+  cache_served: number;
+  reports_added: { report_version_id: string; source_report_id: string; chart_date: string }[];
+  identities: DeltaIdentity[];
+  counts: Record<IdentityStatus, number>;
+  carried_member_track_keys: string[];
+  /** Present on the apply response only. */
+  carried_link_decisions?: number;
+  carried_target_selection?: boolean;
+}
+
+export const IDENTITY_META: Record<
+  IdentityStatus,
+  { label: string; description: string; tone: "danger" | "warn" | "good" | "info" | "quiet" }
+> = {
+  carry: {
+    label: "Carried forward",
+    description: "Identity unchanged — the earlier confirmation still stands",
+    tone: "good",
+  },
+  acknowledge: {
+    label: "New evidence",
+    description: "Same lesion, new measurement — acknowledge what was added",
+    tone: "info",
+  },
+  reopen: {
+    label: "Needs re-confirmation",
+    description: "The identity picture changed, so it is asked again",
+    tone: "warn",
+  },
+  new: {
+    label: "New finding",
+    description: "First seen on this report — needs a fresh decision",
+    tone: "danger",
   },
 };

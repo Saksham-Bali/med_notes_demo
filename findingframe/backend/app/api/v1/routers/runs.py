@@ -16,7 +16,16 @@ from app.schemas.dto import (
     TargetSelectionCreate,
     TargetSelectionOut,
 )
-from app.services import audit, digest, export, linking, recist, reviews, runs
+from app.services import (
+    audit,
+    carry_forward,
+    digest,
+    export,
+    linking,
+    recist,
+    reviews,
+    runs,
+)
 
 router = APIRouter(tags=["runs"])
 
@@ -49,6 +58,50 @@ async def list_runs(patient_id: uuid.UUID, ctx: CtxDep, session: SessionDep):
 @router.get("/runs/{run_id}", response_model=RunOut)
 async def get_run(run_id: uuid.UUID, ctx: CtxDep, session: SessionDep):
     return await runs.get_run(session, org_id=ctx.org_id, run_id=run_id)
+
+
+# --- what one new report actually changed ------------------------------------
+@router.get("/runs/{run_id}/delta")
+async def run_delta(run_id: uuid.UUID, ctx: CtxDep, session: SessionDep) -> dict:
+    """What this run changed relative to the run it extends.
+
+    Read-only. Reports which previously-confirmed lesion identities still stand, which
+    gained evidence the reviewer should acknowledge, which must be re-confirmed, and what
+    is new — plus the RECIST call before and after.
+    """
+    return await carry_forward.plan_carry_forward(session, org_id=ctx.org_id, run_id=run_id)
+
+
+@router.post("/runs/{run_id}/carry-forward")
+async def apply_carry_forward(
+    run_id: uuid.UUID, ctx: ReviewerCtxDep, session: SessionDep
+) -> dict:
+    """Replay the parent run's still-valid confirmations onto this run.
+
+    Only identities whose picture is unchanged are replayed, each marked with
+    ``carried_from_run_id`` and keeping the original reviewer and timestamp. Anything
+    re-opened or new is deliberately left for a human.
+    """
+    result = await carry_forward.apply_carry_forward(
+        session, org_id=ctx.org_id, run_id=run_id, applied_by=ctx.user.id
+    )
+    await audit.record(
+        session,
+        org_id=ctx.org_id,
+        actor_id=ctx.user.id,
+        action="run.carry_forward",
+        entity_type="run",
+        entity_id=str(run_id),
+        after={
+            "parent_run_id": result["parent_run_id"],
+            "counts": result["counts"],
+            "carried_link_decisions": result["carried_link_decisions"],
+            "carried_target_selection": result["carried_target_selection"],
+            "recist_call_before": result["recist_call_before"],
+            "recist_call_after": result["recist_call_after"],
+        },
+    )
+    return result
 
 
 # --- digest -----------------------------------------------------------------
@@ -159,6 +212,13 @@ async def recist_contrast(run_id: uuid.UUID, ctx: CtxDep, session: SessionDep) -
     """The money moment: naive (machine tracks as-is) vs confirmed (human merges applied)
     RECIST, side by side. Read-only; returns 200 even when there is no confirmed merge yet."""
     return await recist.compute_contrast(session, org_id=ctx.org_id, run_id=run_id)
+
+
+@router.get("/runs/{run_id}/recist/progression")
+async def recist_progression(run_id: uuid.UUID, ctx: CtxDep, session: SessionDep) -> dict:
+    """Disease trajectory for one run — per-lesion diameters over time, the SLD timeline,
+    and the nadir the progression test is measured against. Read-only, persists nothing."""
+    return await recist.progression(session, org_id=ctx.org_id, run_id=run_id)
 
 
 # --- audit packet (demo centerpiece) ----------------------------------------

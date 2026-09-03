@@ -10,12 +10,13 @@ import { Button, Card, ErrorBox, Loading } from "@/components/ui";
 import { TrackCard } from "@/components/TrackCard";
 import { SectionHeader } from "@/components/SectionGroup";
 import { QuarantineZone } from "@/components/QuarantineZone";
+import { RunDeltaPanel } from "@/components/RunDeltaPanel";
 import { ContrastCard } from "@/components/ContrastCard";
 import { LinkConfirmation } from "@/components/LinkConfirmation";
 import { ManifestPanel } from "@/components/ManifestPanel";
 import { SessionTimer } from "@/components/SessionTimer";
 import { cx } from "@/lib/format";
-import { CheckCheck, Keyboard, ListChecks, Link2, Ruler } from "lucide-react";
+import { Activity, CheckCheck, Keyboard, ListChecks, Link2, Ruler } from "lucide-react";
 
 type Tab = "review" | "links";
 
@@ -29,6 +30,12 @@ export default function ReviewPage({ params }: { params: { id: string } }) {
   const contrast = useQuery({
     queryKey: ["recist-contrast", runId],
     queryFn: () => api.getRecistContrast(runId),
+    retry: false,
+  });
+  // null for a first run: there is no earlier run to compare against.
+  const delta = useQuery({
+    queryKey: ["run-delta", runId],
+    queryFn: () => api.getRunDelta(runId),
     retry: false,
   });
 
@@ -47,9 +54,21 @@ export default function ReviewPage({ params }: { params: { id: string } }) {
     return out;
   }, [digest.data]);
 
+  // Two maps, not one. A carried track legitimately holds BOTH a slot review (from the
+  // earlier run) and an acknowledgement (of what the newest report added). Collapsing them
+  // into one map keyed by track_key silently drops whichever the API returned first.
   const reviewsByKey = useMemo(() => {
     const m = new Map<string, Review>();
-    for (const r of reviews.data ?? []) m.set(r.track_key, r);
+    for (const r of reviews.data ?? []) {
+      if (r.review_kind !== "acknowledgement") m.set(r.track_key, r);
+    }
+    return m;
+  }, [reviews.data]);
+  const acksByKey = useMemo(() => {
+    const m = new Map<string, Review>();
+    for (const r of reviews.data ?? []) {
+      if (r.review_kind === "acknowledgement") m.set(r.track_key, r);
+    }
     return m;
   }, [reviews.data]);
 
@@ -118,7 +137,7 @@ export default function ReviewPage({ params }: { params: { id: string } }) {
   if (!digest.data) return null;
 
   const d = digest.data;
-  const reviewedCount = reviews.data?.length ?? 0;
+  const reviewedCount = new Set((reviews.data ?? []).map((r) => r.track_key)).size;
   const gateCount = d.gate_failed.length;
 
   return (
@@ -138,6 +157,11 @@ export default function ReviewPage({ params }: { params: { id: string } }) {
           </div>
           <div className="flex items-center gap-3">
             <SessionTimer runId={runId} patientId={d.patient.id} tracksReviewed={reviewedCount} />
+            <Link href={`/runs/${runId}/progression`}>
+              <Button variant="secondary" size="sm">
+                <Activity className="w-3.5 h-3.5" /> Disease trajectory →
+              </Button>
+            </Link>
             <Link href={`/runs/${runId}/recist`}>
               <Button variant="secondary" size="sm">
                 <Ruler className="w-3.5 h-3.5" /> RECIST worksheet →
@@ -148,7 +172,9 @@ export default function ReviewPage({ params }: { params: { id: string } }) {
       </div>
 
       {/* Gate-failed quarantine — the FIRST thing on the page (trust signal), never hidden. */}
-      <QuarantineZone frames={d.gate_failed} />
+      {delta.data && <RunDeltaPanel delta={delta.data} runId={runId} />}
+
+      <QuarantineZone frames={d.gate_failed} runId={runId} />
 
       {/* Money moment: automated vs human-confirmed RECIST, when a discrepancy exists. */}
       {contrast.data && contrast.data.discrepancy && (
@@ -215,6 +241,7 @@ export default function ReviewPage({ params }: { params: { id: string } }) {
                         selected={flatIndex === selected}
                         reviewOpen={openKey === track.track_key}
                         existingReview={reviewsByKey.get(track.track_key)}
+                        acknowledgement={acksByKey.get(track.track_key)}
                         submitting={createReview.isPending}
                         onSelect={() => setSelected(flatIndex)}
                         onToggleReview={() =>

@@ -134,6 +134,9 @@ class RunOut(ORMModel):
     attempts: int
     error: str | None
     report_manifest: list[dict[str, Any]]
+    run_kind: str
+    parent_run_id: uuid.UUID | None
+    extraction_provenance: dict[str, Any]
     created_at: dt.datetime
     started_at: dt.datetime | None
     finished_at: dt.datetime | None
@@ -170,6 +173,12 @@ class ReviewOut(ORMModel):
     clinically_significant: bool | None
     comment: str | None
     model_output_visible: bool
+    # 'review' = a slot-correctness review. 'acknowledgement' = the reviewer was shown
+    # evidence added to a track whose identity was already confirmed. Without this the UI
+    # cannot tell settled work from work created by the newest report — both render as a
+    # bare "reviewed" tick.
+    review_kind: str
+    reviewed_value: dict[str, Any]
     created_at: dt.datetime
 
 

@@ -16,6 +16,7 @@ import worker._bootstrap  # noqa: F401  (adds backend/ to sys.path so `import ap
 
 import asyncio
 import datetime as dt
+import json
 import signal
 import time
 import uuid
@@ -27,9 +28,10 @@ from app.core.config import settings
 from app.core.logging import configure_logging, get_logger
 from app.db.models import ExtractionRun, Patient, ReportVersion
 from app.db.session import dispose_engine, get_sessionmaker
+from app.engine import adapter as engine_adapter
 from app.engine.adapter import get_engine
 from app.engine.types import ReportInput
-from app.services import audit
+from app.services import audit, carry_forward
 from worker import persist, rate_limit
 
 log = get_logger("findingframe.worker")
@@ -157,6 +159,7 @@ async def process_run(sm: async_sessionmaker, run_id: uuid.UUID) -> None:
             await rate_limit.acquire(sm, limit_per_min=settings.llm_rate_limit_per_min)
 
         artifact = await asyncio.to_thread(_run_engine, subject_code, inputs, str(run_id))
+        provenance = engine_adapter.extraction_provenance(artifact, run.report_manifest or [])
 
         # Persist + flip to succeeded atomically.
         async with sm() as s:
@@ -178,6 +181,7 @@ async def process_run(sm: async_sessionmaker, run_id: uuid.UUID) -> None:
                       manifest_hash=coalesce(manifest_hash, :mh),
                       engine_git_sha=coalesce(engine_git_sha, :sha),
                       model_id=coalesce(model_id, :model),
+                      extraction_provenance = :prov::jsonb,
                       checkpoint = jsonb_set(coalesce(checkpoint,'{}'::jsonb),
                                              '{phase}', '"persisted"'::jsonb)
                     where id = :id
@@ -189,6 +193,7 @@ async def process_run(sm: async_sessionmaker, run_id: uuid.UUID) -> None:
                     "mh": artifact.manifest.manifest_hash,
                     "sha": artifact.manifest.engine_git_sha,
                     "model": artifact.manifest.model_id,
+                    "prov": json.dumps(provenance),
                     "id": run_id,
                 },
             )
@@ -199,10 +204,43 @@ async def process_run(sm: async_sessionmaker, run_id: uuid.UUID) -> None:
                 action="run.succeeded",
                 entity_type="run",
                 entity_id=str(run_id),
-                after={**counts, "latency_ms": latency_ms},
+                after={
+                    **counts,
+                    "latency_ms": latency_ms,
+                    "llm_calls": provenance.get("llm_calls"),
+                    "reports_total": provenance.get("reports_total"),
+                },
             )
             await s.commit()
-        log.info("run_succeeded", run_id=str(run_id), **counts)
+        log.info("run_succeeded", run_id=str(run_id), llm_calls=provenance.get("llm_calls"),
+                 reports_total=provenance.get("reports_total"), **counts)
+
+        # An incremental run extends a record a clinician already confirmed. Replay the
+        # confirmations that still stand, so the reviewer is asked only about what this
+        # report actually changed. Anything re-opened or new is left for them.
+        if run.parent_run_id:
+            async with sm() as s:
+                result = await carry_forward.apply_carry_forward(
+                    s, org_id=org_id, run_id=run_id, applied_by=run.created_by
+                )
+                await audit.record(
+                    s,
+                    org_id=org_id,
+                    actor_id=None,
+                    action="run.carry_forward",
+                    entity_type="run",
+                    entity_id=str(run_id),
+                    after={
+                        "parent_run_id": str(run.parent_run_id),
+                        "counts": result["counts"],
+                        "carried_link_decisions": result["carried_link_decisions"],
+                        "carried_target_selection": result["carried_target_selection"],
+                        "recist_call_before": result["recist_call_before"],
+                        "recist_call_after": result["recist_call_after"],
+                    },
+                )
+                await s.commit()
+            log.info("run_carried_forward", run_id=str(run_id), **result["counts"])
 
     except Exception as exc:  # noqa: BLE001
         log.error("run_failed", run_id=str(run_id), error=str(exc), exc_type=type(exc).__name__)
