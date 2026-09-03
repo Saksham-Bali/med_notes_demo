@@ -36,7 +36,7 @@ Radiology reports
 
 ## 2. Key differentiators (ranked)
 
-1. **Verified per-fact provenance — 0% hallucination by construction.** Every fact carries a gate-checked verbatim source sentence. This is *architectural*, not statistical — the only claim that survives a pharma audit or an FDA RWE submission. **Lead with this always.**
+1. **Verified per-fact provenance — 100% source-linked.** Every fact carries a gate-checked verbatim source sentence; spans that fail verification are quarantined for mandatory human review, not silently passed. This is *architectural*, not statistical — the only claim that survives a pharma audit or an FDA RWE submission. **Lead with this always.** *(Amended 2026-08-14, B8: "0% hallucination by construction" retracted 2026-07-17 in `PRODUCT_BUILD_PLAN.md` R5 — the gate annotates, it does not drop. Canonical claim sentence: `PIVOT_MEMORY_LAYER_2026-08-13.md` §3.1.)*
 2. **Deterministic linking + RECIST 1.1.** Same reports in → same tracks and progression out, every time. Reproducibility is a regulatory requirement that end-to-end-LLM competitors cannot honestly make.
 3. **Model-agnostic (4 backends, zero retraining).** No vendor lock-in; on-prem / sovereign deployment — decisive under India's DPDP localization and pharma security review. Also a cost hedge as model prices fall.
 4. **Human-in-the-loop by design.** Clinician approves each fact — turns the track-F1 weakness into the product story (abstractor acceleration with a measured path to more automation).
